@@ -4,9 +4,9 @@
       <h2>Bachman Hendricks</h2>
       <div>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Registrera</button>
+          <button type="button" class="btn btn-light border rounded-0">Logga in</button>
         </router-link>
-        <button type="button" class="btn btn-light border rounded-0">Logga in</button>
+        <button type="button" class="btn btn-light border">Registrera</button>
       </div>
     </div>
     <form class="col-6 border rounded py-3 pl-5 text-left">
