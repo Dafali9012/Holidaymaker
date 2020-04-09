@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="search-lumia;when-i-enter-text-in-search" tests="4" failures="0" skipped="3">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker-master/js-frontend/tests/selenium/features/search.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I&apos;m at the search page" classname="search-lumia;when-i-enter-text-in-search" time="6.5493692">
+        </testcase>
+        <testcase name="When I enter search text &quot;taklampa&quot;" classname="search-lumia;when-i-enter-text-in-search">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I click the search button" classname="search-lumia;when-i-enter-text-in-search">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then the first test result should contain the word &quot;taklampa&quot;" classname="search-lumia;when-i-enter-text-in-search">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>

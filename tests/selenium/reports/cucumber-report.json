@@ -1,0 +1,74 @@
+[
+  {
+    "elements": [
+      {
+        "id": "search-lumia;when-i-enter-text-in-search",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "When I enter text in search",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "name": "that I'm at the search page",
+            "result": {
+              "status": "passed",
+              "duration": 6549369200
+            },
+            "line": 5,
+            "match": {
+              "location": "C:\\Users\\jitma\\Desktop\\Holidaymaker-master\\js-frontend\\tests\\selenium\\step-definitions\\search.js:5"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "name": "I enter search text \"taklampa\"",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 6
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "name": "I click the search button",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 7
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "name": "the first test result should contain the word \"taklampa\"",
+            "result": {
+              "status": "undefined"
+            },
+            "line": 8
+          },
+          {
+            "arguments": [],
+            "keyword": "After ",
+            "result": {
+              "status": "passed",
+              "duration": 1110899799
+            },
+            "hidden": true,
+            "match": {
+              "location": "C:\\Users\\jitma\\Desktop\\Holidaymaker-master\\js-frontend\\node_modules\\selenium-cucumber-js\\runtime\\world.js:250"
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "search-lumia",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "Search Lumia",
+    "tags": [],
+    "uri": "C:/Users/jitma/Desktop/Holidaymaker-master/js-frontend/tests/selenium/features/search.feature"
+  }
+]
