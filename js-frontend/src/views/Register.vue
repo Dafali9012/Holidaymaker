@@ -3,11 +3,9 @@
     <div class="d-flex justify-content-between col-6 border rounded py-3 pl-5 text-left">
       <h2>Bachman Hendricks</h2>
       <div>
-        <router-link to="/register">
-          <button type="button" class="btn btn-light border disabled">Registrera</button>
-        </router-link>
+        <button type="button" class="btn btn-light border disabled">Registrera</button>
         <router-link to="/login">
-        <button type="button" class="btn btn-light border rounded-0">Logga in</button>
+          <button type="button" class="btn btn-light border">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -24,15 +22,15 @@
 
 <script>
 export default {
-    data() {
-        return {
-            //variables
-        }
-    },
-    methods: {
-        submitForm() {
-            console.log("form submitted")
-        }
+  data() {
+    return {
+      //variables
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log("form submitted");
     }
-}
+  }
+};
 </script>
