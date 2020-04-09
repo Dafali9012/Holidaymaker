@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center register">
+  <div class="d-flex flex-column align-items-center Login">
     <div class="d-flex justify-content-between col-6 border rounded py-3 pl-5 text-left">
       <h2>Bachman Hendricks</h2>
       <div>
