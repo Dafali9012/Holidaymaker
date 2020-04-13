@@ -1,0 +1,6 @@
+{
+    "steps": "./tests/selenium/step-definitions",
+    "reports": "./tests/selenium/reports",
+    "browser": "firefox",
+    "timeout": 20000
+   }
