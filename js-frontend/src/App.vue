@@ -12,6 +12,7 @@
 
 <style>
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
+@import url("../style/style.css");
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
