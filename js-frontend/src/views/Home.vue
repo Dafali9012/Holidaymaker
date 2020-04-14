@@ -21,7 +21,7 @@
       <label class="col-2" for="enddate">Check out</label>
       <label class="col-1" for="adults">Antal vuxna</label>
       <label class="col-1.5" for="kids">Antal barn <br> (3-18 år)</label>
-      <label class="col-2" for="kids">Antal småbarn <br> (0-3 år)</label>
+      <label class="col-2" for="smallkids">Antal småbarn <br> (0-3 år)</label>
       
     </div>
       <div class="row m-2">
