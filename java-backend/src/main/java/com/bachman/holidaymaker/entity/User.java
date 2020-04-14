@@ -14,12 +14,13 @@ public class User {
     private String email;
     private String password;
     private String address;
-    private String phoneNumber;
+    private String phonenumber;
 
     public User() {
+        this.email = "Undefined";
         this.name = "Undefined";
         this.address = "Undefined";
-        this.phoneNumber = "Undefined";
+        this.phonenumber = "Undefined";
     }
 
     public User(String email, String password) {
@@ -27,7 +28,21 @@ public class User {
         this.password = password;
         this.name = "Undefined";
         this.address = "Undefined";
-        this.phoneNumber = "Undefined";
+        this.phonenumber = "Undefined";
+    }
+    public User(String email, String password, String name) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.address = "Undefined";
+        this.phonenumber = "Undefined";
+    }
+    public User(String email, String password, String name, String phoneNumber) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.address = "Undefined";
+        this.phonenumber = phoneNumber;
     }
 
     public long getUserId() {
@@ -51,6 +66,6 @@ public class User {
     }
 
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phonenumber;
     }
 }

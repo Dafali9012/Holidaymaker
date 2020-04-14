@@ -14,7 +14,7 @@
       <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
       <input v-model="password" type="text" class="form-control col-4 mb-2" placeholder="Lösenord" required />
       <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" required />
-      <input v-model="phone" type="text" class="form-control col-4 mb-2" placeholder="Telefon" required />
+      <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" required />
       <button type="submit" class="btn btn-light border">Registrera</button>
     </form>
   </div>
@@ -27,14 +27,16 @@ export default {
       email: '',
       password: '',
       name: '',
-      phone: ''
+      phonenumber: ''
     };
   },
   methods: {
     completeRegistration: async function() {
       console.log("form submitted\nuser created");
       const newUser = { email: this.email,
-                        password: this.password };
+                        password: this.password,
+                        name: this.name,
+                        phonenumber: this.phonenumber };
       const url = "http://localhost:8080/register";
       const result = await fetch(url, {
         method: "POST",
@@ -44,7 +46,7 @@ export default {
         }
       });
       if(result.ok) {
-        console.log("post ok\nname: "+newUser.name)
+        console.log("post ok\nname: "+newUser)
       }
     }
   }
