@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `reservedroom` (
   `room` int(11) NOT NULL,
   `numAdults` int(11) NOT NULL,
   `numKids` int(11) NOT NULL,
-  `board` enum('HB','FB','AI') NOT NULL,
+  `board` enum('NONE','HB','FB','AI') NOT NULL DEFAULT 'NONE',
   `totalRoomPrice` double(22,0) NOT NULL,
   KEY `FK_reservedroom_booking` (`booking`),
   KEY `FK_reservedroom_room` (`room`),
