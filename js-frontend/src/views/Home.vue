@@ -11,22 +11,56 @@
                 </router-link>
       </div>
     </div>
-    <form class="col border rounded py-3 pl-5 text-left">
+    <div class="container border rounded py-3 text-left">
+      <div class="row m-2">
       <p class="font-weight-bold">Sök boende:</p>
-      <div class="dropdown">
-  <button class="btn dropdown-toggle border col-4" type="button" id="dropdownCountry" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Land
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownCountry">
-    <a class="dropdown-item" href="#">Frankrike</a>
-    <a class="dropdown-item" href="#">Spanien</a>
-    <a class="dropdown-item" href="#">Luxemburg</a>
-  </div>
-</div>
-      <input type="text" name="date" class="col-4" placeholder=" "/>
-      <input type="text" name="guests" class="col-4" placeholder=" "/>
-      <button type="submit" class="btn btn-light border col-4 mt-3">Sök</button>
-    </form>
+      </div>
+    <div class="row m-2">
+      <label class="col-3" for="country">Land</label>
+      <label class="col-2" for="startdate">Check in</label>
+      <label class="col-2" for="enddate">Check out</label>
+      <label class="col-2" for="adults">Antal vuxna</label>
+      <label class="col-2" for="kids">Antal barn</label>
+      
+    </div>
+      <div class="row m-2">
+    <select class="border rounded col-3" name="country" id="country">
+    <option value="">-Välj land-</option>
+    <option value="Frankrike">Frankrike</option>
+    <option value="Spanien">Spanien</option>
+    <option value="Luxemburg">Luxemburg</option>
+</select>
+
+      <input type="date" class="border rounded col-2" name="startdate" placeholder="Check in"/>
+            <input type="date" class="border rounded col-2" name="enddate" placeholder="Check out"/>
+
+    <select class="border rounded col-2" name="adults" id="adults">
+    <option value="">-Välj antal-</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+</select>
+    <select class="border rounded col-2" name="kids" id="kids">
+    <option value="">-Välj antal-</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+</select>
+      </div>
+      <button type="submit" class="btn btn-light border col-12 mt-3">Sök</button>
+    </div>
   </div>
   
 </template>
