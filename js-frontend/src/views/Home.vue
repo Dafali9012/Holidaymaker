@@ -72,7 +72,7 @@
     <option value="9">9</option>
 </select>
       </div>
-      <button type="submit" class="btn btn-light border col-12 mt-3">Sök</button>
+      <button type="submit" class="btn btn-info border col-12 mt-3">Sök</button>
     </div>
   </div>
   
