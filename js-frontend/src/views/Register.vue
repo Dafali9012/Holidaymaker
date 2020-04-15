@@ -13,8 +13,8 @@
       <p class="font-weight-bold">Registrera konto</p>
       <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
       <input v-model="password" type="text" class="form-control col-4 mb-2" placeholder="Lösenord" required />
-      <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" required />
-      <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" required />
+      <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" />
+      <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" />
       <button type="submit" class="btn btn-light border">Registrera</button>
     </form>
   </div>
@@ -24,10 +24,11 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
-      name: '',
-      phonenumber: ''
+      email: '-',
+      password: '-',
+      name: '-',
+      phonenumber: '-',
+      address: '-'
     };
   },
   methods: {
@@ -36,7 +37,8 @@ export default {
       const newUser = { email: this.email,
                         password: this.password,
                         name: this.name,
-                        phonenumber: this.phonenumber };
+                        phonenumber: this.phonenumber,
+                        address: this.address };
       const url = "http://localhost:8080/register";
       const result = await fetch(url, {
         method: "POST",
@@ -46,7 +48,7 @@ export default {
         }
       });
       if(result.ok) {
-        console.log("post ok\nname: "+newUser)
+        console.log("post ok\nname: "+newUser.name+" "+newUser.phonenumber)
       }
     }
   }

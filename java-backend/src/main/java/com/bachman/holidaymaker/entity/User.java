@@ -17,32 +17,11 @@ public class User {
     private String phonenumber;
 
     public User() {
-        this.email = "Undefined";
-        this.name = "Undefined";
-        this.address = "Undefined";
-        this.phonenumber = "Undefined";
-    }
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-        this.name = "Undefined";
-        this.address = "Undefined";
-        this.phonenumber = "Undefined";
-    }
-    public User(String email, String password, String name) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.address = "Undefined";
-        this.phonenumber = "Undefined";
-    }
-    public User(String email, String password, String name, String phoneNumber) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.address = "Undefined";
-        this.phonenumber = phoneNumber;
+        this.email = "-";
+        this.password = "-";
+        this.name = "-";
+        this.address = "-";
+        this.phonenumber = "-";
     }
 
     public long getUserId() {
@@ -65,7 +44,7 @@ public class User {
         return address;
     }
 
-    public String getPhoneNumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 }
