@@ -19,11 +19,6 @@ public class User {
     private String phonenumber;
 
     public User() {
-        this.email = "-";
-        this.password = "-";
-        this.name = "-";
-        this.address = "-";
-        this.phonenumber = "-";
     }
 
     public long getUserId() {
