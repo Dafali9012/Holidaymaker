@@ -11,8 +11,8 @@
     </div>
     <form class="col-6 border rounded py-3 pl-5 text-left">
       <p class="font-weight-bold">Login</p>
-      <input type="text" class="form-control col-4 mb-2" placeholder="User name" required />
-      <input type="text" class="form-control col-4 mb-2" placeholder="Password" required />
+      <input type="text" class="form-control col-4 mb-2" placeholder="Username" required />
+      <input type="password" class="form-control col-4 mb-2" placeholder="Password" required />
       <button type="submit" class="btn btn-light border">Login</button>
     </form>
   </div>
