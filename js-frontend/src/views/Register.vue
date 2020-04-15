@@ -24,11 +24,11 @@
 export default {
   data() {
     return {
-      email: '-',
-      password: '-',
-      name: '-',
-      phonenumber: '-',
-      address: '-'
+      email: '',
+      password: '',
+      name: '',
+      phonenumber: '',
+      address: ''
     };
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
                         password: this.password,
                         name: this.name,
                         phonenumber: this.phonenumber,
-                        address: this.address };
+                        address: "-" };
       const url = "http://localhost:8080/register";
       const result = await fetch(url, {
         method: "POST",
