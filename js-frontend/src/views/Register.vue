@@ -49,6 +49,8 @@ export default {
       });
       if(result.ok) {
         console.log("post ok\nname: "+newUser.name+" "+newUser.phonenumber)
+        window.confirm("Hej "+ newUser.name + ", du har lyckats med registreringen!")
+      
       }
     }
   }
