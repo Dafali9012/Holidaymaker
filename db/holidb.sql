@@ -11,6 +11,23 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- Dumpar struktur för tabell holiday_db.country
+CREATE TABLE IF NOT EXISTS `country` (
+  `countryId` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  PRIMARY KEY (`countryId`),
+  UNIQUE KEY `name` (`Name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+-- Dumpar data för tabell holiday_db.country: ~4 rows (ungefär)
+/*!40000 ALTER TABLE `country` DISABLE KEYS */;
+REPLACE INTO `country` (`countryId`, `Name`) VALUES
+	(3, 'Frankrike'),
+	(4, 'Italien'),
+	(1, 'Portugal'),
+	(5, 'Spanien');
+/*!40000 ALTER TABLE `country` ENABLE KEYS */;
+
 -- Dumpar struktur för tabell holiday_db.city
 CREATE TABLE IF NOT EXISTS `city` (
   `cityId` int(11) NOT NULL AUTO_INCREMENT,
@@ -31,23 +48,6 @@ REPLACE INTO `city` (`cityId`, `Country`, `Name`) VALUES
 	(5, 5, 'Barcelona'),
 	(6, 5, 'Palma');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
-
--- Dumpar struktur för tabell holiday_db.country
-CREATE TABLE IF NOT EXISTS `country` (
-  `countryId` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  PRIMARY KEY (`countryId`),
-  UNIQUE KEY `name` (`Name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
-
--- Dumpar data för tabell holiday_db.country: ~4 rows (ungefär)
-/*!40000 ALTER TABLE `country` DISABLE KEYS */;
-REPLACE INTO `country` (`countryId`, `Name`) VALUES
-	(3, 'Frankrike'),
-	(4, 'Italien'),
-	(1, 'Portugal'),
-	(5, 'Spanien');
-/*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell holiday_db.hotel
 CREATE TABLE IF NOT EXISTS `hotel` (
@@ -85,6 +85,22 @@ REPLACE INTO `hotel` (`HotelId`, `City`, `Name`, `imgLink`, `Address`, `phoneNr`
 	(8, 1, 'My Story Hotel Tejo', './assets/images/myStory/hotel.jpg', 'Rua dos Condes de Monsanto 2', '+00 351 21 886 6182', 4, 295, 810, 1950, 0, 1, 1, 1, 0, 10, 1);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
+-- Dumpar struktur för tabell holiday_db.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
+  `Email` varchar(50) NOT NULL DEFAULT '',
+  `Password` varchar(50) DEFAULT NULL,
+  `FullName` varchar(50) NOT NULL DEFAULT '',
+  `Address` varchar(50) NOT NULL DEFAULT '',
+  `PhoneNumber` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`UserId`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- Dumpar data för tabell holiday_db.user: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
 -- Dumpar struktur för tabell holiday_db.reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
   `bookingNumber` int(11) NOT NULL AUTO_INCREMENT,
@@ -102,24 +118,6 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 -- Dumpar data för tabell holiday_db.reservation: ~0 rows (ungefär)
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
-
--- Dumpar struktur för tabell holiday_db.reservedroom
-CREATE TABLE IF NOT EXISTS `reservedroom` (
-  `booking` int(11) NOT NULL,
-  `room` int(11) NOT NULL,
-  `numAdults` int(11) NOT NULL,
-  `numKids` int(11) NOT NULL,
-  `board` enum('NONE','HB','FB','AI') NOT NULL DEFAULT 'NONE',
-  `totalRoomPrice` double(22,0) NOT NULL,
-  KEY `FK_reservedroom_booking` (`booking`),
-  KEY `FK_reservedroom_room` (`room`),
-  CONSTRAINT `FK_reservedroom_booking` FOREIGN KEY (`booking`) REFERENCES `reservation` (`BookingNumber`),
-  CONSTRAINT `FK_reservedroom_room` FOREIGN KEY (`room`) REFERENCES `room` (`RoomId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Dumpar data för tabell holiday_db.reservedroom: ~0 rows (ungefär)
-/*!40000 ALTER TABLE `reservedroom` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reservedroom` ENABLE KEYS */;
 
 -- Dumpar struktur för tabell holiday_db.room
 CREATE TABLE IF NOT EXISTS `room` (
@@ -160,21 +158,24 @@ REPLACE INTO `room` (`RoomId`, `RoomNumber`, `Hotel`, `imgLink`, `RoomType`, `Sm
 	(20, 203, 8, './assets/images/myStory/studio.jpg', 'STUDIO', 0, 0, 4010);
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holiday_db.user
-CREATE TABLE IF NOT EXISTS `user` (
-  `UserId` int(11) NOT NULL AUTO_INCREMENT,
-  `Email` varchar(50) NOT NULL DEFAULT '',
-  `Password` varchar(50) DEFAULT NULL,
-  `FullName` varchar(50) NOT NULL DEFAULT '',
-  `Address` varchar(50) NOT NULL DEFAULT '',
-  `PhoneNumber` varchar(50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`UserId`),
-  UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+-- Dumpar struktur för tabell holiday_db.reservedroom
+CREATE TABLE IF NOT EXISTS `reservedroom` (
+  `booking` int(11) NOT NULL,
+  `room` int(11) NOT NULL,
+  `numAdults` int(11) NOT NULL,
+  `numKids` int(11) NOT NULL,
+  `board` enum('NONE','HB','FB','AI') NOT NULL DEFAULT 'NONE',
+  `totalRoomPrice` double(22,0) NOT NULL,
+  KEY `FK_reservedroom_booking` (`booking`),
+  KEY `FK_reservedroom_room` (`room`),
+  CONSTRAINT `FK_reservedroom_booking` FOREIGN KEY (`booking`) REFERENCES `reservation` (`BookingNumber`),
+  CONSTRAINT `FK_reservedroom_room` FOREIGN KEY (`room`) REFERENCES `room` (`RoomId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holiday_db.user: ~0 rows (ungefär)
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+-- Dumpar data för tabell holiday_db.reservedroom: ~0 rows (ungefär)
+/*!40000 ALTER TABLE `reservedroom` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservedroom` ENABLE KEYS */;
+
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

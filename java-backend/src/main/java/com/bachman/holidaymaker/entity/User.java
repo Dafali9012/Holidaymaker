@@ -1,33 +1,29 @@
 package com.bachman.holidaymaker.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
+    @Column(name = "FullName")
     private String name;
+    @Column(name = "Email")
     private String email;
+    @Column(name = "Password")
     private String password;
+    @Column(name = "Address")
     private String address;
-    private String phoneNumber;
+    @Column(name = "PhoneNumber")
+    private String phonenumber;
 
     public User() {
-        this.name = "Undefined";
-        this.address = "Undefined";
-        this.phoneNumber = "Undefined";
-    }
-
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
-        this.name = "Undefined";
-        this.address = "Undefined";
-        this.phoneNumber = "Undefined";
+        this.email = "-";
+        this.password = "-";
+        this.name = "-";
+        this.address = "-";
+        this.phonenumber = "-";
     }
 
     public long getUserId() {
@@ -50,7 +46,7 @@ public class User {
         return address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 }

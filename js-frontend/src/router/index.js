@@ -5,6 +5,7 @@ import About from '../views/About.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import Confirmation from '../views/Confirmation.vue'
+import HotelInfo from '../views/HotelInfo.vue'
 
 
 Vue.use(VueRouter)
@@ -34,6 +35,11 @@ Vue.use(VueRouter)
     path: '/confirmation',
     name: 'Confirmation',
     component: Confirmation
+  },
+  {
+    path: '/hotelinfo',
+    name: 'HotelInfo',
+    component: HotelInfo
   }
 ]
 
