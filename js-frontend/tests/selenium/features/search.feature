@@ -1,8 +1,9 @@
 Feature: Test Holidaymaker home page
 
+    Background: Main page
+        Given that I'm at the Holidaymaker home page
 
     Scenario: Sign up
-        Given that I'm at the Holidaymaker home page
         When I click Register on menu
         And I enter my Email
         And I enter Lösenord
@@ -12,9 +13,18 @@ Feature: Test Holidaymaker home page
         Then Sign-up is finished and the page opens the next page.
 
     Scenario: Log in
-        Given that I'm at the Holidaymaker home page
         When I click Login on menu
         And I enter User name
         And I enter Password
         And I click the Login button
-        Then The user is logged in.
+        Then I am logged in.
+
+    Scenario: Search for available rooms
+        When I choose Frankrike
+        And I enter check-in date
+        And I enter check-out date
+        And I enter the number of adults
+        And I enter the number of kids
+        And I enter the number of babies
+        And I click the Sök button
+        Then The page shows the results.
