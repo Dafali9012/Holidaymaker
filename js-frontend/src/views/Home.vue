@@ -74,6 +74,9 @@
       </div>
       <button type="submit" class="btn btn-info border col-12 mt-3">Sök</button>
     </div>
+    <div>
+    
+    </div>
   </div>
   
 </template>
