@@ -11,10 +11,10 @@
     </div>
     <form @submit.prevent="completeRegistration()" class="col-6 border rounded py-3 pl-5 text-left">
       <p class="font-weight-bold">Registrera konto</p>
-      <input v-model="this.email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
-      <input v-model="this.password" type="text" class="form-control col-4 mb-2" placeholder="Lösenord" required />
-      <input v-model="this.name" type="text" class="form-control col-4 mb-2" placeholder="Namn" required />
-      <input v-model="this.phone" type="text" class="form-control col-4 mb-2" placeholder="Telefon" required />
+      <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
+      <input v-model="password" type="text" class="form-control col-4 mb-2" placeholder="Lösenord" required />
+      <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" />
+      <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" />
       <button type="submit" class="btn btn-light border">Registrera</button>
     </form>
   </div>
@@ -27,7 +27,8 @@ export default {
       email: '',
       password: '',
       name: '',
-      phone: ''
+      phonenumber: '',
+      address: ''
     };
   },
   methods: {
@@ -36,8 +37,9 @@ export default {
       const newUser = { email: this.email,
                         password: this.password,
                         name: this.name,
-                        phone: this.phone };
-      const url = "http://localhost:8080/user";
+                        phonenumber: this.phonenumber,
+                        address: "-" };
+      const url = "http://localhost:8080/register";
       const result = await fetch(url, {
         method: "POST",
         body: JSON.stringify(newUser),
@@ -46,7 +48,7 @@ export default {
         }
       });
       if(result.ok) {
-        console.log("post ok\nname: "+newUser.name)
+        console.log("post ok\nname: "+newUser.name+" "+newUser.phonenumber)
       }
     }
   }
