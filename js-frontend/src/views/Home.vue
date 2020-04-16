@@ -29,6 +29,15 @@
           <br />(0-3 år)
         </label>
       </div>
+    <div class="row m-2">
+      <label class="col-3" for="country">Land</label>
+      <label class="col-2" for="startdate">Check in</label>
+      <label class="col-2" for="enddate">Check out</label>
+      <label class="col-1" for="adults">Antal vuxna</label>
+      <label class="col-1.5" for="kids">Antal barn <br> (3-18 år)</label>
+      <label class="col-2" for="smallkids">Antal småbarn <br> (0-2 år)</label>
+      
+    </div>
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country">
           <option value>-Välj land-</option>
