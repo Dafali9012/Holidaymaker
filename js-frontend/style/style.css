@@ -1,4 +1,32 @@
 #app {
-    background-color: salmon;
     min-height: 100vh;
+}
+.usernamelabel, .passwordlabel {
+    color: grey;
+    position: absolute;
+    pointer-events: none;
+    transition: all 0.2s ease-in;
+}
+/*Label animations, to affect username and password but not checkmark*/
+.usernamelabel, .passwordlabel {
+    color: grey;
+    position: absolute;
+    pointer-events: none;
+    transition: all 0.2s ease-in;
+}
+input:focus + .usernamelabel {
+    transform: translateY(-30px);
+    font-size: 10pt;
+}
+input:focus + .passwordlabel {
+    transform: translateY(-30px);
+    font-size: 10pt;
+}
+input:not(:placeholder-shown) + .usernamelabel{
+    transform: translateY(-30px);
+    font-size: 10pt;
+}
+input:not(:placeholder-shown) + .passwordlabel{
+    transform: translateY(-30px);
+    font-size: 10pt;
 }

@@ -1,13 +1,13 @@
 <template>
-  <div class="container align-items-center">
+  <div class="container align-items-center bg-light p-0 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
       <h2>Bachman Hendricks</h2>
       <div>
         <router-link to="/register">
-          <button type="button" class="btn btn-light border">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Logga in</button>
+          <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -29,21 +29,12 @@
           <br />(0-3 år)
         </label>
       </div>
-    <div class="row m-2">
-      <label class="col-3" for="country">Land</label>
-      <label class="col-2" for="startdate">Check in</label>
-      <label class="col-2" for="enddate">Check out</label>
-      <label class="col-1" for="adults">Antal vuxna</label>
-      <label class="col-1.5" for="kids">Antal barn <br> (3-18 år)</label>
-      <label class="col-2" for="smallkids">Antal småbarn <br> (0-2 år)</label>
-      
-    </div>
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country">
           <option value>-Välj land-</option>
           <option value="Frankrike">Frankrike</option>
           <option value="Spanien">Spanien</option>
-          <option value="Luxemburg">Luxemburg</option>
+          <option value="Luxemburg">Tyskland</option>
         </select>
 
         <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />

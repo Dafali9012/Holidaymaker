@@ -1,21 +1,21 @@
 <template>
   <div class="d-flex flex-column align-items-center register">
-    <div class="d-flex justify-content-between col-6 border rounded py-3 pl-5 text-left">
+    <div class="d-flex justify-content-between col-6 border py-3 pl-5 text-left bg-light rounded">
       <h2>Bachman Hendricks</h2>
       <div>
-        <button type="button" class="btn btn-light border disabled">Registrera</button>
+        <button type="button" class="btn btn-info border disabled mr-2">Registrera</button>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Logga in</button>
+          <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
-    <form @submit.prevent="completeRegistration()" class="col-6 border rounded py-3 pl-5 text-left">
+    <form @submit.prevent="completeRegistration()" class="col-6 border rounded py-3 pl-5 text-left bg-light p-0">
       <p class="font-weight-bold">Registrera konto</p>
       <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
       <input v-model="password" type="password" class="form-control col-4 mb-2" placeholder="Lösenord" required />
       <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" />
       <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" />
-      <button type="submit" class="btn btn-light border">Registrera</button>
+      <button type="submit" class="btn btn-info border">Registrera</button>
     </form>
   </div>
 </template>
