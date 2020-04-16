@@ -1,21 +1,33 @@
 <template>
   <div class="container d-flex flex-column align-items-center register py-5">
-    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
       <router-link to="/"><button class="btn btn-info"><h2>Bachman Hendricks</h2></button></router-link>
       <div class="align-self-center">
-        <button type="button" class="btn btn-light border disabled">Registrera</button>
+        <button type="button" class="btn btn-info border disabled mr-2">Registrera</button>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Logga in</button>
+          <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
-    <form @submit.prevent="completeRegistration()" class="col border rounded py-3 pl-5 text-left">
+    <form @submit.prevent="completeRegistration()" class="col border rounded py-3 pl-5 text-left bg-light p-0">
       <p class="font-weight-bold">Registrera konto</p>
-      <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
-      <input v-model="password" type="password" class="form-control col-4 mb-2" placeholder="Lösenord" required />
-      <input v-model="name" type="text" class="form-control col-4 mb-2" placeholder="Namn" />
-      <input v-model="phonenumber" type="text" class="form-control col-4 mb-2" placeholder="Telefon" />
-      <button type="submit" class="btn btn-light border">Registrera</button>
+      <div class="row d-flex mt-4">
+      <input v-model="email" name="email" type="text" class="form-control col-4 ml-3" placeholder=" " required />
+      <label for="email" class="col-9 mt-2 ml-2 formlabel">Email</label>
+      </div>
+      <div class="row d-flex mt-4">
+      <input v-model="password" name="password" type="password" class="form-control col-4 ml-3" placeholder=" " required />
+      <label for="password" class="col-9 mt-2 ml-2 formlabel">Lösenord</label>
+      </div>
+      <div class="row d-flex mt-4">
+      <input v-model="name" type="text" name="name" class="form-control col-4 ml-3" placeholder=" " />
+      <label for="name" class="col-9 mt-2 ml-2 formlabel">Namn</label>
+      </div>
+      <div class="row d-flex mt-4">
+      <input v-model="phonenumber" name="phone" type="text" class="form-control col-4 ml-3" placeholder=" " />
+      <label for="phone" class="col-9 mt-2 ml-2 formlabel">Telefonnummer</label>
+      </div>
+      <button type="submit" class="btn btn-info border mt-4">Registrera</button>
     </form>
   </div>
 </template>

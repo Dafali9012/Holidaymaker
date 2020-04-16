@@ -22,6 +22,8 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image: url('../style/background.jpg');
+  background-size: cover;
 }
 
 #nav {

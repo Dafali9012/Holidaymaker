@@ -1,13 +1,13 @@
 <template>
-  <div class="container align-items-center py-5">
+  <div class="container align-items-center py-5 bg-light p-0 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
       <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-light border">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Logga in</button>
+          <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -35,7 +35,7 @@
           <option value>-Välj land-</option>
           <option value="Frankrike">Frankrike</option>
           <option value="Spanien">Spanien</option>
-          <option value="Luxemburg">Luxemburg</option>
+          <option value="Luxemburg">Tyskland</option>
         </select>
 
         <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />
