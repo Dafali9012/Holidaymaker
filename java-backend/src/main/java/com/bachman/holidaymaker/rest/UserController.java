@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @PostMapping("/register")
+    @PostMapping
     public User addUser(@RequestBody User user) {
         return userRepository.save(user);
     }

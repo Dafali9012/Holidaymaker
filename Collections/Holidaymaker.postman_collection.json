@@ -1,0 +1,860 @@
+{
+	"info": {
+		"_postman_id": "02ed8363-dc1e-4ff7-8f1e-d45de86961f7",
+		"name": "Holidaymaker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9e0ce54-1e83-47d2-ab05-1b60a28cd728",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least name and auction end\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.any.keys('UserId','Email', \"Password\");",
+							"    }",
+							"});",
+							"pm.test(\"Response objects should all contain at least name and auction end\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.UserId).to.be.a('number');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:8080/user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[\n\t{\n\t\"UserId\": 1,\n\t\"Email\": \"something@something.com\",\n\t\"Password\": \"hejsan\",\n\t\"FullName\": \"hej hejsan\",\n\t\"Address\": \"hejvägen 3\",\n\t\"PhoneNumber\": \"0245276544\"\n},\n{\n\t\"UserId\": 2,\n\t\"Email\": \"somethingelse@something.com\",\n\t\"Password\": \"hallå\",\n\t\"FullName\": \"nej nejsan\",\n\t\"Address\": \"nejvägen 3\",\n\t\"PhoneNumber\": \"0248809784\"\n},\n{\n\t\"UserId\": 3,\n\t\"Email\": \"something@something.com\",\n\t\"Password\": \"tja\",\n\t\"FullName\": \"kej kejsan\",\n\t\"Address\": \"kejvägen 3\",\n\t\"PhoneNumber\": \"0376439146\"\n}\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e61c7b65-a119-44df-b748-26194d62174a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least UserId, Email and Password\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.any.keys('UserId','Email', \"Password\");",
+							"    }",
+							"});",
+							"pm.test(\"Response data 'UserId' should be a number\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.UserId).to.be.a('number');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "76d8ff07-9143-430b-87ee-e10749ea56f5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('object')",
+							"});",
+							"pm.test(\"Response object should contain at least userid, email and password\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.any.keys('UserId','Email', \"Password\");",
+							"    }",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:8080/user/2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"UserId\": 2,\n    \"Email\": \"somethingelse@something.com\",\n    \"Password\": \"hallå\",\n    \"FullName\": \"nej nejsan\",\n    \"Address\": \"nejvägen 3\",\n    \"PhoneNumber\": 248809784\n}\n"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6a7d24e1-93f4-4563-8aa2-9ea9c4ef62be",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('object')",
+							"});",
+							"pm.test(\"Response object should contain at least userid, email and password\", function () {",
+							"    let jsonData = pm.response.json();",
+							"        pm.expect(jsonData).to.have.any.keys('UserId','Email', \"Password\");",
+							"});",
+							"pm.test(\"Response data 'id' should be a number\", function () {",
+							"    let jsonData = pm.response.json();",
+							"        pm.expect(jsonData.UserId).to.be.a('number');",
+							"    });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/2",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/user/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0614714f-d4d6-48e8-9366-364ac1a54886",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"New row is inserted\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.affectedRows).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"dont care\",\n\t\"Address\": \"imaginärvägen 3\",\n\t\"PhoneNumber\": \"0242309964\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "localhost:8080/user/",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"dont care\",\n\t\"Address\": \"imaginärvägen 3\",\n\t\"PhoneNumber\": 0242309964\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"fieldCount\": 0,\r\n    \"affectedRows\": 1,\r\n    \"serverStatus\": 2,\r\n    \"warningCount\": 0,\r\n    \"message\": \"\",\r\n    \"protocol41\": true,\r\n    \"changedRows\": 0\r\n}"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dd653c1-fe52-49f3-9bcc-78286c06d624",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"New row is inserted\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.affectedRows).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"dont care\",\n\t\"Address\": \"imaginärvägen 3\",\n\t\"PhoneNumber\": \"0242309964\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/user/2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"UserId\": 2\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"\",\n\t\"Address\": \"\",\n\t\"PhoneNumber\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/user/2",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"2"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"fieldCount\": 0,\r\n    \"affectedRows\": 1,\r\n    \"serverStatus\": 2,\r\n    \"warningCount\": 0,\r\n    \"message\": \"\",\r\n    \"protocol41\": true,\r\n    \"changedRows\": 1\r\n}"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f30f9676-7b20-49ff-b420-b235e5fb4b0b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"A row is changed\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.changedRows).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"UserId\": 2,\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"\",\n\t\"Address\": \"\",\n\t\"PhoneNumber\": \"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/user/2",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"user",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1bcc8b6d-bd4c-426f-b8e3-2fdaec2085dc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain countryId and Name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.all.keys('countryId','Name');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/country/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"country",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/country",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/country",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"country"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n\t{\n\t\"countryId\": 3,\n\t\"Name\": \"Frankrike\"\n},\n{\n\t\"countryId\": 4,\n\t\"Name\": \"Italien\"\n},\n{\n\t\"countryId\": 1,\n\t\"Name\": \"Portugal\"\n},\n{\n\t\"countryId\": 4,\n\t\"Name\": \"Spanien\"\n}\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/country/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6b7d3759-8625-4f40-942e-5310cc28f0a6",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain countryId and Name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.all.keys('countryId','Name');",
+							"    }",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/country/",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"country",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/city/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b72a7fb5-3e7b-4ffc-a2e3-3ff66e45af5e",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.all.keys('cityId','Country','Name');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/city/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"city",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/city/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/city/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"city",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n\t{\n\t\"cityId\": 1,\n\t\"Country\": 1,\n\t\"Name\": \"Lissabon\"\n},\n{\n\t\"cityId\": 3,\n\t\"Country\": 3,\n\t\"Name\": \"Biarritz\"\n},\n{\n\t\"cityId\": 2,\n\t\"Country\": 3,\n\t\"Name\": \"Niece\"\n},\n{\n\t\"cityId\": 7,\n\t\"Country\": 4,\n\t\"Name\": \"Pescara\"\n},\n{\n\t\"cityId\": 5,\n\t\"Country\": 5,\n\t\"Name\": \"Barcelona\"\n},\n{\n\t\"cityId\": 6,\n\t\"Country\": 5,\n\t\"Name\": \"Palma\"\n}\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/city/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b0dc65b1-df2d-464f-95bd-0f98821c38da",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.all.keys('cityId','Country','Name');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/city/",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"city",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/city/3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5d9c7a7-5dc9-46d9-af44-bf4d2e4124b7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.Country).to.equal(3);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/city/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"city",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/city/3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/city/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"city",
+								"3"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[{\n\t\"cityId\": 3,\n\t\"Country\": 3,\n\t\"Name\": \"Biarritz\"\n},\n{\n\t\"cityId\": 2,\n\t\"Country\": 3,\n\t\"Name\": \"Niece\"\n}\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/city/3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8b0f8336-4b71-4dca-89a3-3e293c970e6f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.Country).to.equal(3);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/city/3",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"city",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/hotel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hotel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hotel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"hotel"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

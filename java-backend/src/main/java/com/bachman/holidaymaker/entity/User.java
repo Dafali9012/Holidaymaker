@@ -19,11 +19,14 @@ public class User {
     private String phonenumber;
 
     public User() {
-        this.email = "-";
-        this.password = "-";
-        this.name = "-";
-        this.address = "-";
-        this.phonenumber = "-";
+    }
+
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+        this.email = "undefined";
+        this.address = "undefined";
+        this.phonenumber = "undefined";
     }
 
     public long getUserId() {
