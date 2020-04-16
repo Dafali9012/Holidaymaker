@@ -39,7 +39,7 @@ export default {
                         name: this.name,
                         phonenumber: this.phonenumber,
                         address: "-" };
-      const url = "http://localhost:8080/register";
+      const url = "http://localhost:8080/user";
       const result = await fetch(url, {
         method: "POST",
         body: JSON.stringify(newUser),
@@ -49,6 +49,8 @@ export default {
       });
       if(result.ok) {
         console.log("post ok\nname: "+newUser.name+" "+newUser.phonenumber)
+        window.confirm("Hej "+ newUser.name + ", du har lyckats med registreringen!")
+      
       }
     }
   }
