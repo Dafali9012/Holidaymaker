@@ -83,8 +83,30 @@
         class="align-self-center btn btn-info border col-4 mt-3"
       >Sök</button>
     </div>
-    <div class="border rounded">
-      <div v-for="room in this.$store.state.home.searchData" :key="room.roomId">{{room.roomId}}</div>
+    <div class="container">
+      <div class="row border rounded">
+        <div
+          v-for="room in this.$store.state.home.searchData"
+          :key="room.roomId"
+          class="d-flex col border rounded"
+        >
+          <div>
+            <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
+          </div>
+          <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
+            <p>
+              Room Number: {{room.roomNr}}
+              <br />
+              HotelName: {{room.hotelId}}
+              <br />CityName: namn
+              <br />ytterligare Information
+            </p>
+          </div>
+          <div class="d-flex justify-content-end align-items-center flex-grow-1">
+            <button class="btn btn-info">Boka rum</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -94,11 +116,26 @@ export default {
   data() {
     return {};
   },
+  created() {
+    console.log("load rooms");
+    this.$store.dispatch("loadSearchData");
+  },
   methods: {
     runSearch: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchData");
-    }
+    },
+    getImageUrl: function(file) {
+      return require("../assets/images/" + file);
+    },
+    getHotel() {}
   }
 };
 </script>
+
+<style scoped>
+.image {
+  height: 128px;
+  width: 192px;
+}
+</style>

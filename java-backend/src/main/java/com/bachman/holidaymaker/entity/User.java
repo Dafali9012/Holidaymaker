@@ -21,6 +21,14 @@ public class User {
     public User() {
     }
 
+    public User(String name, String password) {
+        this.name = name;
+        this.password = password;
+        this.email = "undefined";
+        this.address = "undefined";
+        this.phonenumber = "undefined";
+    }
+
     public long getUserId() {
         return userId;
     }
