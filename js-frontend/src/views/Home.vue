@@ -1,8 +1,8 @@
 <template>
-  <div class="container align-items-center">
+  <div class="container align-items-center py-5">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
-      <h2>Bachman Hendricks</h2>
-      <div>
+      <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
+      <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-light border">Registrera</button>
         </router-link>
