@@ -22,11 +22,11 @@ city/ GET - hämta ut alla städer
 
 city/:countryId GET - hämta ut alla städer i ett land med id på land
 
-hotels/ GET - hämta ut alla hotell
+hotel/ GET - hämta ut alla hotell
 
-hotels/:countryId GET - hämta ut alla hotell i ett land med id på land
+hotel/:countryId GET - hämta ut alla hotell i ett land med id på land
 
-hotels/:cityId GET - hämta ut alla hotell i en stad med id på stad
+hotel/:cityId GET - hämta ut alla hotell i en stad med id på stad
 
 room/ GET - hämta alla rum
 
