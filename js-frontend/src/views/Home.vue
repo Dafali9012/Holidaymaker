@@ -1,8 +1,8 @@
 <template>
-  <div class="container align-items-center bg-light p-0 rounded">
+  <div class="container align-items-center py-5 bg-light p-0 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
-      <h2>Bachman Hendricks</h2>
-      <div>
+      <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
+      <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2">Registrera</button>
         </router-link>
@@ -15,6 +15,7 @@
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
+
       <div class="row m-2">
         <label class="col-3" for="country">Land</label>
         <label class="col-2" for="startdate">Check in</label>
@@ -24,9 +25,9 @@
           Antal barn
           <br />(3-18 år)
         </label>
-        <label class="col-2" for="kids">
+        <label class="col-2" for="smallkids">
           Antal småbarn
-          <br />(0-3 år)
+          <br />(0-2 år)
         </label>
       </div>
       <div class="row m-2">

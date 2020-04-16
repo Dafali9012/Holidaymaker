@@ -1,15 +1,15 @@
 <template>
-  <div class="d-flex flex-column align-items-center register">
-    <div class="d-flex justify-content-between col-6 border py-3 pl-5 text-left bg-light rounded">
-      <h2>Bachman Hendricks</h2>
-      <div>
+  <div class="container d-flex flex-column align-items-center register py-5">
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
+      <router-link to="/"><button class="btn btn-info"><h2>Bachman Hendricks</h2></button></router-link>
+      <div class="align-self-center">
         <button type="button" class="btn btn-info border disabled mr-2">Registrera</button>
         <router-link to="/login">
           <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
-    <form @submit.prevent="completeRegistration()" class="col-6 border rounded py-3 pl-5 text-left bg-light p-0">
+    <form @submit.prevent="completeRegistration()" class="col border rounded py-3 pl-5 text-left bg-light p-0">
       <p class="font-weight-bold">Registrera konto</p>
       <div class="row d-flex mt-4">
       <input v-model="email" name="email" type="text" class="form-control col-4 ml-3" placeholder=" " required />
