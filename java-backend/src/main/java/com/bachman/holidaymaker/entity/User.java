@@ -1,5 +1,8 @@
 package com.bachman.holidaymaker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,12 +21,25 @@ public class User {
     @Column(name = "PhoneNumber")
     private String phonenumber;
 
+
+    public User(String username, String password) {
+        this.name = username;
+        this.password = password;
+        this.address = "-";
+        this.phonenumber = "-";
+        this.email = "-";
+    }
     public User() {
         this.email = "-";
         this.password = "-";
         this.name = "-";
         this.address = "-";
         this.phonenumber = "-";
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public long getUserId() {
@@ -38,6 +54,7 @@ public class User {
         return email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
