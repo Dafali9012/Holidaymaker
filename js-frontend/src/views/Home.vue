@@ -1,6 +1,6 @@
 <template>
-  <div class="container align-items-center py-5 bg-light p-0 rounded">
-    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
+  <div class="container d-flex flex-column align-items-center py-5 rounded">
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
       <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
       <div class="align-self-center">
         <router-link to="/register">
@@ -11,7 +11,7 @@
         </router-link>
       </div>
     </div>
-    <div class="d-flex flex-column container border rounded py-3 text-left">
+    <div class="d-flex flex-column container border rounded py-3 text-left bg-light">
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
@@ -84,7 +84,7 @@
         class="align-self-center btn btn-info border col-4 mt-3"
       >Sök</button>
     </div>
-    <div class="container">
+    <div class="container bg-light">
       <div class="row border rounded">
         <div
           v-for="room in this.$store.state.home.searchData"
