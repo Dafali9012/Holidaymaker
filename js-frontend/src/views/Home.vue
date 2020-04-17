@@ -35,7 +35,9 @@
           <option value>-Välj land-</option>
           <option value="Frankrike">Frankrike</option>
           <option value="Spanien">Spanien</option>
-          <option value="Luxemburg">Tyskland</option>
+          <option value="Italien">Italien</option>
+          <option value="Tyskland">Tyskland</option>
+          <option value="Portugal">Portugal</option>
         </select>
 
         <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />
