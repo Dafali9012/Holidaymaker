@@ -26,7 +26,7 @@ hotel/ GET - hämta ut alla hotell
 
 hotel/:countryId GET - hämta ut alla hotell i ett land med id på land
 
-hotel/:cityId GET - hämta ut alla hotell i en stad med id på stad
+hotel/countryId:/:cityId GET - hämta ut alla hotell i en stad i ett land med id på stad
 
 room/ GET - hämta alla rum
 
