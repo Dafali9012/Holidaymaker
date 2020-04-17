@@ -1,20 +1,21 @@
 <template>
-  <div class="container align-items-center">
-    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left">
-      <h2>Bachman Hendricks</h2>
-      <div>
+  <div class="container d-flex flex-column align-items-center py-5 rounded">
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
+      <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
+      <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-light border">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-light border">Logga in</button>
+          <button type="button" class="btn btn-info border">Logga in</button>
         </router-link>
       </div>
     </div>
-    <div class="d-flex flex-column container border rounded py-3 text-left">
+    <div class="d-flex flex-column container border rounded py-3 text-left bg-light">
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
+
       <div class="row m-2">
         <label class="col-3" for="country">Land</label>
         <label class="col-2" for="startdate">Check in</label>
@@ -24,26 +25,19 @@
           Antal barn
           <br />(3-18 år)
         </label>
-        <label class="col-2" for="kids">
+        <label class="col-2" for="smallkids">
           Antal småbarn
-          <br />(0-3 år)
+          <br />(0-2 år)
         </label>
       </div>
-    <div class="row m-2">
-      <label class="col-3" for="country">Land</label>
-      <label class="col-2" for="startdate">Check in</label>
-      <label class="col-2" for="enddate">Check out</label>
-      <label class="col-1" for="adults">Antal vuxna</label>
-      <label class="col-1.5" for="kids">Antal barn <br> (3-18 år)</label>
-      <label class="col-2" for="smallkids">Antal småbarn <br> (0-2 år)</label>
-      
-    </div>
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country">
           <option value>-Välj land-</option>
           <option value="Frankrike">Frankrike</option>
           <option value="Spanien">Spanien</option>
-          <option value="Luxemburg">Luxemburg</option>
+          <option value="Italien">Italien</option>
+          <option value="Tyskland">Tyskland</option>
+          <option value="Portugal">Portugal</option>
         </select>
 
         <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />
@@ -92,7 +86,7 @@
         class="align-self-center btn btn-info border col-4 mt-3"
       >Sök</button>
     </div>
-    <div class="container">
+    <div class="container bg-light">
       <div class="row border rounded">
         <div
           v-for="room in this.$store.state.home.searchData"
