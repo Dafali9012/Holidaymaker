@@ -9,7 +9,7 @@
         </router-link>
       </div>
     </div>
-    <form @submit.prevent="completeRegistration()" class="col border rounded py-3 pl-5 text-left bg-light p-0">
+    <form @submit.prevent="completeRegistration()" class="col border rounded py-3 pl-5 text-left bg-light p-0" autocomplete="off">
       <p class="font-weight-bold">Registrera konto</p>
       <div class="row d-flex mt-4">
       <input v-model="email" name="email" type="text" class="form-control col-4 ml-3" placeholder=" " required />

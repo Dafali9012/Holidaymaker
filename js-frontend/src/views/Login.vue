@@ -9,7 +9,7 @@
         <button type="button" class="btn btn-info border disabled">Logga in</button>
       </div>
     </div>
-    <form class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded">
+    <form class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded" autocomplete="off">
       <p class="font-weight-bold">Logga in</p>
       <div class="row d-flex mt-4">
       <input type="text" name="username" class="form-control col-4 ml-3" placeholder=" " required />
