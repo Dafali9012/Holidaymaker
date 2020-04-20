@@ -31,7 +31,7 @@
         </label>
       </div>
       <div class="row m-2">
-        <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries">    
+        <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries()">    
             <option value=0>Välj Land</option>
             <option value="country" 
             v-for="country in countries"
@@ -123,12 +123,17 @@ export default {
   created() {
     console.log("load rooms");
     this.$store.dispatch("loadSearchData");
+    this.getCountries();
   },
   methods: {
-      getCountries: async function() {
-        this.countries = this.$store.dispatch("loadCountries");
-        console.log('countries loading -> ', this.countries);
-        },
+    getCountries: function () {
+      console.log('select clicked, loading countries', this.countries)
+      fetch('https://localhost:8080/country/all')
+        .then(response => response.json())
+        .then(json => {
+          this.countries = json.resultList.result;
+        });
+  },
     runSearch: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchData");
