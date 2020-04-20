@@ -32,6 +32,7 @@
       </div>
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries">    
+            <option value=0>Välj Land</option>
             <option value="country" 
             v-for="country in countries"
             :key="country.countryId">>{{ country.name}}
