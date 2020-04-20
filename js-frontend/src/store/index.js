@@ -16,7 +16,7 @@ export default new Vuex.Store({
   },
   actions: {
     async loadSearchData({commit}) {
-      let response = await fetch("http://localhost:8080/room");
+      let response = await fetch("http://localhost:8080/room/all");
       let data = await response.json();
       commit('changeSearchData', data)
     },
