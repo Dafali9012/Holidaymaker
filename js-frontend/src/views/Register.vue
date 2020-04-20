@@ -1,11 +1,11 @@
 <template>
   <div class="container d-flex flex-column align-items-center register py-5">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/"><button class="btn btn-info"><h2>Bachman Hendricks</h2></button></router-link>
+      <router-link to="/"><button class="btn btn-info" id="homeButton"><h2>Bachman Hendricks</h2></button></router-link>
       <div class="align-self-center">
-        <button type="button" class="btn btn-info border disabled mr-2">Registrera</button>
+        <button type="button" class="btn btn-info border disabled mr-2" id="regButton">Registrera</button>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border">Logga in</button>
+          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -27,7 +27,7 @@
       <input v-model="phonenumber" name="phone" type="text" class="form-control col-4 ml-3" placeholder=" " />
       <label for="phone" class="col-9 mt-2 ml-2 formlabel">Telefonnummer</label>
       </div>
-      <button type="submit" class="btn btn-info border mt-4">Registrera</button>
+      <button type="submit" class="btn btn-info border mt-4" id="submitButton">Registrera</button>
     </form>
   </div>
 </template>

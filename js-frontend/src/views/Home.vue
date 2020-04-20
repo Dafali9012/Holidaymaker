@@ -2,16 +2,16 @@
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
       <router-link to="/">
-        <button class="btn btn-info">
+        <button class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
         </button>
       </router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border">Logga in</button>
+          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -44,8 +44,8 @@
           <option value="Portugal">Portugal</option>
         </select>
 
-        <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />
-        <input type="date" class="border rounded col-md-2" name="enddate" placeholder="Check out" />
+        <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" id="checkIn" />
+        <input type="date" class="border rounded col-md-2" name="enddate" placeholder="Check out" id="checkOut"/>
 
         <select class="border rounded col-md-1" name="adults" id="adults">
           <option value="0">0</option>
@@ -88,7 +88,10 @@
         v-on:click="searchRoomInformation"
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
-      >Sök</button>
+        id="searchButton">
+        Sök
+        </button>
+
     </div>
     <div class="container bg-light">
       <div class="row border rounded">
