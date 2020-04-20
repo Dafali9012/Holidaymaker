@@ -81,7 +81,7 @@
         </select>
       </div>
       <button
-        v-on:click="runSearch"
+        v-on:click="searchRoomInformation"
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
       >Sök</button>
@@ -91,18 +91,18 @@
         <div
           v-for="room in this.$store.state.home.searchData"
           :key="room.roomId"
-          class="d-flex col border rounded"
+          class="d-flex col-6 border rounded"
         >
           <div>
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p>
-              Room Number: {{room.roomNr}}
-              <br />
-              HotelName: {{room.hotelId}}
-              <br />CityName: namn
-              <br />ytterligare Information
+              <b>{{room.hotelName}}</b><br/>
+              {{room.cityName}}<br/>
+              {{room.kmToCenter}} km till centrum<br/>
+              {{room.kmToBeach}} km till stranden<br/>
+              ⭐{{room.hotelRating}}
             </p>
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
@@ -119,19 +119,22 @@ export default {
   data() {
     return {};
   },
-  created() {
+  mounted() {
     console.log("load rooms");
-    this.$store.dispatch("loadSearchData");
+    //this.$store.dispatch("loadSearchData");
   },
   methods: {
-    runSearch: async function() {
+    searchRooms: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchData");
     },
+    searchRoomInformation: async function() {
+      console.log("button clicked! -> run search");
+      this.$store.dispatch("loadSearchDataInfo");
+    },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
-    },
-    getHotel() {}
+    }
   }
 };
 </script>
