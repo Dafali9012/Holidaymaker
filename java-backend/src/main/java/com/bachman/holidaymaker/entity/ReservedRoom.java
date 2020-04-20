@@ -12,7 +12,11 @@
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //    private long id;
+=======
+//    public long id;
+>>>>>>> Stashed changes
 =======
 //    public long id;
 >>>>>>> Stashed changes
@@ -34,8 +38,13 @@
 //
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //    @ManyToMany (fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id")
+=======
+//    @ManyToMany (fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn
+>>>>>>> Stashed changes
 =======
 //    @ManyToMany (fetch = FetchType.LAZY, optional = false)
 //    @JoinColumn
