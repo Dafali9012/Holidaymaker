@@ -3,14 +3,20 @@ package com.bachman.holidaymaker.entity;
 import javax.persistence.*;
 
 @Entity
-public class Country {
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long cityId;
+    @Column(name = "Country")
     private long countryId;
     @Column(name = "Name")
     private String name;
 
-    public Country() {
+    public City() {
+    }
+
+    public long getCityId() {
+        return cityId;
     }
 
     public long getCountryId() {
@@ -21,4 +27,3 @@ public class Country {
         return name;
     }
 }
-
