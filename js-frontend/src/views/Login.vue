@@ -9,70 +9,60 @@
         <button type="button" class="btn btn-light border disabled">Logga in</button>
       </div>
     </div>
-    <form @submit.prevent="userLogin()" class="col-6 border rounded py-3 pl-5 text-left">
+    <form @submit="customLogin" class="col-6 border rounded py-3 pl-5 text-left">
       <p class="font-weight-bold">Logga in</p>
-      <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="Email" required />
+      <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="email" required />
       <input v-model="password" type="password" class="form-control col-4 mb-2" placeholder="Lösenord" required />
-      <button type="submit" class="btn btn-light border">Logga in</button>
+      <input  type="submit" class="btn btn-light border" value="Logga in" />
     </form>
   </div>
 </template>
 
-<script>
-function transformRequest(jsonData = {}){
-  return Object.entries(jsonData)
-    .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
-    .join('&');
-}
 
+<script>
 export default {
   data() {
     return {
       email: '',
-      password: '',
+      password: ''
+     }
+     },
       methods:{
-  async userLogin(){
-  let email = 'user'
-  let password = 'password'
+  async customLogin(e) {
+    console.log('Login ok')
+    e.preventDefault()
 
-  const credentials = 'username=' +
-    encodeURIComponent(email)
-    + '&password=' +
-    encodeURIComponent(password)
+  /*const credentials = {
 
-  let response = await fetch("/login", {
+    username: 'yo',
+    password: 'yo'
+  } */
+  const formData = new FormData();
+formData.append('username', 'yo');
+formData.append('password', 'yo');
+
+/*fetch('/login',
+    {
+        body: formData,
+        method: "post"
+    });*/
+
+  let response = await fetch("http://localhost:8080/login", {
     method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: credentials
+   // headers: { "Content-Type": "application/json" },
+  //  body: JSON.stringify(credentials)
+  body: formData
   });
 
-  if(response.url.includes('error')) {
+  try {
+    response = await response.json()
+    console.log(response);
+  } catch {
     console.log('Wrong username/password');
+
   }
-  }
+
 }
 }
-}
-}
+};
 </script>
-// export default {
-//   data() {
-//     return {
-//       email: '',
-//       password: ''
-//     };
-//   },
-//   methods: {
-//     userLogin: async function() {
-//     await fetch('/login', {
-//         method: "POST",
-//         body: transformRequest({email: "user", password: "password"}),
-//         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-//       })
-//     .then(function(response) {
-//         let successfulLogin = !response.url.includes("error");
-//         console.log("the login result is:", successfulLogin);
-//       });
-//     }
-//   }
-// };

@@ -6,11 +6,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
-    @Column(name = "FullName")
+    @Column(name = "Name")
     private String name;
     @Column(name = "Email")
     private String email;
@@ -21,20 +22,11 @@ public class User {
     @Column(name = "PhoneNumber")
     private String phonenumber;
 
+    public User() {}
 
-    public User(String username, String password) {
-        this.name = username;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
-        this.address = "-";
-        this.phonenumber = "-";
-        this.email = "-";
-    }
-    public User() {
-        this.email = "-";
-        this.password = "-";
-        this.name = "-";
-        this.address = "-";
-        this.phonenumber = "-";
     }
 
     @JsonProperty
