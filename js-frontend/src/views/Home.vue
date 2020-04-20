@@ -1,7 +1,11 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
+      <router-link to="/">
+        <button class="btn btn-info">
+          <h2>Bachman Hendricks</h2>
+        </button>
+      </router-link>
       <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2">Registrera</button>
@@ -98,12 +102,18 @@
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p>
-              <b>{{room.hotelName}}</b><br/>
-              {{room.cityName}}<br/>
-              {{room.kmToCenter}} km till centrum<br/>
+              <b>{{room.hotelName}}</b>
+              <br />
+              {{room.cityName}}
+              <br />
+              {{room.kmToCenter}} km till centrum
+              <br />
               {{room.kmToBeach}} km till stranden<br/>
-              ⭐{{room.hotelRating}}
+              {{room.pricePerNight}} kr per natt
             </p>
+            <div class="d-flex">
+              <p v-for="n in room.hotelRating" :key="n">⭐</p>
+            </div>
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <button class="btn btn-info">Boka rum</button>
