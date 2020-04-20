@@ -1,0 +1,1 @@
+java -jar holidaymaker-0.0.1-SNAPSHOT.jar
