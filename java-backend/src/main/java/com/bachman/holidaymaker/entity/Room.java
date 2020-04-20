@@ -17,8 +17,7 @@ public class Room {
     private String roomType;
     @Column(name = "SmokingAllowed")
     private String smoking;
-    @Column(name = "ExtraBed")
-    private String extraBed;
+
     @Column(name = "PricePerNight")
     private String pricePerNight;
 
@@ -49,9 +48,6 @@ public class Room {
         return smoking;
     }
 
-    public String getExtraBed() {
-        return extraBed;
-    }
 
     public String getPricePerNight() {
         return pricePerNight;
