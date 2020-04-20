@@ -11,7 +11,11 @@
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @Column
+<<<<<<< Updated upstream
 //    private long id;
+=======
+//    public long id;
+>>>>>>> Stashed changes
 //
 //    @Column
 //    private int numberOfAdults;
@@ -29,8 +33,13 @@
 //    private double totalRoomPrice;
 //
 //
+<<<<<<< Updated upstream
 //    @ManyToMany (fetch = FetchType.LAZY)
 //    @JoinColumn(name = "id")
+=======
+//    @ManyToMany (fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn
+>>>>>>> Stashed changes
 //    private Room room;
 //    @JoinColumn(name = "id")
 //    private User user;
