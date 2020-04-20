@@ -20,7 +20,7 @@ export default new Vuex.Store({
       let data = await response.json();
       commit('changeSearchData', data)
     },
-    async loadCountries({ commit }) {
+     async loadCountries({ commit }) {
       let response = await fetch("http://localhost:8080/country/all");
       let data = await response.json();
       commit('changeSearchData', data)
