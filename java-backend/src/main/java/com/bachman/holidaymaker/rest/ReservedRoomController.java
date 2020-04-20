@@ -17,12 +17,12 @@ public class ReservedRoomController {
     private ReservedRoomRepository reservedRoomRepository;
 
     @GetMapping()
-    public Iterable<ReservedRoom> getAllRooms() {
+    public Iterable<ReservedRoom> getAllReservedRooms() {
         return reservedRoomRepository.findAll();
     }
 
     @GetMapping("{id}")
-    public Iterable<ReservedRoom> roomById(@PathVariable long id){
+    public Iterable<ReservedRoom> reservedRoomById(@PathVariable long id){
         return this.reservedRoomRepository.findAllById(Collections.singleton(id));
     }
 }

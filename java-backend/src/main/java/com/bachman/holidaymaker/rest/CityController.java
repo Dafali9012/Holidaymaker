@@ -17,7 +17,7 @@ public class CityController {
     private CityRepository cityRepository;
 
     @GetMapping()
-    public Iterable<City> getAllRooms() {
+    public Iterable<City> getAllCities() {
         return cityRepository.findAll();
     }
 
