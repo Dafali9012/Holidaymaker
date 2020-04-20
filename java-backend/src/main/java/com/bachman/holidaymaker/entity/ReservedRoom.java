@@ -1,3 +1,4 @@
+
 package com.bachman.holidaymaker.entity;
 
 import javax.persistence.*;
@@ -44,3 +45,4 @@ public class ReservedRoom {
         return numKids;
     }
 }
+

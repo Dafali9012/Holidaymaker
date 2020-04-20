@@ -1,7 +1,11 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/"><button class="btn btn-info"><h2>Bachman Hendricks</h2></button></router-link>
+      <router-link to="/">
+        <button class="btn btn-info">
+          <h2>Bachman Hendricks</h2>
+        </button>
+      </router-link>
       <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2">Registrera</button>
@@ -81,7 +85,7 @@
         </select>
       </div>
       <button
-        v-on:click="runSearch"
+        v-on:click="searchRoomInformation"
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
       >Sök</button>
@@ -91,19 +95,25 @@
         <div
           v-for="room in this.$store.state.home.searchData"
           :key="room.roomId"
-          class="d-flex col border rounded"
+          class="d-flex col-6 border rounded"
         >
           <div>
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p>
-              Room Number: {{room.roomNr}}
+              <b>{{room.hotelName}}</b>
               <br />
-              HotelName: {{room.hotelId}}
-              <br />CityName: namn
-              <br />ytterligare Information
+              {{room.cityName}}
+              <br />
+              {{room.kmToCenter}} km till centrum
+              <br />
+              {{room.kmToBeach}} km till stranden<br/>
+              {{room.pricePerNight}} kr per natt
             </p>
+            <div class="d-flex">
+              <p v-for="n in room.hotelRating" :key="n">⭐</p>
+            </div>
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <button class="btn btn-info">Boka rum</button>
@@ -119,19 +129,22 @@ export default {
   data() {
     return {};
   },
-  created() {
+  mounted() {
     console.log("load rooms");
-    this.$store.dispatch("loadSearchData");
+    //this.$store.dispatch("loadSearchData");
   },
   methods: {
-    runSearch: async function() {
+    searchRooms: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchData");
     },
+    searchRoomInformation: async function() {
+      console.log("button clicked! -> run search");
+      this.$store.dispatch("loadSearchDataInfo");
+    },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
-    },
-    getHotel() {}
+    }
   }
 };
 </script>
