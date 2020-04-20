@@ -1,7 +1,6 @@
 package com.bachman.holidaymaker.rest;
 
 import com.bachman.holidaymaker.entity.Room;
-import com.bachman.holidaymaker.entity.User;
 import com.bachman.holidaymaker.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +20,7 @@ public class RoomController {
     public Iterable<Room> getAllRooms() {
             return roomRepository.findAll();
     }
+
     @GetMapping("{id}")
     public Iterable<Room> roomById(@PathVariable long id){
         return this.roomRepository.findAllById(Collections.singleton(id));
