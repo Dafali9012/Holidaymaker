@@ -1,7 +1,8 @@
 package com.bachman.holidaymaker.rest;
 
-import com.bachman.holidaymaker.entity.Country;
-import com.bachman.holidaymaker.repository.CountryRepository;
+
+import com.bachman.holidaymaker.entity.Hotel;
+import com.bachman.holidaymaker.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,18 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/country")
-public class CountryController {
+@RequestMapping("/hotel")
+public class HotelController {
+
     @Autowired
-    private CountryRepository countryRepository;
+    private HotelRepository hotelRepository;
 
     @GetMapping()
-    public Iterable<Country> getAllCountries() {
-        return countryRepository.findAll();
+    public Iterable<Hotel> getAllHotels() {
+        return hotelRepository.findAll();
     }
 
     @GetMapping("{id}")
-    public Iterable<Country> countryById(@PathVariable long id){
-        return this.countryRepository.findAllById(Collections.singleton(id));
+    public Iterable<Hotel> hotelById(@PathVariable long id) {
+        return this.hotelRepository.findAllById(Collections.singleton(id));
     }
 }
