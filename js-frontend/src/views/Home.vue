@@ -35,16 +35,34 @@
         </label>
       </div>
       <div class="row m-2">
-        <select class="border rounded col-md-3" name="country" id="country">    
-            <option value="">Välj Land</option>
-            <option value="selectedCountry" 
+        <select
+          class="border rounded col-md-3"
+          name="country"
+          id="country"
+          v-on:click="getCountries()"
+        >
+          <option value="0">Välj Land</option>
+          <option
+            :value="country.name"
             v-for="country in countries"
-            :key="country.countryId">{{ country.name }}
-            </option>     
+            :key="country.countryId"
+          >{{ country.name }}</option>
         </select>
 
-        <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" id="checkIn" />
-        <input type="date" class="border rounded col-md-2" name="enddate" placeholder="Check out" id="checkOut"/>
+        <input
+          type="date"
+          class="border rounded col-md-2"
+          name="startdate"
+          placeholder="Check in"
+          id="checkIn"
+        />
+        <input
+          type="date"
+          class="border rounded col-md-2"
+          name="enddate"
+          placeholder="Check out"
+          id="checkOut"
+        />
 
         <select class="border rounded col-md-1" name="adults" id="adults">
           <option value="0">0</option>
@@ -84,13 +102,11 @@
         </select>
       </div>
       <button
-        v-on:click="searchRoomInformation"
+        v-on:click="performSearch"
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
-        id="searchButton">
-        Sök
-        </button>
-
+        id="searchButton"
+      >Sök</button>
     </div>
     <div class="container bg-light">
       <div class="row border rounded">
@@ -110,7 +126,8 @@
               <br />
               {{room.kmToCenter}} km till centrum
               <br />
-              {{room.kmToBeach}} km till stranden<br/>
+              {{room.kmToBeach}} km till stranden
+              <br />
               {{room.pricePerNight}} kr per natt
             </p>
             <div class="d-flex">
@@ -130,29 +147,22 @@
 export default {
   data() {
     return {
-      countries: [],
+      countries: []
     };
   },
   mounted() {
-    console.log("load rooms");
-    //this.$store.dispatch("loadSearchData");
     this.getCountries();
   },
   methods: {
-    getCountries: async function () {
-      console.log('select clicked, loading countries')
+    getCountries: async function() {
       let url = "http://localhost:8080/country";
       const result = await fetch(url);
       this.countries = await result.json();
-      console.log(this.countries)
-  },
-      searchRooms: async function() {
-      console.log("button clicked! -> run search");
-      this.$store.dispatch("loadSearchData");
     },
-    searchRoomInformation: async function() {
-      console.log("button clicked! -> run search");
-      this.$store.dispatch("loadSearchDataInfo");
+    performSearch: async function() {
+      console.log("search button clicked");
+      let country = document.getElementById("country").value;
+      this.$store.dispatch("loadSearchData", country);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
