@@ -16,8 +16,8 @@ public class CountryController {
     @Autowired
     private CountryRepository countryRepository;
 
-    @GetMapping("all")
-    public Iterable<Country> getAllRooms() {
+    @GetMapping()
+    public Iterable<Country> getAllCountries() {
         return countryRepository.findAll();
     }
 
