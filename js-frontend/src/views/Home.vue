@@ -140,7 +140,7 @@ export default {
   methods: {
     getCountries: async function () {
       console.log('select clicked, loading countries')
-      let url = "http://localhost:8080/country/all";
+      let url = "http://localhost:8080/country";
       const result = await fetch(url);
       this.countries = await result.json();
       console.log(this.countries)
