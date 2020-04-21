@@ -25,13 +25,12 @@ export default new Vuex.Store({
       let data = await response.json();
       commit('changeSearchData', data)
     },
-    filterSearch: function({commit}, state, filterBy) {
-      console.log("comparing selected country: "+filterBy)
-      let data = state.home.searchData.filter(item => {
-        return item.countryName == filterBy
+    filterByCountry({commit}, param) {
+      let country = param[1]
+      let data = param[0].filter(item => {
+        return item.countryName == country
       })
-      console.log("state: "+state)
-      console.log("new list: "+data)
+      console.log(data, country)
       commit('changeSearchData', data)
     }
   },

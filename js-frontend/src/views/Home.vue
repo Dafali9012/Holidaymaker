@@ -35,13 +35,13 @@
         </label>
       </div>
       <div class="row m-2">
-        <select class="border rounded col-md-3" name="country" id="country">
-          <option value="all">-Välj land-</option>
-          <option value="Frankrike">Frankrike</option>
-          <option value="Spanien">Spanien</option>
-          <option value="Italien">Italien</option>
-          <option value="Tyskland">Tyskland</option>
-          <option value="Portugal">Portugal</option>
+
+        <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries()">    
+            <option value=0>Välj Land</option>
+            <option :value="country.name" 
+            v-for="country in countries"
+            :key="country.countryId">{{ country.name }}
+            </option>     
         </select>
 
         <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" id="checkIn" />
@@ -130,14 +130,22 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      countries: [],
+    };
   },
   mounted() {
-    console.log("load rooms");
-    //this.$store.dispatch("loadSearchData");
+    this.$store.dispatch("loadSearchDataInfo");
   },
   methods: {
-    searchRooms: async function() {
+    getCountries: async function () {
+      //console.log('select clicked, loading countries')
+      let url = "http://localhost:8080/country";
+      const result = await fetch(url);
+      this.countries = await result.json();
+      //console.log(this.countries)
+  },
+      searchRooms: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchData");
     },
@@ -145,9 +153,8 @@ export default {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchDataInfo");
       let country = document.getElementById("country").value
-      if(country!="all") {
-        console.log("a country was selected: "+country)
-        this.$store.dispatch("filterSearch", this.$store.state, country);
+      if(country!="0") {
+        this.$store.dispatch("filterByCountry", [this.$store.state.home.searchData, country]);
       }
     },
     getImageUrl: function(file) {
