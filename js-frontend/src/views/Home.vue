@@ -33,9 +33,9 @@
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries()">    
             <option value=0>Välj Land</option>
-            <option value="country" 
+            <option value="selectedCountry" 
             v-for="country in countries"
-            :key="country.countryId">>{{ country.name}}
+            :key="country.countryId">>{{ country.name }}
             </option>     
         </select>
 
@@ -126,13 +126,12 @@ export default {
     this.getCountries();
   },
   methods: {
-    getCountries: function () {
-      console.log('select clicked, loading countries', this.countries)
-      fetch('https://localhost:8080/country/all')
-        .then(response => response.json())
-        .then(json => {
-          this.countries = json.resultList.result;
-        });
+    getCountries: async function () {
+      console.log('select clicked, loading countries')
+      let url = "http://localhost:8080/country/all";
+      const result = await fetch(url);
+      this.countries = await result.json();
+      console.log(this.countries)
   },
     runSearch: async function() {
       console.log("button clicked! -> run search");
