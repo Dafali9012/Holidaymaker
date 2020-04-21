@@ -151,7 +151,7 @@ export default {
     };
   },
   mounted() {
-    //this.$store.dispatch("loadSearchDataInfo");
+    this.getCountries();
   },
   methods: {
     getCountries: async function() {
