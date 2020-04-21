@@ -24,6 +24,15 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/roominfo");
       let data = await response.json();
       commit('changeSearchData', data)
+    },
+    filterSearch: function({commit}, state, filterBy) {
+      console.log("comparing selected country: "+filterBy)
+      let data = state.home.searchData.filter(item => {
+        return item.countryName == filterBy
+      })
+      console.log("state: "+state)
+      console.log("new list: "+data)
+      commit('changeSearchData', data)
     }
   },
   modules: {

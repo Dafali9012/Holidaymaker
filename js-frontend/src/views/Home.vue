@@ -36,7 +36,7 @@
       </div>
       <div class="row m-2">
         <select class="border rounded col-md-3" name="country" id="country">
-          <option value>-Välj land-</option>
+          <option value="all">-Välj land-</option>
           <option value="Frankrike">Frankrike</option>
           <option value="Spanien">Spanien</option>
           <option value="Italien">Italien</option>
@@ -144,6 +144,11 @@ export default {
     searchRoomInformation: async function() {
       console.log("button clicked! -> run search");
       this.$store.dispatch("loadSearchDataInfo");
+      let country = document.getElementById("country").value
+      if(country!="all") {
+        console.log("a country was selected: "+country)
+        this.$store.dispatch("filterSearch", this.$store.state, country);
+      }
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
