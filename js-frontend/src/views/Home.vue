@@ -35,11 +35,11 @@
         </label>
       </div>
       <div class="row m-2">
-        <select class="border rounded col-md-3" name="country" id="country" v-on:click="getCountries()">    
-            <option value=0>Välj Land</option>
+        <select class="border rounded col-md-3" name="country" id="country">    
+            <option value="">Välj Land</option>
             <option value="selectedCountry" 
             v-for="country in countries"
-            :key="country.countryId">>{{ country.name }}
+            :key="country.countryId">{{ country.name }}
             </option>     
         </select>
 
@@ -136,6 +136,7 @@ export default {
   mounted() {
     console.log("load rooms");
     //this.$store.dispatch("loadSearchData");
+    this.getCountries();
   },
   methods: {
     getCountries: async function () {
