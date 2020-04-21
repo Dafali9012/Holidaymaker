@@ -119,9 +119,8 @@
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
-            <p>
-              <b>{{room.hotelName}}</b>
-              <br />
+            <p style="font-size:16px;margin:0"><b>{{room.hotelName}}</b></p>
+            <p style="font-size:12px;margin:0">
               {{room.cityName}}
               <br />
               {{room.kmToCenter}} km till centrum
