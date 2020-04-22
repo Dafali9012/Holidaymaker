@@ -46,20 +46,18 @@
         <select class="border rounded col-md-3" name="country" id="country">
           <option value="0">Välj Land</option>
           <option
-            :value="country_id"
+            :value="country.country_id"
             v-for="country in countries"
             :key="country.countryId"
             >{{ country.name }}</option
           >
         </select>
-
         <input
           type="date"
           class="border rounded col-md-2"
           name="startdate"
           placeholder="Check in"
           id="checkIn"
-          :value="checkIn"
         />
         <input
           type="date"
@@ -67,21 +65,12 @@
           name="enddate"
           placeholder="Check out"
           id="checkOut"
-          :value="checkOut"
-
         />
 
         <select class="border rounded col-md-1" name="adults" id="adults">
           <!--
           <option :value="roomReservation.numAdults" v-for="n in 10" :key="n">{{n}}</option> -->
-          <option :value="numAdults">0</option>
-          <option :value="numAdults">1</option>
-          <option :value="numAdults">2</option>
-          <option :value="numAdults">3</option>
-        </select>
-        <select class="border rounded col-md-1" name="kids" id="kids">
-          <option :value="numKids">0</option>
-          <!--
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -91,10 +80,21 @@
           <option value="7">7</option>
           <option value="8">8</option>
           <option value="9">9</option>
-          -->
+        </select>
+        <select class="border rounded col-md-1" name="kids" id="kids">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
         </select>
         <select class="border rounded col-md-1" name="smallkids" id="sKids">
-          <option value="sKids">0</option>
+          <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -150,7 +150,7 @@
             <button
               class="btn btn-info"
               id="reserveRoom"
-              @click="reserveRoom()"
+              v-on:click="reserveRoom()"
             >
               Boka rum
             </button>
@@ -190,14 +190,14 @@ export default {
   
     reserveRoom: function() {
       let newRoomReservation = {
-        country_id = document.getElementById("country").value,
-        numAdults = document.getElementById("adults").value,
-        numKids = document.getElementById("kids").value,
-        numSmallKids = document.getElementById("sKids").value,
-        checkIn = document.getElementById("checkIn").value,
-        checkOut = document.getElementById("checkOut").value,
+        country_id : document.getElementById("country").value,
+        numAdults : document.getElementById("adults").value,
+        numKids : document.getElementById("kids").value,
+        numSmallKids : document.getElementById("sKids").value,
+        checkIn : document.getElementById("checkIn").value,
+        checkOut : document.getElementById("checkOut").value
       }
-      console.log('reserve room data', this.newRoomReservation)
+      //console.log('reserve room data', this.newRoomReservation)
       this.$store.dispatch("reserveRoom", newRoomReservation);
       this.$router.push('/hotelinfo')
     },
