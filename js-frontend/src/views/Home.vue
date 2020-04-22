@@ -1,13 +1,17 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/"><button class="btn btn-info"><h2  >Bachman Hendricks</h2></button></router-link>
+      <router-link to="/">
+        <button class="btn btn-info" id="homeButton">
+          <h2>Bachman Hendricks</h2>
+        </button>
+      </router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border">Logga in</button>
+          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -31,17 +35,34 @@
         </label>
       </div>
       <div class="row m-2">
-        <select class="border rounded col-md-3" name="country" id="country">
-          <option value>-Välj land-</option>
-          <option value="Frankrike">Frankrike</option>
-          <option value="Spanien">Spanien</option>
-          <option value="Italien">Italien</option>
-          <option value="Tyskland">Tyskland</option>
-          <option value="Portugal">Portugal</option>
+        <select
+          class="border rounded col-md-3"
+          name="country"
+          id="country"
+          v-on:click="getCountries()"
+        >
+          <option value="0">Välj Land</option>
+          <option
+            :value="country.name"
+            v-for="country in countries"
+            :key="country.countryId"
+          >{{ country.name }}</option>
         </select>
 
-        <input type="date" class="border rounded col-md-2" name="startdate" placeholder="Check in" />
-        <input type="date" class="border rounded col-md-2" name="enddate" placeholder="Check out" />
+        <input
+          type="date"
+          class="border rounded col-md-2"
+          name="startdate"
+          placeholder="Check in"
+          id="checkIn"
+        />
+        <input
+          type="date"
+          class="border rounded col-md-2"
+          name="enddate"
+          placeholder="Check out"
+          id="checkOut"
+        />
 
         <select class="border rounded col-md-1" name="adults" id="adults">
           <option value="0">0</option>
@@ -81,9 +102,10 @@
         </select>
       </div>
       <button
-        v-on:click="runSearch"
+        v-on:click="performSearch"
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
+        id="searchButton"
       >Sök</button>
     </div>
     <div class="container bg-light">
@@ -91,19 +113,25 @@
         <div
           v-for="room in this.$store.state.home.searchData"
           :key="room.roomId"
-          class="d-flex col border rounded"
+          class="d-flex col-6 border rounded"
         >
           <div>
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
-            <p>
-              Room Number: {{room.roomNr}}
+            <p style="font-size:16px;margin:0"><b>{{room.hotelName}}</b></p>
+            <p style="font-size:12px;margin:0">
+              {{room.cityName}}
               <br />
-              HotelName: {{room.hotelId}}
-              <br />CityName: namn
-              <br />ytterligare Information
+              {{room.kmToCenter}} km till centrum
+              <br />
+              {{room.kmToBeach}} km till stranden
+              <br />
+              {{room.pricePerNight}} kr per natt
             </p>
+            <div class="d-flex">
+              <p v-for="n in room.hotelRating" :key="n">⭐</p>
+            </div>
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <button class="btn btn-info">Boka rum</button>
@@ -117,21 +145,27 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      countries: []
+    };
   },
-  created() {
-    console.log("load rooms");
-    this.$store.dispatch("loadSearchData");
+  mounted() {
+    this.getCountries();
   },
   methods: {
-    runSearch: async function() {
-      console.log("button clicked! -> run search");
-      this.$store.dispatch("loadSearchData");
+    getCountries: async function() {
+      let url = "http://localhost:8080/country";
+      const result = await fetch(url);
+      this.countries = await result.json();
+    },
+    performSearch: async function() {
+      console.log("search button clicked");
+      let country = document.getElementById("country").value;
+      this.$store.dispatch("loadSearchData", country);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
-    },
-    getHotel() {}
+    }
   }
 };
 </script>

@@ -12,15 +12,21 @@ export default new Vuex.Store({
   mutations: {
     changeSearchData(state, value) {
       state.home.searchData = value
+      console.log(state.home.searchData)
     }
   },
   actions: {
-    async loadSearchData({commit}) {
-      let response = await fetch("http://localhost:8080/room");
+    async loadSearchData({commit}, country) {
+      let response = await fetch("http://localhost:8080/roominfo");
       let data = await response.json();
+
+      if (country != "0") {
+          data = data.filter(item => {
+          return item.countryName == country
+        })
+      }
       commit('changeSearchData', data)
     }
   },
-  modules: {
-  }
+  modules: {}
 })

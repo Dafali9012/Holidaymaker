@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Värd:                         127.0.0.1
--- Serverversion:                10.4.11-MariaDB - mariadb.org binary distribution
--- Server-OS:                    Win64
+-- Host:                         127.0.0.1
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
 -- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
 
@@ -11,7 +11,14 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumpar struktur för tabell holidaymaker.city
+
+-- Dumping database structure for holidaymaker
+DROP DATABASE IF EXISTS `holidaymaker`;
+CREATE DATABASE IF NOT EXISTS `holidaymaker` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `holidaymaker`;
+
+-- Dumping structure for table holidaymaker.city
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `cityId` int(11) NOT NULL AUTO_INCREMENT,
   `Country` int(11) NOT NULL,
@@ -21,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   CONSTRAINT `FK__country` FOREIGN KEY (`Country`) REFERENCES `country` (`countryId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.city: ~6 rows (ungefär)
+-- Dumping data for table holidaymaker.city: ~6 rows (approximately)
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
 REPLACE INTO `city` (`cityId`, `Country`, `Name`) VALUES
 	(1, 1, 'Lissabon'),
@@ -32,7 +39,8 @@ REPLACE INTO `city` (`cityId`, `Country`, `Name`) VALUES
 	(6, 5, 'Palma');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holidaymaker.country
+-- Dumping structure for table holidaymaker.country
+DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `countryId` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
@@ -40,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   UNIQUE KEY `name` (`Name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.country: ~4 rows (ungefär)
+-- Dumping data for table holidaymaker.country: ~4 rows (approximately)
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
 REPLACE INTO `country` (`countryId`, `Name`) VALUES
 	(3, 'Frankrike'),
@@ -49,7 +57,8 @@ REPLACE INTO `country` (`countryId`, `Name`) VALUES
 	(5, 'Spanien');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holidaymaker.hotel
+-- Dumping structure for table holidaymaker.hotel
+DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `HotelId` int(11) NOT NULL AUTO_INCREMENT,
   `City` int(11) NOT NULL,
@@ -75,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `hotel` (
   CONSTRAINT `FK__city` FOREIGN KEY (`City`) REFERENCES `city` (`cityId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.hotel: ~6 rows (ungefär)
+-- Dumping data for table holidaymaker.hotel: ~6 rows (approximately)
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
 REPLACE INTO `hotel` (`HotelId`, `City`, `Name`, `imgLink`, `Address`, `phoneNr`, `Rating`, `HalfBoardPrice`, `FullBoardPrice`, `AllIncPrice`, `ExtraBedPrice`, `Pool`, `Sauna`, `Bar`, `Entertainment`, `KidsClub`, `KmToBeach`, `KmToCenter`) VALUES
 	(2, 3, 'Hôtel de Silhouette', './assets/images/silhoutte/hotel.jpg', '30, rue Gambetta 64200', '(+33) 05 59 24 93 82', 5, 300, 1000, 1500, 400, 1, 0, 1, 1, 0, 1, 1),
@@ -86,7 +95,8 @@ REPLACE INTO `hotel` (`HotelId`, `City`, `Name`, `imgLink`, `Address`, `phoneNr`
 	(8, 1, 'My Story Hotel Tejo', './assets/images/myStory/hotel.jpg', 'Rua dos Condes de Monsanto 2', '+00 351 21 886 6182', 4, 295, 810, 1950, 475, 0, 1, 1, 1, 0, 10, 1);
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holidaymaker.reservation
+-- Dumping structure for table holidaymaker.reservation
+DROP TABLE IF EXISTS `reservation`;
 CREATE TABLE IF NOT EXISTS `reservation` (
   `bookingNumber` int(11) NOT NULL AUTO_INCREMENT,
   `NumberOfRooms` int(11) NOT NULL DEFAULT 1,
@@ -100,11 +110,12 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   CONSTRAINT `FK__user` FOREIGN KEY (`UserId`) REFERENCES `user` (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.reservation: ~0 rows (ungefär)
+-- Dumping data for table holidaymaker.reservation: ~0 rows (approximately)
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holidaymaker.reservedroom
+-- Dumping structure for table holidaymaker.reservedroom
+DROP TABLE IF EXISTS `reservedroom`;
 CREATE TABLE IF NOT EXISTS `reservedroom` (
   `bookingNr` int(11) NOT NULL AUTO_INCREMENT,
   `room` int(11) NOT NULL,
@@ -123,11 +134,12 @@ CREATE TABLE IF NOT EXISTS `reservedroom` (
   CONSTRAINT `FK_reservedroom_user` FOREIGN KEY (`user`) REFERENCES `user` (`UserId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.reservedroom: ~0 rows (ungefär)
+-- Dumping data for table holidaymaker.reservedroom: ~0 rows (approximately)
 /*!40000 ALTER TABLE `reservedroom` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservedroom` ENABLE KEYS */;
 
--- Dumpar struktur för tabell holidaymaker.room
+-- Dumping structure for table holidaymaker.room
+DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
   `RoomId` int(11) NOT NULL AUTO_INCREMENT,
   `RoomNumber` int(11) NOT NULL,
@@ -142,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `room` (
   CONSTRAINT `FK__hotel` FOREIGN KEY (`Hotel`) REFERENCES `hotel` (`HotelId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.room: ~18 rows (ungefär)
+-- Dumping data for table holidaymaker.room: ~18 rows (approximately)
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
 REPLACE INTO `room` (`RoomId`, `RoomNumber`, `Hotel`, `imgLink`, `RoomType`, `SmokingAllowed`, `PricePerNight`) VALUES
 	(1, 100, 6, 'castillo/single.jpg', 'SINGLE', 1, 1100),
@@ -165,9 +177,12 @@ REPLACE INTO `room` (`RoomId`, `RoomNumber`, `Hotel`, `imgLink`, `RoomType`, `Sm
 	(20, 203, 8, 'myStory/studio.jpg', 'STUDIO', 0, 4010);
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
--- Dumpar struktur för vy holidaymaker.roominfo
--- Skapar temporärtabell för att hantera VIEW-beroendefel
+-- Dumping structure for view holidaymaker.roominfo
+DROP VIEW IF EXISTS `roominfo`;
+-- Creating temporary table to overcome VIEW dependency errors
 CREATE TABLE `roominfo` (
+	`roomId` INT(11) NOT NULL,
+	`imgLink` VARCHAR(50) NULL COLLATE 'utf8mb4_general_ci',
 	`hotelName` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`countryName` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
 	`cityName` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_general_ci',
@@ -178,7 +193,8 @@ CREATE TABLE `roominfo` (
 	`pricePerNight` DOUBLE(22,0) NOT NULL
 ) ENGINE=MyISAM;
 
--- Dumpar struktur för tabell holidaymaker.user
+-- Dumping structure for table holidaymaker.user
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `UserId` int(11) NOT NULL AUTO_INCREMENT,
   `Email` varchar(50) NOT NULL DEFAULT '',
@@ -190,14 +206,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `Email` (`Email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
--- Dumpar data för tabell holidaymaker.user: ~0 rows (ungefär)
+-- Dumping data for table holidaymaker.user: ~0 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
--- Dumpar struktur för vy holidaymaker.roominfo
--- Tar bort temporärtabell och skapar slutgiltlig VIEW-struktur
+-- Dumping structure for view holidaymaker.roominfo
+DROP VIEW IF EXISTS `roominfo`;
+-- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `roominfo`;
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `roominfo` AS SELECT h.Name hotelName, co.Name countryName, c.Name cityName, r.RoomType roomType, 
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `roominfo` AS SELECT r.RoomId roomId, r.imgLink imgLink, h.Name hotelName, co.Name countryName, c.Name cityName, r.RoomType roomType, 
 h.rating hotelRating, h.KmToBeach kmToBeach, h.KmToCenter kmToCenter, r.PricePerNight pricePerNight
 FROM room r 
 INNER JOIN hotel h ON h.HotelId = r.Hotel 

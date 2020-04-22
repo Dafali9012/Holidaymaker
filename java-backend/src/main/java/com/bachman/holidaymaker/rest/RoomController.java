@@ -16,7 +16,7 @@ public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
 
-    @GetMapping("all")
+    @GetMapping()
     public Iterable<Room> getAllRooms() {
             return roomRepository.findAll();
     }

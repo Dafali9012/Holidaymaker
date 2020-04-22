@@ -8,7 +8,6 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long countryId;
     @Column(name = "Name")
-
     private String name;
 
     public Country() {
