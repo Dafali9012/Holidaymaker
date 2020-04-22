@@ -15,7 +15,7 @@
         </router-link>
       </div>
     </div>
-    <div class="d-flex flex-column container border rounded py-3 text-left bg-light">
+    <form @submit.prevent="performSearch()" class="d-flex flex-column container border rounded py-3 text-left bg-light">
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
@@ -55,6 +55,7 @@
           name="startdate"
           placeholder="Check in"
           id="checkIn"
+          required
         />
         <input
           type="date"
@@ -62,6 +63,7 @@
           name="enddate"
           placeholder="Check out"
           id="checkOut"
+          required
         />
 
         <select class="border rounded col-md-1" name="adults" id="adults">
@@ -102,12 +104,11 @@
         </select>
       </div>
       <button
-        v-on:click="performSearch"
-        type="button"
+        type="submit"
         class="align-self-center btn btn-info border col-4 mt-3"
         id="searchButton"
       >Sök</button>
-    </div>
+    </form>
     <div class="container bg-light">
       <div class="row border rounded">
         <div
@@ -134,7 +135,9 @@
             </div>
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
-            <button class="btn btn-info">Boka rum</button>
+            <router-link :to="'/room/'+room.roomId">
+              <button class="btn btn-info">Boka rum</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -161,7 +164,8 @@ export default {
     performSearch: async function() {
       console.log("search button clicked");
       let country = document.getElementById("country").value;
-      this.$store.dispatch("loadSearchData", country);
+      let dateRange = [document.getElementById("checkIn").value, document.getElementById("checkOut").value]
+      this.$store.dispatch("loadSearchData", [country, dateRange]);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
