@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="select-countries;finding-countries-in-the-drop-down-menu" tests="3" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/country.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the holidaymaker webpage" classname="select-countries;finding-countries-in-the-drop-down-menu" time="4.1100386">
+        </testcase>
+        <testcase name="When i click &quot;välj land&quot;" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.2504863">
+        </testcase>
+        <testcase name="Then i should get a list of countries" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.036148201">
+        </testcase>
+    </testsuite>
+    <testsuite name="test-holidaymaker-home-page;sign-up" tests="8" failures="1" skipped="7">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/search.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="5.4412679">
+            <failure message="TypeError: Cannot read property &apos;getText&apos; of null">TypeError: Cannot read property &apos;getText&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\search.js:13:35)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter my Email" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I click the Registrera button to complete" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then Sign-up is finished and the page opens the next page." classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="1" skipped="5">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/search.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="5.8666917">
+            <failure message="TypeError: Cannot read property &apos;getText&apos; of null">TypeError: Cannot read property &apos;getText&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\search.js:13:35)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="test-holidaymaker-home-page;search-for-available-rooms" tests="9" failures="1" skipped="8">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/search.feature">
+            </property>
+        </properties>
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;search-for-available-rooms" time="5.8448048">
+            <failure message="TypeError: Cannot read property &apos;getText&apos; of null">TypeError: Cannot read property &apos;getText&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\search.js:13:35)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="When I choose Frankrike" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter check-in date" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter check-out date" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter the number of adults" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter the number of kids" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I enter the number of babies" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And I click the Sök button" classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then The page shows the results." classname="test-holidaymaker-home-page;search-for-available-rooms">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>

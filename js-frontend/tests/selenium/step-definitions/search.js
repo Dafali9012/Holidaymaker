@@ -11,7 +11,7 @@ module.exports = function() {
 
     let groupMessage = await $('div.d-flex:nth-child(1) > h2:nth-child(1)');
     let text = await groupMessage.getText();
-    assert.include(text, "Bachman Hendricks", 'You got the wrong page.');
+    assert.include(text, "Bachman Hendricks");
     await sleep(sleepTime);
   });
 
