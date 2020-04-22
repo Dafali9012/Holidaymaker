@@ -25,7 +25,7 @@
         <div class="container border rounded py-3 text-left">
             <div class="row">
            <div class="col bookingContent">
-               <p> BokingsNR: {{reservations[0]}}</p>  
+               <p>{{reservationsByCurrentUser}}</p>  
               
             </div>
             </div>
@@ -37,20 +37,26 @@
 export default {
   data() {
     return {
-      reservations: [],
+      reservationsByCurrentUser: [],
     };
     },
     created: function(){
-      // let currentUser = 5;
       this.getUserReservations()
     },
     methods: {
     getUserReservations: async function () {
-      console.log('Loading method reservation')
       let url = "http://localhost:8080/reservation";
       const result = await fetch(url);
       this.reservations = await result.json();
+      const currentUser = 5; //Ändra till önskat userId
+      this.reservations.forEach(element => {
+        if (currentUser == element.userId){         
+          this.reservationsByCurrentUser.push(element)
+        }
+      });
       console.log(this.reservations)
+      console.log(this.reservations[0].userId)
+      console.log(this.reservationsByCurrentUser)
     }
     }
 }
