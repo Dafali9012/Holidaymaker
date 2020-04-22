@@ -93,17 +93,38 @@
 export default {
   data() {
     return {
-    hotel_name: this.hotel_name,
-    country_name: this.country_name,
-    checkIn: this.checkIn,
-    checkOut: this.checkOut,
-    adults: this.adults,
-    children: this.children,
-    smallChildren: this.smallChildren,
-    numberOfRooms: this.numberOfRooms,
-    total_price: this.total_price,
-    bookingID: this.bookingID,
+    roomInfo: {
+      hotel_name: this.hotel_name,
+      country_name: this.country_name,
+      checkIn: this.checkIn,
+      checkOut: this.checkOut,
+      adults: this.adults,
+      children: this.children,
+      smallChildren: this.smallChildren,
+      numberOfRooms: this.numberOfRooms,
+      total_price: this.total_price,
+      bookingID: this.bookingID,
+    }
+    }
+  },
+  methods: {
+    reserveRoom: async function() {
+      let roomInfo = this.$store.dispatch("getReservedRoom");
+
+      const url = "http://localhost:8080/reservedRoom";
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(roomInfo),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      if(result.ok) {
+        console.log("post ok\nname: " + roomInfo.bookingID, roomInfo.username)
+        window.confirm("Du har bokat ett rum på" + roomInfo.hotel_name + "i " + roomInfo.country_name)
+      
+      }
+    }
   }
-}
 }
 </script>
