@@ -9,7 +9,7 @@
         <button type="button" class="btn btn-light border disabled">Logga in</button>
       </div>
     </div>
-    <form @submit="customLogin" class="col-6 border rounded py-3 pl-5 text-left">
+    <form @submit.prevent="springLogin" class="col-6 border rounded py-3 pl-5 text-left">
       <p class="font-weight-bold">Logga in</p>
       <input v-model="email" type="text" class="form-control col-4 mb-2" placeholder="email" required />
       <input v-model="password" type="password" class="form-control col-4 mb-2" placeholder="Lösenord" required />
@@ -28,41 +28,42 @@ export default {
      }
      },
       methods:{
-  async customLogin(e) {
-    console.log('Login ok')
-    e.preventDefault()
+   async springLogin() {
+     console.log(this.email)
+     console.log(this.password)
+     console.log(this)
 
-  /*const credentials = {
 
-    username: 'yo',
-    password: 'yo'
-  } */
-  const formData = new FormData();
-formData.append('username', 'yo');
-formData.append('password', 'yo');
 
-/*fetch('/login',
-    {
-        body: formData,
-        method: "post"
-    });*/
+
+  const credentials = 'username=' +
+
+    encodeURIComponent(this.email)
+
+    + '&password=' +
+
+    encodeURIComponent(this.password)
+
 
   let response = await fetch("http://localhost:8080/login", {
+
     method: "POST",
-   // headers: { "Content-Type": "application/json" },
-  //  body: JSON.stringify(credentials)
-  body: formData
+    redirect:"manual",
+
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+
+    body: credentials
+
   });
 
-  try {
-    response = await response.json()
-    console.log(response);
-  } catch {
+
+  if(response.url.includes('error')) {
+
     console.log('Wrong username/password');
 
-  }
+  }//else
 
 }
+     }
 }
-};
 </script>

@@ -1,6 +1,7 @@
 package com.bachman.holidaymaker.rest;
 
 
+import com.bachman.holidaymaker.config.MyUserDetailsService;
 import com.bachman.holidaymaker.entity.User;
 import com.bachman.holidaymaker.repository.UserRepository;
 import org.apache.catalina.Authenticator;
@@ -18,8 +19,12 @@ public class UserController {
     private UserRepository userRepository;
     private Authenticator authManager;
 
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
+
     @PostMapping("/register")
     public User addUser(@RequestBody User user) {
+        user.setPassword(myUserDetailsService.getEncoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
 
