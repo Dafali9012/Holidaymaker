@@ -4,7 +4,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
-import Confirmation from '../views/Confirmation.vue'
+import MyBookings from '../views/MyBookings.vue'
 import HotelInfo from '../views/HotelInfo.vue'
 
 
@@ -32,9 +32,9 @@ Vue.use(VueRouter)
     component: Login
   },
   {
-    path: '/confirmation',
-    name: 'Confirmation',
-    component: Confirmation
+    path: '/mybookings',
+    name: 'MyBookings',
+    component: MyBookings
   },
   {
     path: '/hotelinfo',
