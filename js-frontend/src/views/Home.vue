@@ -165,7 +165,8 @@ export default {
       console.log("search button clicked");
       let country = document.getElementById("country").value;
       let dateRange = [document.getElementById("checkIn").value, document.getElementById("checkOut").value]
-      this.$store.dispatch("loadSearchData", [country, dateRange]);
+      let numGuests = [document.getElementById("adults").value, document.getElementById("kids").value, document.getElementById("smallkids").value]
+      this.$store.dispatch("loadSearchData", [country, dateRange, numGuests]);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);

@@ -37,7 +37,7 @@ export default new Vuex.Store({
       for (let reservedRoom of reservedRoomsData) {
         let roomCheckIn = reservedRoom.checkIn.split("-")
         let roomCheckOut = reservedRoom.checkOut.split("-")
-        
+
         if (selectedCheckIn < roomCheckIn && selectedCheckOut > roomCheckOut) {
           data = data.filter(item => {
             return item.roomId != reservedRoom.room
@@ -71,6 +71,19 @@ export default new Vuex.Store({
         }
       }
 
+      // number of guests
+      let numGuests = parseInt(params[2][0],10) + parseInt(params[2][1],10)
+      if (numGuests > 4) {
+        data = []
+      } else if (numGuests > 2) {
+        data = data.filter(item => {
+          return (item.roomType == 'STUDIO')
+        })
+      } else if (numGuests == 2) {
+        data = data.filter(item => {
+          return (item.roomType != 'SINGLE')
+        })
+      }
       commit('changeSearchData', data)
     }
   },
