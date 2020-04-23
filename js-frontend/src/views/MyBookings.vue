@@ -23,10 +23,18 @@
       <div class="col ml-2 mt-0">Du har bokat följande:</div>
       </div>
         <div class="container border rounded py-3 text-left">
-            <div class="row">
+            <div class="row" style="min-height:50vh">
            <div class="col bookingContent">
-               <p>{{reservationsByCurrentUser}}</p>  
-              
+               {{JSON.stringify(reservationsByCurrentUser)
+                 .replace(/[\]\[{}"]/g, "")
+                 .replace(/,/g, '\n')
+                 .replace(/bookingNumber/g, 'Bokningsnummer')
+                 .replace(/numberOfRooms/g, 'Antal rum')
+                 .replace(/userId/g, 'Ditt kundnr')
+                 .replace(/checkIn/g, 'Incheck')
+                 .replace(/checkOut/g, 'Utcheck')
+                 .replace(/totalPrice/g, 'Pris')
+                 }}
             </div>
             </div>
         </div>
