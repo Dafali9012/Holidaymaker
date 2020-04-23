@@ -8,20 +8,17 @@ export default new Vuex.Store({
     home: {
       searchData: [],
     },
-    reservedRoom: {
-      country_id: "",
-      numAdults: "",
-      numKids: "",
-      numSmallKids: "",
-      checkIn: "",
-      checkOut: "",
-    },
+    reservedRoom: {}
   },
   mutations: {
     changeSearchData(state, value) {
       state.home.searchData = value;
       console.log(state.home.searchData);
     },
+    changeReservedRoomsData(state, value) {
+      state.reservedRoom = value
+      console.log(state.reservedRoom)
+    }
   },
   actions: {
     async loadSearchData({ commit }, country) {
@@ -35,10 +32,9 @@ export default new Vuex.Store({
       }
       commit("changeSearchData", data);
     },
-  },
-  async reserveRoom(newRoomReservation) {
-    this.reservedRoom = newRoomReservation;
-    console.log('this reservedRoom', this.reservedRoom)
+    reserveRoom({commit}, newRoomReservation) {
+      commit('changeReservedRoomsData', newRoomReservation)
+    }
   },
   modules: {},
   getters: {

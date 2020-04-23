@@ -1,8 +1,6 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
-    <div
-      class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light"
-    >
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
       <router-link to="/">
         <button class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
@@ -10,20 +8,14 @@
       </router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2" id="regButton">
-            Registrera
-          </button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border" id="loginButton">
-            Logga in
-          </button>
+          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
     </div>
-    <div
-      class="d-flex flex-column container border rounded py-3 text-left bg-light"
-    >
+    <div class="d-flex flex-column container border rounded py-3 text-left bg-light">
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
@@ -46,20 +38,17 @@
         <select class="border rounded col-md-3" name="country" id="country">
           <option value="0">Välj Land</option>
           <option
-            :value="country_id"
+            :value="country.country_id"
             v-for="country in countries"
             :key="country.countryId"
-            >{{ country.name }}</option
-          >
+          >{{ country.name }}</option>
         </select>
-
         <input
           type="date"
           class="border rounded col-md-2"
           name="startdate"
           placeholder="Check in"
           id="checkIn"
-          :value="checkIn"
         />
         <input
           type="date"
@@ -67,43 +56,16 @@
           name="enddate"
           placeholder="Check out"
           id="checkOut"
-          :value="checkOut"
-
         />
 
-        <select class="border rounded col-md-1" name="adults" id="adults">
-          <!--
-          <option :value="roomReservation.numAdults" v-for="n in 10" :key="n">{{n}}</option> -->
-          <option :value="numAdults">0</option>
-          <option :value="numAdults">1</option>
-          <option :value="numAdults">2</option>
-          <option :value="numAdults">3</option>
+        <select class="border rounded col-md-1" name="adults" id="adults">    
+          <option v-for="n in 10" :key="n" :value="n-1">{{n-1}}</option>
         </select>
         <select class="border rounded col-md-1" name="kids" id="kids">
-          <option :value="numKids">0</option>
-          <!--
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          -->
+          <option v-for="n in 10" :key="n" :value="n-1">{{n-1}}</option>
         </select>
         <select class="border rounded col-md-1" name="smallkids" id="sKids">
-          <option value="sKids">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option v-for="n in 10" :key="n" :value="n-1">{{n-1}}</option>
         </select>
       </div>
       <button
@@ -111,9 +73,7 @@
         type="button"
         class="align-self-center btn btn-info border col-4 mt-3"
         id="searchButton"
-      >
-        Sök
-      </button>
+      >Sök</button>
     </div>
     <div class="container bg-light">
       <div class="row border rounded">
@@ -125,9 +85,7 @@
           <div>
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
-          <div
-            class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3"
-          >
+          <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p style="font-size:16px;margin:0">
               <b>{{ room.hotelName }}</b>
             </p>
@@ -144,16 +102,8 @@
               <p v-for="n in room.hotelRating" :key="n">⭐</p>
             </div>
           </div>
-          <div
-            class="d-flex justify-content-end align-items-center flex-grow-1"
-          >
-            <button
-              class="btn btn-info"
-              id="reserveRoom"
-              @click="reserveRoom()"
-            >
-              Boka rum
-            </button>
+          <div class="d-flex justify-content-end align-items-center flex-grow-1">
+            <button class="btn btn-info" id="reserveRoom" v-on:click="reserveRoom()">Boka rum</button>
           </div>
         </div>
       </div>
@@ -165,12 +115,11 @@
 export default {
   data() {
     return {
-      countries: [],
-  
+      countries: []
     };
   },
   mounted() {
-    console.log(this.numAdults)
+    console.log(this.numAdults);
     this.getCountries();
   },
   methods: {
@@ -187,21 +136,21 @@ export default {
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
     },
-  
+
     reserveRoom: function() {
       let newRoomReservation = {
-        country_id = document.getElementById("country").value,
-        numAdults = document.getElementById("adults").value,
-        numKids = document.getElementById("kids").value,
-        numSmallKids = document.getElementById("sKids").value,
-        checkIn = document.getElementById("checkIn").value,
-        checkOut = document.getElementById("checkOut").value,
-      }
-      console.log('reserve room data', this.newRoomReservation)
+        country_id: document.getElementById("country").value,
+        numAdults: document.getElementById("adults").value,
+        numKids: document.getElementById("kids").value,
+        numSmallKids: document.getElementById("sKids").value,
+        checkIn: document.getElementById("checkIn").value,
+        checkOut: document.getElementById("checkOut").value
+      };
+      //console.log('reserve room data', this.newRoomReservation)
       this.$store.dispatch("reserveRoom", newRoomReservation);
-      this.$router.push('/hotelinfo')
-    },
-  },
+      this.$router.push("/hotelinfo");
+    }
+  }
 };
 </script>
 
