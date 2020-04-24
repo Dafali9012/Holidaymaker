@@ -122,7 +122,9 @@
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p style="font-size:16px;margin:0"><b>{{room.hotelName}}</b></p>
             <p style="font-size:12px;margin:0">
-              {{room.cityName}}
+              {{room.countryName+' - '+room.cityName}}
+              <br />
+              {{room.roomType}} 👤 {{returnCapacity(room.roomType)}}
               <br />
               {{room.kmToCenter}} km till centrum
               <br />
@@ -136,7 +138,7 @@
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <router-link :to="'/room/'+room.roomId">
-              <button class="btn btn-info">Boka rum</button>
+              <button class="btn btn-info">Info</button>
             </router-link>
           </div>
         </div>
@@ -170,6 +172,11 @@ export default {
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
+    },
+    returnCapacity(roomType) {
+      if(roomType=="SINGLE") return 1;
+      if(roomType=="DOUBLE") return 2;
+      if(roomType=="STUDIO") return 4;
     }
   }
 };

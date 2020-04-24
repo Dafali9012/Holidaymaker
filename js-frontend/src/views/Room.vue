@@ -83,25 +83,41 @@
             <button type="submit" class="btn btn-info border col-12 mt-3">Sök</button>
           </div>
         </div>
-        <div class="col-9 border rounded py-3 text-left">
+        <div class="col-9 rounded py-3 text-left">
           <div class="row">
-            <div class="col bookingContent">
+            <div class="col-6">
               <!--
-              <p>Hotel: {{hotel_name}}</p>
-              <p>Land: {{country_name}}</p>
-              <p>Check In: {{checkIn}}</p>
-              <p>Check Out: {{checkOut}}</p>
-              <p>Antal vuxna: {{adults}}</p>
-              <p>Antal barn: {{children}}</p>
-              <p>Antal småbarn: {{smallChildren}}</p>
-              <p>Antal rum: {{numberOfRooms}}</p>
-              <p>Pris: {{total_price}}</p>
-              <p>BokingsID: {{bookingID}}</p>
+              Lägg till val för antal gäster av olika åldrar,
+              Skriv ut val av check-in/out som matades in vid
+              söktillfället.
+              Räkna ut pris efter hur många dagar man har valt
+              och skriv ut totalpriset
               -->
-              <p style="font-size:20px;margin:0"><b>{{room.hotelName}}</b></p>
-              <p style="font-size:18px;margin:0">{{room.countryName}}</p>
+              <p style="font-size:20px;margin:0">
+                <b>{{room.hotelName}}</b>
+              </p>
+              <p style="font-size:18px;margin:0">{{room.countryName+' - '+room.cityName}}</p>
               <p style="font-size:18px;margin:0">{{room.pricePerNight}} kr per natt</p>
-
+              <p style="font-size:18px;margin:0">{{room.kmToCenter}} km till centrum</p>
+              <p style="font-size:18px;margin:0">{{room.kmToBeach}} km till stranden</p>
+              <div class="d-flex">
+                <p v-for="n in room.hotelRating" :key="n">⭐</p>
+              </div>
+              <p style="font-size:18px;margin:0">
+                <b>Adress:</b>
+              </p>
+              <p style="font-size:18px;margin:0">{{room.hotelAddress}}</p>
+              <br />
+              <p style="font-size:18px;margin:0">
+                <b>Telefon:</b>
+              </p>
+              <p style="font-size:18px;margin:0">{{room.hotelPhone}}</p>
+            </div>
+            <div class="col-6">
+              <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
+            </div>
+            <div class="d-flex justify-content-end align-items-end col">
+                <button class="btn btn-info">Boka</button>            
             </div>
           </div>
         </div>
@@ -111,33 +127,32 @@
 </template>
 <script>
 export default {
-  /*
-  data() {
-    return {
-      hotel_name: this.hotel_name,
-      country_name: this.country_name,
-      checkIn: this.checkIn,
-      checkOut: this.checkOut,
-      adults: this.adults,
-      children: this.children,
-      smallChildren: this.smallChildren,
-      numberOfRooms: this.numberOfRooms,
-      total_price: this.total_price,
-      bookingID: this.bookingID
-    };
+  created() {
+    this.$store.dispatch("loadRooms");
   },
-  */
   computed: {
     room() {
       let r = {};
-      for(let room of this.$store.state.home.searchData) {
-        if(room.roomId == this.$route.params.room) {
-          r = room
-          break
+      for (let room of this.$store.state.home.rooms) {
+        if (room.roomId == this.$route.params.room) {
+          r = room;
+          break;
         }
       }
       return r;
     }
+  },
+  methods: {
+    getImageUrl: function(file) {
+      return require("../assets/images/" + file);
+    }
   }
 };
 </script>
+
+<style scoped>
+.image {
+  width: 100%;
+  height: 80%;
+}
+</style>
