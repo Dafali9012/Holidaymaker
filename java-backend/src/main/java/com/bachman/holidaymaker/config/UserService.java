@@ -8,28 +8,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+
 public class UserService {
 
     @Autowired
+
     private UserRepository userRepository;
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    @Autowired
+
+    private MyUserDetailsService myUserDetailsService;
 
 
-    public User customLogin(User user) {
-        User dbUser = userRepository.findByEmail(user.getEmail());
-        if(dbUser == null) return null;
+    public User findCurrentUser() {
 
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if(encoder.matches(user.getPassword(), dbUser.getPassword())) {
-            return dbUser;
-        }
-        return null;
+        return userRepository.findByEmail(email);
+
     }
 
-    public User customRegister(User user) {
-        User newUser = new User(user.getEmail(), encoder.encode(user.getPassword()));
-        return userRepository.save(newUser);
+
+    public User registerUser(User user) {
+
+        return myUserDetailsService.addUser(user.getEmail(), user.getPassword());
+
     }
+
 }
 
 

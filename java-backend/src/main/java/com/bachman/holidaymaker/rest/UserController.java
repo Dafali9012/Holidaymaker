@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -28,20 +28,15 @@ public class UserController {
         return userRepository.save(user);
     }
 
-   /* @PostMapping("/login")
-    public User login(){
-        return null;
-    }*/
-
     @GetMapping("all")
     public List<User> users(){
         return (List<User>) this.userRepository.findAll();
     }
 
-   /* @GetMapping("{id}")
+    @GetMapping("{id}")
     public Iterable<User> userById(@PathVariable long id){
         return this.userRepository.findAllById(Collections.singleton(id));
-    }*/
+    }
 
     }
 
