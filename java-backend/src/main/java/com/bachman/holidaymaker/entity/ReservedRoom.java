@@ -20,7 +20,29 @@ public class ReservedRoom {
     private String checkIn;
     @Column(name = "checkOut")
     private String checkOut;
+    private String board;
+    private int extraBed;
+    private int totalRoomPrice;
 
+    public String getCheckIn() {
+        return checkIn;
+    }
+
+    public String getCheckOut() {
+        return checkOut;
+    }
+
+    public String getBoard() {
+        return board;
+    }
+
+    public int getExtraBed() {
+        return extraBed;
+    }
+
+    public int getTotalRoomPrice() {
+        return totalRoomPrice;
+    }
 
     public ReservedRoom() {
     }
