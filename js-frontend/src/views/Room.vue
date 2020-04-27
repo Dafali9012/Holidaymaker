@@ -1,8 +1,6 @@
 <template>
   <div class="container align-items-center py-5 rounded">
-    <div
-      class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light"
-    >
+    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
       <router-link to="/">
         <button class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
@@ -10,14 +8,10 @@
       </router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2" id="regButton">
-            Registrera
-          </button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border" id="loginButton">
-            Logga in
-          </button>
+          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
     </div>
@@ -36,18 +30,10 @@
               <p style="font-size:20px;margin:0">
                 <b>{{ room.hotelName }}</b>
               </p>
-              <p style="font-size:18px;margin:0">
-                {{ room.countryName + " - " + room.cityName }}
-              </p>
-              <p style="font-size:18px;margin:0">
-                {{ room.pricePerNight }} kr per natt
-              </p>
-              <p style="font-size:18px;margin:0">
-                {{ room.kmToCenter }} km till centrum
-              </p>
-              <p style="font-size:18px;margin:0">
-                {{ room.kmToBeach }} km till stranden
-              </p>
+              <p style="font-size:18px;margin:0">{{ room.countryName + " - " + room.cityName }}</p>
+              <p style="font-size:18px;margin:0">{{ room.pricePerNight }} kr per natt</p>
+              <p style="font-size:18px;margin:0">{{ room.kmToCenter }} km till centrum</p>
+              <p style="font-size:18px;margin:0">{{ room.kmToBeach }} km till stranden</p>
               <div class="d-flex">
                 <p v-for="n in room.hotelRating" :key="n">⭐</p>
               </div>
@@ -69,15 +55,35 @@
               <br />
             </div>
             <div class="col-sm-12 col-md-6">
-              <img
-                :src="getImageUrl(room.imgLink)"
-                class="image my-3 rounded"
-              />
+              <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
             </div>
           </div>
         </div>
       </div>
 
+      <div class="row m-1">
+        <div class="col-sm-12 col-6">
+          <div class="form-group">
+            <label for="board">Välj pension:</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option value="NONE">Ingen</option>
+              <option value="HB">Halvpension</option>
+              <option value="FB">Helpension</option>
+              <option value="AI">All Inclusive</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-1">
+        <div class="col-6">
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="extraBed" />
+            <label class="form-check-label" for="extraBed">Extra säng</label>
+          </div>
+        </div>
+      </div>
+      
       <div class="row m-1 justify-content-between">
         <div class="col-2">
           <router-link to="/">
@@ -85,14 +91,12 @@
               type="button"
               class="btn btn-info d-flex justify-content-end align-items-start"
               id="backButton"
-            >
-              Tillbaka
-            </button>
+            >Tillbaka</button>
           </router-link>
         </div>
 
         <div class="col-2 text-right">
-          <button class="btn btn-info">Boka</button>
+          <button class="btn btn-info">Boka nu</button>
         </div>
       </div>
     </div>
@@ -113,13 +117,13 @@ export default {
         }
       }
       return r;
-    },
+    }
   },
   methods: {
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
-    },
-  },
+    }
+  }
 };
 </script>
 
