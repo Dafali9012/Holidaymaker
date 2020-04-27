@@ -1,7 +1,11 @@
 <template>
   <div class="container d-flex flex-column align-items-center Login py-5">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/"><button class="btn btn-info" id="homeButton"><h2>Bachman Hendricks</h2></button></router-link>
+      <router-link to="/">
+        <button class="btn btn-info" id="homeButton">
+          <h2>Bachman Hendricks</h2>
+        </button>
+      </router-link>
       <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
@@ -10,15 +14,33 @@
       </div>
     </div>
 
-    <form @submit.prevent="springLogin" class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded" autocomplete="off">
+    <form
+      @submit.prevent="springLogin"
+      class="col border rounded py-3 pl-5 text-left bg-light p-0 rounded"
+      autocomplete="off"
+    >
       <p class="font-weight-bold">Logga in</p>
       <div class="row d-flex mt-4">
-      <input v-model="email" type="text" name="username" class="form-control col-4 ml-3" placeholder="" required />
-      <label for="username" class="col-9 formlabel mt-2 ml-2">Username</label>
+        <input
+          v-model="email"
+          type="text"
+          name="username"
+          class="form-control col-4 ml-3"
+          placeholder
+          required
+        />
+        <label for="username" class="col-9 formlabel mt-2 ml-2">Username</label>
       </div>
       <div class="row d-flex mt-4">
-      <input v-model="password" type="password" name="password" class="form-control col-4 ml-3" placeholder="" required />
-      <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
+        <input
+          v-model="password"
+          type="password"
+          name="password"
+          class="form-control col-4 ml-3"
+          placeholder
+          required
+        />
+        <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
       </div>
       <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
     </form>
@@ -53,7 +75,7 @@ export default {
         "&password=" +
         encodeURIComponent(this.password);
 
-      let response = await fetch("http://localhost:8080/login", {
+      let response = await fetch("/login", {
         method: "POST",
         //redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
