@@ -51,7 +51,7 @@
               <p style="font-size:18px;margin:0">
                 <b>Totalpris:</b>
               </p>
-              <p style="font-size:18px;margin:0">{{}}</p>
+              <p style="font-size:18px;margin:0">{{ }}</p>
               <br />
             </div>
             <div class="col-sm-12 col-md-6">
@@ -106,6 +106,7 @@
 export default {
   created() {
     this.$store.dispatch("loadRooms");
+    this.getReservationInfo();
   },
   computed: {
     room() {
@@ -117,11 +118,15 @@ export default {
         }
       }
       return r;
-    }
+    }, 
   },
   methods: {
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
+    },
+    getReservationInfo(){
+      let reservation = this.$store.getters.RESERVEDROOM
+      console.log('reservation works!!', reservation)
     }
   }
 };

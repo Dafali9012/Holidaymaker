@@ -107,6 +107,7 @@
         type="submit"
         class="align-self-center btn btn-info border col-4 mt-3"
         id="searchButton"
+        @click="reserveRoomValues()"
       >Sök</button>
     </form>
     <div class="container bg-light">
@@ -177,7 +178,21 @@ export default {
       if(roomType=="SINGLE") return 1;
       if(roomType=="DOUBLE") return 2;
       if(roomType=="STUDIO") return 4;
-    }
+    },
+    reserveRoomValues: function() {
+            console.log("TRYING TO SAVE DATA");
+
+      let newRoomReservation = {
+        country_id: document.getElementById("country").value,
+        numAdults: document.getElementById("adults").value,
+        numKids: document.getElementById("kids").value,
+        numSmallKids: document.getElementById("smallkids").value,
+        checkIn: document.getElementById("checkIn").value,
+        checkOut: document.getElementById("checkOut").value
+      };
+      console.log('reserve room data', this.newRoomReservation)
+      this.$store.dispatch("reserveRoomData", newRoomReservation);
+  }
   }
 };
 </script>

@@ -8,7 +8,8 @@ export default new Vuex.Store({
     home: {
       rooms: [],
       searchData: []
-    }
+    },
+    reservedRoom: {}
   },
   mutations: {
     changeSearchData(state, value) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
     },
     loadRooms(state, value) {
       state.home.rooms = value
+    },
+    changeReservedRoomsData(state, value) {
+      state.reservedRoom = value
     }
   },
   actions: {
@@ -96,7 +100,15 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/roominfo")
       let result = await response.json()
       commit('loadRooms', result)
+    },
+    reserveRoomData({commit}, newRoomReservation) {
+      commit('changeReservedRoomsData', newRoomReservation)
     }
   },
+  getters: {
+    RESERVEDROOM: state => {
+      return state.reservedRoom;
+    }
+  },  
   modules: {}
 })
