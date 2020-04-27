@@ -154,7 +154,7 @@ export default {
       countries: []
     };
   },
-  mounted() {
+  created() {
     this.getCountries();
   },
   methods: {
