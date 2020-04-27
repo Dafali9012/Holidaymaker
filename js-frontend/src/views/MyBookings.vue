@@ -23,18 +23,20 @@
       <div class="col ml-2 mt-0">Du har bokat följande:</div>
       </div>
         <div class="container border rounded py-3 text-left allBookings">
-          <div class="row singleBooking">
-           <div class="col-9">
-               <p><strong>Bokningsnummer:</strong> {{reservationsByCurrentUser[0].bookingNumber}}</p>
-               <p><strong>Antal rum:</strong> {{reservationsByCurrentUser[0].numberOfRooms}}</p>
-               <p><strong>Check in:</strong> {{reservationsByCurrentUser[0].checkIn}}</p>
-               <p><strong>Check out:</strong> {{reservationsByCurrentUser[0].checkOut}}</p>
-               <p><strong>Pris:</strong> {{reservationsByCurrentUser[0].totalPrice+":-"}}</p>
-               </div>
-               <div class="col-3">
-               <button type="button" class="btn btn-info border mr-2" id="editBooking">Ändra</button>
-               <button type="button" class="btn btn-info border" id="cancelBooking">Avboka</button>
-               </div>
+            <div v-for="booking in reservationsByCurrentUser" :key="booking.message">
+              <div class="row singleBooking mt-3 border-bottom">
+              <div class="col-9">
+              <p><strong>Bokningsnummer:</strong> {{booking.bookingNumber}}</p>
+              <p><strong>Antal rum:</strong> {{booking.numberOfRooms}}</p>
+              <p><strong>Check In:</strong> {{booking.checkIn}}</p>
+              <p><strong>Check Out:</strong> {{booking.checkOut}}</p>
+              <p><strong>Pris:</strong> {{booking.totalPrice}}</p>
+              </div>
+              <div class="col-3">
+              <button type="button" class="btn btn-info border mr-2" id="editBooking">Ändra</button>
+              <button type="button" class="btn btn-info border" id="cancelBooking">Avboka</button>
+              </div>
+              </div>
             </div>
         </div>
     </div>
@@ -46,25 +48,10 @@ export default {
   data() {
     return {
       reservationsByCurrentUser: [],
-      index: 0,
-      target: document.querySelector("allBookings singleBooking"),
-      content: `<div class='col-9'>
-               <p><strong>Bokningsnummer:</strong> {{reservationsByCurrentUser[index].bookingNumber}}</p>
-               <p><strong>Antal rum:</strong> {{reservationsByCurrentUser[index].numberOfRooms}}</p>
-               <p><strong>Check in:</strong> {{reservationsByCurrentUser[index].checkIn}}</p>
-               <p><strong>Check out:</strong> {{reservationsByCurrentUser[index].checkOut}}</p>
-               <p><strong>Pris:</strong> {{reservationsByCurrentUser[index].totalPrice+":-"}}</p>
-               </div>
-               <div class="col-3">
-               <button type="button" class="btn btn-info border mr-2" id="editBooking">Ändra</button>
-               <button type="button" class="btn btn-info border" id="cancelBooking">Avboka</button>
-               </div>
-            </div>`
-    };
+    }
     },
     created: function(){
       this.getUserReservations();
-      this.generateContent();
 
     },    
     methods: {
@@ -79,13 +66,7 @@ export default {
         }
       });
       console.log(this.reservations)
-      console.log(this.reservations[0].userId)
       console.log(this.reservationsByCurrentUser)
-    },
-    generateContent: function(reservationsByCurrentUser, target, content, index){
-        target.insertAdjacentHTML("beforeend", content.replace(/~id~/g, reservationsByCurrentUser));
-        index++;
-        console.log(index)
     }
 }
 }
