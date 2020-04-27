@@ -3,10 +3,7 @@ package com.bachman.holidaymaker.rest;
 import com.bachman.holidaymaker.entity.Reservation;
 import com.bachman.holidaymaker.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -25,5 +22,9 @@ public class ReservationController {
         @GetMapping("{id}")
         public Iterable<Reservation> reservationById(@PathVariable long id) {
             return this.reservationRepository.findAllById(Collections.singleton(id));
+        }
+        @DeleteMapping("{id}")
+        public void deleteReservationById(@PathVariable long id) {
+            reservationRepository.deleteById(id);
         }
 }

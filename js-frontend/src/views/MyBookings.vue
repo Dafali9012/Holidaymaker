@@ -34,7 +34,7 @@
               </div>
               <div class="col-3">
               <button type="button" class="btn btn-info border mr-2" id="editBooking">Ändra</button>
-              <button type="button" class="btn btn-info border" id="cancelBooking">Avboka</button>
+              <button type="button" class="btn btn-info border" id="cancelBooking" v-on:click="deleteReservation(booking.bookingNumber)">Avboka</button>
               </div>
               </div>
             </div>
@@ -67,6 +67,17 @@ export default {
       });
       console.log(this.reservations)
       console.log(this.reservationsByCurrentUser)
+    },      
+    deleteReservation: async function(bookingId) {
+      console.log("deleteReservation() called");
+      const reservationToDelete = bookingId;
+      const url = "http://localhost:8080/reservation/"+reservationToDelete;
+      console.log(reservationToDelete, "will be deleted")
+      if (reservationToDelete){
+      const result = await fetch(url, { method: "DELETE"});
+      window.confirm("Din bokning med bokningsnummer: " + reservationToDelete + " har avbokats.")
+      console.log(result)
+      }
     }
 }
 }
