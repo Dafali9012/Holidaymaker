@@ -33,7 +33,7 @@
               <p><strong>Pris:</strong> {{booking.totalPrice}}</p>
               </div>
               <div class="col-3">
-              <button type="button" class="btn btn-info border mr-2" id="editBooking">Ändra</button>
+              <button type="button" class="disabled btn btn-info border mr-2" id="editBooking">Ändra</button>
               <button type="button" class="btn btn-info border" id="cancelBooking" v-on:click="deleteReservation(booking.bookingNumber)">Avboka</button>
               </div>
               </div>
@@ -76,6 +76,7 @@ export default {
       const result = await fetch(url, { method: "DELETE"});
       window.confirm("Din bokning med bokningsnummer: " + reservationToDelete + " har avbokats.")
       console.log(result)
+      this.$router.go()
       }
     }
 }
