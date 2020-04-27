@@ -7,11 +7,17 @@ export default new Vuex.Store({
   state: {
     home: {
       searchData: []
+    },
+    user: {
+      loggedIn: false
     }
   },
   mutations: {
     changeSearchData(state, value) {
       state.home.searchData = value
+    },
+    setUser(state, value) {
+      state.user = value
     }
   },
   actions: {
@@ -72,7 +78,7 @@ export default new Vuex.Store({
       }
 
       // number of guests
-      let numGuests = parseInt(params[2][0],10) + parseInt(params[2][1],10)
+      let numGuests = parseInt(params[2][0], 10) + parseInt(params[2][1], 10)
       if (numGuests > 4) {
         data = []
       } else if (numGuests > 2) {
@@ -85,6 +91,26 @@ export default new Vuex.Store({
         })
       }
       commit('changeSearchData', data)
+    },
+    async login({
+      commit
+    }, credentials) {
+      let response = await fetch('http://localhost:8080/login', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(credentials)
+      })
+      let user = await response.json()
+      commit('setUser', user)
+    },
+    async checkAuth({
+      commit
+    }) {
+      let response = await fetch('http://localhost:8080/login')
+      let user = await response.json()
+      commit('setUser', user)
     }
   },
   modules: {}
