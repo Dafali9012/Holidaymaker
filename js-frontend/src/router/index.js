@@ -5,7 +5,7 @@ import About from '../views/About.vue'
 import Register from '../views/Register.vue'
 import Login from '../views/Login.vue'
 import MyBookings from '../views/MyBookings.vue'
-import HotelInfo from '../views/HotelInfo.vue'
+import Room from '../views/Room.vue'
 
 
 Vue.use(VueRouter)
@@ -37,9 +37,9 @@ Vue.use(VueRouter)
     component: MyBookings
   },
   {
-    path: '/hotelinfo',
-    name: 'HotelInfo',
-    component: HotelInfo
+    path: '/room/:room',
+    name: 'Room',
+    component: Room
   }
 ]
 
