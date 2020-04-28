@@ -1,13 +1,17 @@
 package com.bachman.holidaymaker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
-    @Column(name = "FullName")
+    @Column(name = "Fullname")
     private String name;
     @Column(name = "Email")
     private String email;
@@ -21,12 +25,14 @@ public class User {
     public User() {
     }
 
-    public User(String name, String password) {
-        this.name = name;
+    public User(String email, String password) {
+        this.email = email;
+        this. password = password;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
         this.password = password;
-        this.email = "undefined";
-        this.address = "undefined";
-        this.phonenumber = "undefined";
     }
 
     public long getUserId() {
@@ -41,6 +47,7 @@ public class User {
         return email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
