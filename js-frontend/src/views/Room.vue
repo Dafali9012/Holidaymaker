@@ -97,7 +97,7 @@
       <div class="row m-1">
         <div class="col-sm-12 col-6">
           <div class="form-group">
-            <label for="board">Välj pension:</label>
+            <label for="board">Välj tillägg:</label>
             <select class="form-control" id="exampleFormControlSelect1">
               <option value="NONE">Ingen</option>
               <option value="HB">Halvpension</option>
