@@ -16,7 +16,7 @@ export default new Vuex.Store({
         checkIn: "",
         checkOut: "",
         board: "",
-        extraBed: "",
+        extraBed: 0,
         totalRoomPrice: "",
       }
     },
@@ -31,6 +31,10 @@ export default new Vuex.Store({
     },
     changeReservationData(state, value) {
       state.home.reservation = value
+    },
+    updateExtraBed(state, n) {
+      state.home.reservation.extraBed = n;
+      console.log('extraBed ', n)
     }
   },
   actions: {

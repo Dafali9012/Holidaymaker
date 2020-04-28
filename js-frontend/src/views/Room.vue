@@ -1,6 +1,8 @@
 <template>
   <div class="container align-items-center py-5 rounded">
-    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
+    <div
+      class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light"
+    >
       <router-link to="/">
         <button class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
@@ -8,10 +10,14 @@
       </router-link>
       <div class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">
+            Registrera
+          </button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
+          <button type="button" class="btn btn-info border" id="loginButton">
+            Logga in
+          </button>
         </router-link>
       </div>
     </div>
@@ -30,10 +36,18 @@
               <p style="font-size:20px;margin:0">
                 <b>{{ room.hotelName }}</b>
               </p>
-              <p style="font-size:18px;margin:0">{{ room.countryName + " - " + room.cityName }}</p>
-              <p style="font-size:18px;margin:0">{{ room.pricePerNight }} kr per natt</p>
-              <p style="font-size:18px;margin:0">{{ room.kmToCenter }} km till centrum</p>
-              <p style="font-size:18px;margin:0">{{ room.kmToBeach }} km till stranden</p>
+              <p style="font-size:18px;margin:0">
+                {{ room.countryName + " - " + room.cityName }}
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.pricePerNight }} kr per natt
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.kmToCenter }} km till centrum
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.kmToBeach }} km till stranden
+              </p>
               <div class="d-flex">
                 <p v-for="n in room.hotelRating" :key="n">⭐</p>
               </div>
@@ -53,30 +67,36 @@
                   <p style="font-size:16px;margin:0">
                     <b>Check-in:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkIn }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.checkIn }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Check-out:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkOut }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.checkOut }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Antal vuxna:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.numAdults}}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.numAdults }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Antal barn:</b>
                   </p>
-                  <p
-                    style="font-size:16px;margin:0"
-                  >{{ reservation.numKids }} + {{ reservation.numSmallKids }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.numKids }} + {{ reservation.numSmallKids }}
+                  </p>
                   <br />
                 </div>
               </div>
@@ -84,11 +104,16 @@
               <p style="font-size:18px;margin:0">
                 <b>Totalpris:</b>
               </p>
-              <p style="font-size:18px;margin:0">{{ room.pricePerNight * numNights }}:-</p>
+              <p style="font-size:18px;margin:0">
+                {{ room.pricePerNight * numNights }}:-
+              </p>
               <br />
             </div>
             <div class="col-sm-12 col-md-6">
-              <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
+              <img
+                :src="getImageUrl(room.imgLink)"
+                class="image my-3 rounded"
+              />
             </div>
           </div>
         </div>
@@ -111,7 +136,14 @@
       <div class="row m-1">
         <div class="col-6">
           <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" id="extraBed" />
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="extraBed"
+              v-model="extraBed"
+              true-value=1
+              false-value=0
+            />
             <label class="form-check-label" for="extraBed">Extra säng</label>
           </div>
         </div>
@@ -124,7 +156,9 @@
               type="button"
               class="btn btn-info d-flex justify-content-end align-items-start"
               id="backButton"
-            >Tillbaka</button>
+            >
+              Tillbaka
+            </button>
           </router-link>
         </div>
 
@@ -139,7 +173,7 @@
 export default {
   data() {
     return {
-      numNights: ""
+      numNights: "",
     };
   },
   created() {
@@ -161,20 +195,28 @@ export default {
       let reservation = this.$store.state.home.reservation;
       console.log("reservation workz ", reservation);
       return reservation;
-    }
+    },
+    extraBed: {
+      get() {
+        return this.$store.state.home.reservation.extraBed;
+      },
+      set(n) {
+        this.$store.commit("updateExtraBed", n);
+      },
+    },
   },
   methods: {
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
     },
-    getNumberOfNights: function(){
+    getNumberOfNights: function() {
       let reservation = this.$store.state.home.reservation;
       let date1 = new Date(reservation.checkIn);
       var date2 = new Date(reservation.checkOut);
       var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-      return this.numNights = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-    }
-  }
+      return (this.numNights = Math.ceil(timeDiff / (1000 * 3600 * 24)));
+    },
+  },
 };
 </script>
 
