@@ -15,7 +15,10 @@
         </router-link>
       </div>
     </div>
-    <form @submit.prevent="performSearch()" class="d-flex flex-column container border rounded py-3 text-left bg-light">
+    <form
+      @submit.prevent="performSearch()"
+      class="d-flex flex-column container border rounded py-3 text-left bg-light"
+    >
       <div class="row m-2">
         <p class="font-weight-bold">Sök boende:</p>
       </div>
@@ -103,6 +106,24 @@
           <option value="9">9</option>
         </select>
       </div>
+      <div class="row m-2">
+        <div class="d-flex flex-column justify-content-center">
+          <label for="poolCheck" class="mx-2">Pool</label>
+          <input class type="checkbox" id="poolCheck" />
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+          <label for="entertainmentCheck" class="mx-2">Kvällsunderhållning</label>
+          <input class type="checkbox" id="entertainmentCheck" />
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+          <label for="childclubCheck" class="mx-2">Barnklubb</label>
+          <input class type="checkbox" id="childclubCheck" />
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+          <label for="restaurantCheck" class="mx-2">Restaurang</label>
+          <input class type="checkbox" id="restaurantCheck" />
+        </div>
+      </div>
       <button
         type="submit"
         class="align-self-center btn btn-info border col-4 mt-3"
@@ -120,7 +141,9 @@
             <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
           </div>
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
-            <p style="font-size:16px;margin:0"><b>{{room.hotelName}}</b></p>
+            <p style="font-size:16px;margin:0">
+              <b>{{room.hotelName}}</b>
+            </p>
             <p style="font-size:12px;margin:0">
               {{room.cityName}}
               <br />
@@ -164,8 +187,15 @@ export default {
     performSearch: async function() {
       console.log("search button clicked");
       let country = document.getElementById("country").value;
-      let dateRange = [document.getElementById("checkIn").value, document.getElementById("checkOut").value]
-      let numGuests = [document.getElementById("adults").value, document.getElementById("kids").value, document.getElementById("smallkids").value]
+      let dateRange = [
+        document.getElementById("checkIn").value,
+        document.getElementById("checkOut").value
+      ];
+      let numGuests = [
+        document.getElementById("adults").value,
+        document.getElementById("kids").value,
+        document.getElementById("smallkids").value
+      ];
       this.$store.dispatch("loadSearchData", [country, dateRange, numGuests]);
     },
     getImageUrl: function(file) {
