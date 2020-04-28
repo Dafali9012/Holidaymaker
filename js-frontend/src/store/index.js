@@ -35,6 +35,10 @@ export default new Vuex.Store({
     updateExtraBed(state, n) {
       state.home.reservation.extraBed = n;
       console.log('extraBed ', n)
+    },
+    updateBoard(state, val) {
+      state.home.reservation.board = val;
+      console.log('board ', val)
     }
   },
   actions: {

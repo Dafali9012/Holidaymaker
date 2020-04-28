@@ -122,9 +122,9 @@
       <div class="row m-1">
         <div class="col-sm-12 col-6">
           <div class="form-group">
-            <label for="board">Välj pension:</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option value="NONE">Ingen</option>
+            <label for="board">Välj tillägg:</label>
+            <select class="form-control" id="optionBoard" v-model="board">
+              <option value="NONE" selected="selected">Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
               <option value="AI">All Inclusive</option>
@@ -202,8 +202,16 @@ export default {
       },
       set(n) {
         this.$store.commit("updateExtraBed", n);
-      },
+      }
     },
+    board: {
+      get() {
+        return this.$store.state.home.reservation.board;
+      },
+      set(value) {
+        this.$store.commit("updateBoard", value);
+      }
+    }
   },
   methods: {
     getImageUrl: function(file) {
