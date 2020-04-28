@@ -15,7 +15,6 @@ export default new Vuex.Store({
         numSmallKids: "",
         checkIn: "",
         checkOut: "",
-        numberOfNights: "",
         board: "",
         extraBed: "",
         totalRoomPrice: "",

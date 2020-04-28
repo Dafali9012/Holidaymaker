@@ -49,45 +49,42 @@
               <br />
 
               <div class="row">
-              <div class="col-6">
-              <p style="font-size:16px;margin:0">
-                <b>Check-in:</b>
-              </p>
-              <p style="font-size:12px;margin:0">{{ reservation.checkIn }}</p>
-              <br />
+                <div class="col-6">
+                  <p style="font-size:16px;margin:0">
+                    <b>Check-in:</b>
+                  </p>
+                  <p style="font-size:16px;margin:0">{{ reservation.checkIn }}</p>
+                  <br />
+                </div>
+                <div class="col-6">
+                  <p style="font-size:16px;margin:0">
+                    <b>Check-out:</b>
+                  </p>
+                  <p style="font-size:16px;margin:0">{{ reservation.checkOut }}</p>
+                  <br />
+                </div>
+                <div class="col-6">
+                  <p style="font-size:16px;margin:0">
+                    <b>Antal vuxna:</b>
+                  </p>
+                  <p style="font-size:16px;margin:0">{{ reservation.numAdults}}</p>
+                  <br />
+                </div>
+                <div class="col-6">
+                  <p style="font-size:16px;margin:0">
+                    <b>Antal barn:</b>
+                  </p>
+                  <p
+                    style="font-size:16px;margin:0"
+                  >{{ reservation.numKids }} + {{ reservation.numSmallKids }}</p>
+                  <br />
+                </div>
               </div>
-                            <div class="col-6">
-
-               <p style="font-size:16px;margin:0">
-                <b>Check-out:</b>
-              </p>
-              <p style="font-size:12px;margin:0">{{ reservation.checkOut }}</p>
-              <br />
-              </div>
-              <div class="col-6">
-
-               <p style="font-size:16px;margin:0">
-                <b>Antal vuxna:</b>
-              </p>
-              <p style="font-size:12px;margin:0">{{ reservation.numAdults}}</p>
-              <br />
-              </div>
-              <div class="col-6">
-
-               <p style="font-size:16px;margin:0">
-                <b>Antal barn: </b>
-              </p>
-              <p style="font-size:12px;margin:0">{{ reservation.numKids }} + {{ reservation.numSmallKids }}</p>
-              <br />
-              </div>
-
-            </div>
-
 
               <p style="font-size:18px;margin:0">
                 <b>Totalpris:</b>
               </p>
-              <p style="font-size:18px;margin:0">{{ room.pricePerNight }} * numberOfNights</p>
+              <p style="font-size:18px;margin:0">{{ room.pricePerNight * numNights }}:-</p>
               <br />
             </div>
             <div class="col-sm-12 col-md-6">
@@ -119,7 +116,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="row m-1 justify-content-between">
         <div class="col-2">
           <router-link to="/">
@@ -142,11 +139,12 @@
 export default {
   data() {
     return {
-      
+      numNights: ""
     };
   },
   created() {
     this.$store.dispatch("loadRooms");
+    this.getNumberOfNights();
   },
   computed: {
     room() {
@@ -158,19 +156,24 @@ export default {
         }
       }
       return r;
-    }, 
-    reservation(){      
-    let reservation = this.$store.state.home.reservation;
-    console.log('reservation workz ', reservation)
-    return reservation;
+    },
+    reservation() {
+      let reservation = this.$store.state.home.reservation;
+      console.log("reservation workz ", reservation);
+      return reservation;
     }
-  
   },
   methods: {
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
     },
-
+    getNumberOfNights: function(){
+      let reservation = this.$store.state.home.reservation;
+      let date1 = new Date(reservation.checkIn);
+      var date2 = new Date(reservation.checkOut);
+      var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+      return this.numNights = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+    }
   }
 };
 </script>
