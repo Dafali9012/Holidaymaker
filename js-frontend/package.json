@@ -23,9 +23,9 @@
   },
   "jest": {
     "automock": false,
- "setupFiles": [
-   "./tests/unit/setupJest.js"
- ],
+    "setupFiles": [
+      "./tests/unit/setupJest.js"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",
