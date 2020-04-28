@@ -27,7 +27,7 @@ module.exports = function () {
     await sleep(sleepTime);
   });
 
-  this.Given(/^I enter my Email$/, async function () {
+  this.Given(/^I enter Email$/, async function () {
     await sleep(sleepTime)
     let myEmail = await $('div.row:nth-child(2) > input:nth-child(1)')
     await myEmail.sendKeys('letsgo@letsgo.com');
@@ -55,9 +55,27 @@ module.exports = function () {
     await sleep(sleepTime);
   });
 
-  this.Given(/^I click the Registrera button to complete$/, async function () {
+  this.Given(/^I click the Registrera button and Popup shows that the signup is done$/, async function () {
     let signupButton = await $('#submitButton')
     await signupButton.click();
+    await sleep(sleepTime);
+  });
+
+  this.When(/^I close the popup$/, async function () {
+    console.log(driver.window_handles)
+
+    driver.switch_to_window(driver.window_handles[1])
+    driver.close();
+
+    driver.switch_to_window(driver.window_handles[0])
+    await sleep(sleepTime);
+  });
+
+
+  this.Then(/^Signip is done and get back to the main page\.$/, async function () {
+    let text = await $('#homeButton > h2:nth-child(1)');
+    let logoText = await text.getText();
+    assert.include(logoText, "Bachman Hendricks", 'You could not get the correct page.');
     await sleep(sleepTime);
   });
 
@@ -108,8 +126,13 @@ module.exports = function () {
 
   this.Given(/^I enter check\-out date$/, async function () {
     await sleep(sleepTime)
+
+    find_elements_by_xpath//*[@id="checkIn"]
+
     let checkoutDate = await $('#checkOut')
     await checkoutDate.click();
+
+
     await checkoutDate.sendKeys('05052020');
     await sleep(sleepTime);
   });
