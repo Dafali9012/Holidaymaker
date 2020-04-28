@@ -107,35 +107,51 @@
         </select>
       </div>
       <div class="row">
-        <div class="col-10 d-flex">
-          <div class="d-flex flex-column justify-content-center">
-            <label for="poolCheck" class="mx-2">Pool</label>
+        <div class="col-3 d-flex flex-column ml-3">
+          <div class="d-flex">
             <input class type="checkbox" id="poolCheck" />
+            <label for="poolCheck" class="mx-2">Pool</label>
           </div>
-          <div class="d-flex flex-column justify-content-center">
-            <label for="entertainmentCheck" class="mx-2">Kvällsunderhållning</label>
+          <div class="d-flex">
             <input class type="checkbox" id="entertainmentCheck" />
+            <label for="entertainmentCheck" class="mx-2">Kvällsunderhållning</label>
           </div>
-          <div class="d-flex flex-column justify-content-center">
-            <label for="barCheck" class="mx-2">Bar</label>
+          <div class="d-flex">
             <input class type="checkbox" id="barCheck" />
+            <label for="barCheck" class="mx-2">Bar</label>
           </div>
-          <div class="d-flex flex-column justify-content-center">
-            <label for="saunaCheck" class="mx-2">Sauna</label>
+          <div class="d-flex">
             <input class type="checkbox" id="saunaCheck" />
+            <label for="saunaCheck" class="mx-2">Sauna</label>
           </div>
         </div>
-        <div class="col-2 d-flex flex-column text-center">
+        <div class="d-flex align-items-center col-4">
+          <div class="d-flex flex-column">
+            <label for="centerDistance">Max distans Centrum</label>
+            <div class="d-flex align-items-center bg-primary">
+              <input class="col-8" type="number" id="centerDistance" value="" />
+              <p class="bg-danger">km</p>
+            </div>
+          </div>
+          <div class="d-flex flex-column">
+            <label for="beachDistance">Max distans Stranden</label>
+            <div class="d-flex align-items-center">
+              <input class="col-8" type="number" id="beachDistance" value="" />
+              <p class="">km</p>
+            </div>
+          </div>
+        </div>
+        <div class="col d-flex flex-column text-center">
           <p>
             <b>Sortera</b>
           </p>
           <div>
             <input class="mr-2" type="radio" id="sortPrice" name="sorting" />
-            <label for="sortPrice">Pris</label>
+            <label for="sortPrice">Pris (billigast)</label>
           </div>
           <div>
             <input class="mr-2" type="radio" id="sortRating" name="sorting" checked="true" />
-            <label for="sortRating">Betyg</label>
+            <label for="sortRating">Betyg (högst)</label>
           </div>
         </div>
       </div>
@@ -220,13 +236,19 @@ export default {
         document.getElementById("barCheck").checked,
         document.getElementById("saunaCheck").checked
       ];
-      let sortBy = document.getElementById("sortPrice").checked==true?"price":"rating"
+      let sortBy =
+        document.getElementById("sortPrice").checked == true
+          ? "price"
+          : "rating";
+      let distances = [document.getElementById("centerDistance").value, 
+                      document.getElementById("beachDistance").value]
       this.$store.dispatch("loadSearchData", [
         country,
         dateRange,
         numGuests,
         amenities,
-        sortBy
+        sortBy,
+        distances
       ]);
     },
     getImageUrl: function(file) {

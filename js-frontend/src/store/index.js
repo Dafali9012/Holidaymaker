@@ -133,8 +133,19 @@ export default new Vuex.Store({
         })
       }
 
-      // sorting
+      // distances : center - beach
+      if(params[5][0]!="") {
+        data = data.filter(item => {
+          return item.kmToCenter <= params[5][0]
+        })
+      }
+      if(params[5][1]!="") {
+         data = data.filter(item => {
+          return item.kmToBeach <= params[5][1]
+        })
+      }
 
+      // sorting
       if(params[4]=="price") {
         data.sort(function(a,b) {
           return a.pricePerNight-b.pricePerNight
