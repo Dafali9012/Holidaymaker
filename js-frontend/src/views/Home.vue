@@ -128,9 +128,9 @@
         <div class="d-flex align-items-center col-4">
           <div class="d-flex flex-column">
             <label for="centerDistance">Max distans Centrum</label>
-            <div class="d-flex align-items-center bg-primary">
+            <div class="d-flex align-items-center">
               <input class="col-8" type="number" id="centerDistance" value="" />
-              <p class="bg-danger">km</p>
+              <p class="">km</p>
             </div>
           </div>
           <div class="d-flex flex-column">
