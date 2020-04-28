@@ -6,7 +6,7 @@ module.exports = function () {
 
 
   this.Given(/^that I'm at the Holidaymaker home page$/, async function () {
-    await helpers.loadPage('http://localhost:8080/');
+    await helpers.loadPage('http://localhost:8081/');
     await sleep(sleepTime * 2);
 
     let text = await $('#homeButton > h2:nth-child(1)');
