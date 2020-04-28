@@ -123,7 +123,7 @@
         <div class="col-sm-12 col-6">
           <div class="form-group">
             <label for="board">Välj tillägg:</label>
-            <select class="form-control" id="optionBoard" v-model="board" @change="updateTotalPrice()">
+            <select class="form-control" id="optionBoard" v-model="board" v-on:change="updateTotalPrice()">
               <option value="NONE" selected="selected">Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
@@ -254,8 +254,18 @@ export default {
       console.log('price extra bed ', this.extraBedPrice)
     },
     updateTotalPrice(){
+      let adultBoardPrice = (this.reservation.numAdults * this.boardPrice) * this.numNights;
+      let kidBoardPrice = (this.reservation.numKids * this.boardPrice) * this.numNights;
+      let totalBoardPrice = adultBoardPrice + kidBoardPrice;
+      console.log('price ADULTS ', adultBoardPrice)
+      console.log('price Kids ', kidBoardPrice)
+      console.log('price TOTAL ', totalBoardPrice)
+
+        if(this.$store.state.home.reservation.extraBed == 0){
+          this.extraBedPrice = 0;
+        }
         let price = this.numNights * this.room.pricePerNight;
-        this.totalPrice = price + (this.boardPrice * this.numNights) + this.extraBedPrice;
+        this.totalPrice = price + adultBoardPrice + kidBoardPrice + this.extraBedPrice;
         this.$store.commit("updateRoomPrice", this.totalPrice);
        console.log('price ', this.totalPrice)   
     },
