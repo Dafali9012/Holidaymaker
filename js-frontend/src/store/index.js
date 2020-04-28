@@ -105,6 +105,15 @@ export default new Vuex.Store({
           return (item.roomType != 'SINGLE')
         })
       }
+
+      // amenities : pool - entertainment - childclub - restaurant
+      console.log(params[3][0]+" "+params[3][1]+" "+params[3][2]+" "+params[3][3])
+      if(params[3][0]) {
+        data = data.filter(item => {
+          return (item.pool == 1)
+        })
+      }
+
       commit('changeSearchData', data)
     },
     async loadRooms({commit}) {

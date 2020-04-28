@@ -199,7 +199,13 @@ export default {
         document.getElementById("kids").value,
         document.getElementById("smallkids").value
       ];
-      this.$store.dispatch("loadSearchData", [country, dateRange, numGuests]);
+      let amenities = [
+        document.getElementById("poolCheck").checked,
+        document.getElementById("entertainmentCheck").checked,
+        document.getElementById("childclubCheck").checked,
+        document.getElementById("restaurantCheck").checked
+      ]
+      this.$store.dispatch("loadSearchData", [country, dateRange, numGuests, amenities]);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
