@@ -21,6 +21,10 @@ public class RoomInformation {
     private int kmToBeach;
     private int kmToCenter;
     private int pricePerNight;
+    private int extraBedPrice;
+    private int hbPrice;
+    private int fbPrice;
+    private int aiPrice;
 
     public RoomInformation() {
     }
@@ -41,9 +45,7 @@ public class RoomInformation {
         return hotelAddress;
     }
 
-    public String getHotelPhone() {
-        return hotelPhone;
-    }
+    public String getHotelPhone() { return hotelPhone; }
 
     public String getCountryName() {
         return countryName;
@@ -72,4 +74,13 @@ public class RoomInformation {
     public int getPricePerNight() {
         return pricePerNight;
     }
+
+    public int getExtraBedPrice() { return extraBedPrice; }
+
+    public int getHbPrice() { return hbPrice; }
+
+    public int getFbPrice() { return fbPrice; }
+
+    public int getAiPrice() { return aiPrice; }
+
 }

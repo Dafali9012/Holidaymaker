@@ -183,7 +183,6 @@ export default {
             console.log("TRYING TO SAVE DATA");
 
       let newRoomReservation = {
-        country_id: document.getElementById("country").value,
         numAdults: document.getElementById("adults").value,
         numKids: document.getElementById("kids").value,
         numSmallKids: document.getElementById("smallkids").value,

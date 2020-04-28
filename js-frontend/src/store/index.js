@@ -9,15 +9,17 @@ export default new Vuex.Store({
       rooms: [],
       searchData: [],
       reservation: {
-        country_id: "",
-        numAdults: "",
-        numKids: "",
-        numSmallKids: "",
-        checkIn: "",
-        checkOut: "",
-        board: "",
+        user: 1,
+        roomId: '',
+        bookingNr: '',
+        numAdults: '',
+        numKids: '',
+        numSmallKids: '',
+        checkIn: '',
+        checkOut: '',
+        board: '',
         extraBed: 0,
-        totalRoomPrice: "",
+        totalRoomPrice: '',
       }
     },
     
@@ -39,6 +41,14 @@ export default new Vuex.Store({
     updateBoard(state, val) {
       state.home.reservation.board = val;
       console.log('board ', val)
+    },
+    updateRoom(state, val) {
+      state.home.reservation.roomId = val;
+      console.log('room ', val)
+    },
+    updateRoomPrice(state, val) {
+      state.home.reservation.totalRoomPrice = val;
+      console.log('total room pricee', val)
     }
   },
   actions: {

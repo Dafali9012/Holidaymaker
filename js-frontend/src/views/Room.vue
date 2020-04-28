@@ -105,7 +105,7 @@
                 <b>Totalpris:</b>
               </p>
               <p style="font-size:18px;margin:0">
-                {{ room.pricePerNight * numNights }}:-
+               {{ totalPrice }}:-
               </p>
               <br />
             </div>
@@ -123,7 +123,7 @@
         <div class="col-sm-12 col-6">
           <div class="form-group">
             <label for="board">Välj tillägg:</label>
-            <select class="form-control" id="optionBoard" v-model="board">
+            <select class="form-control" id="optionBoard" v-model="board" @change="updateTotalPrice()">
               <option value="NONE" selected="selected">Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
@@ -137,6 +137,7 @@
         <div class="col-6">
           <div class="form-check mb-3">
             <input
+              @change="updateTotalPrice()"
               type="checkbox"
               class="form-check-input"
               id="extraBed"
@@ -163,7 +164,7 @@
         </div>
 
         <div class="col-2 text-right">
-          <button class="btn btn-info">Boka nu</button>
+          <button class="btn btn-info">Boka</button>
         </div>
       </div>
     </div>
@@ -174,11 +175,16 @@ export default {
   data() {
     return {
       numNights: "",
+      extraBedPrice: "",
+      boardPrice: "",
+      totalPrice: "",
     };
   },
   created() {
     this.$store.dispatch("loadRooms");
     this.getNumberOfNights();
+    this.setRoomId();
+    this.getTotalPrice();
   },
   computed: {
     room() {
@@ -202,6 +208,7 @@ export default {
       },
       set(n) {
         this.$store.commit("updateExtraBed", n);
+        this.updateBedPrice();
       }
     },
     board: {
@@ -210,8 +217,10 @@ export default {
       },
       set(value) {
         this.$store.commit("updateBoard", value);
+        this.boardPrice = this.updateBoardPrice(value);
+        console.log('board price ', this.boardPrice)
       }
-    }
+    },
   },
   methods: {
     getImageUrl: function(file) {
@@ -224,6 +233,33 @@ export default {
       var timeDiff = Math.abs(date2.getTime() - date1.getTime());
       return (this.numNights = Math.ceil(timeDiff / (1000 * 3600 * 24)));
     },
+    setRoomId(){
+      this.$store.commit("updateRoom", this.room.roomId);
+    },
+    getTotalPrice(){
+      this.totalPrice = this.numNights * this.room.pricePerNight;
+    },
+    updateBoardPrice(value){
+      console.log('value for board ', value)
+      if(value == "HB"){
+          return this.room.hbPrice;
+        }else if(value == "FB"){
+          return this.room.fbPrice;
+        }else if(value == "AI"){
+          return this.room.aiPrice;
+        }else return 0;
+    },
+    updateBedPrice(){
+      this.extraBedPrice = this.room.extraBedPrice;
+      console.log('price extra bed ', this.extraBedPrice)
+    },
+    updateTotalPrice(){
+        let price = this.numNights * this.room.pricePerNight;
+        this.totalPrice = price + (this.boardPrice * this.numNights) + this.extraBedPrice;
+        this.$store.commit("updateRoomPrice", this.totalPrice);
+       console.log('price ', this.totalPrice)   
+    },
+   
   },
 };
 </script>
