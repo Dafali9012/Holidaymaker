@@ -106,22 +106,37 @@
           <option value="9">9</option>
         </select>
       </div>
-      <div class="row m-2">
-        <div class="d-flex flex-column justify-content-center">
-          <label for="poolCheck" class="mx-2">Pool</label>
-          <input class type="checkbox" id="poolCheck" />
+      <div class="row">
+        <div class="col-10 d-flex">
+          <div class="d-flex flex-column justify-content-center">
+            <label for="poolCheck" class="mx-2">Pool</label>
+            <input class type="checkbox" id="poolCheck" />
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <label for="entertainmentCheck" class="mx-2">Kvällsunderhållning</label>
+            <input class type="checkbox" id="entertainmentCheck" />
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <label for="barCheck" class="mx-2">Bar</label>
+            <input class type="checkbox" id="barCheck" />
+          </div>
+          <div class="d-flex flex-column justify-content-center">
+            <label for="saunaCheck" class="mx-2">Sauna</label>
+            <input class type="checkbox" id="saunaCheck" />
+          </div>
         </div>
-        <div class="d-flex flex-column justify-content-center">
-          <label for="entertainmentCheck" class="mx-2">Kvällsunderhållning</label>
-          <input class type="checkbox" id="entertainmentCheck" />
-        </div>
-        <div class="d-flex flex-column justify-content-center">
-          <label for="childclubCheck" class="mx-2">Barnklubb</label>
-          <input class type="checkbox" id="childclubCheck" />
-        </div>
-        <div class="d-flex flex-column justify-content-center">
-          <label for="restaurantCheck" class="mx-2">Restaurang</label>
-          <input class type="checkbox" id="restaurantCheck" />
+        <div class="col-2 d-flex flex-column text-center">
+          <p>
+            <b>Sortera</b>
+          </p>
+          <div>
+            <input class="mr-2" type="radio" id="sortPrice" name="sorting" />
+            <label for="sortPrice">Pris</label>
+          </div>
+          <div>
+            <input class="mr-2" type="radio" id="sortRating" name="sorting" checked="true" />
+            <label for="sortRating">Betyg</label>
+          </div>
         </div>
       </div>
       <button
@@ -202,21 +217,28 @@ export default {
       let amenities = [
         document.getElementById("poolCheck").checked,
         document.getElementById("entertainmentCheck").checked,
-        document.getElementById("childclubCheck").checked,
-        document.getElementById("restaurantCheck").checked
-      ]
-      this.$store.dispatch("loadSearchData", [country, dateRange, numGuests, amenities]);
+        document.getElementById("barCheck").checked,
+        document.getElementById("saunaCheck").checked
+      ];
+      let sortBy = document.getElementById("sortPrice").checked==true?"price":"rating"
+      this.$store.dispatch("loadSearchData", [
+        country,
+        dateRange,
+        numGuests,
+        amenities,
+        sortBy
+      ]);
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
     },
     returnCapacity(roomType) {
-      if(roomType=="SINGLE") return 1;
-      if(roomType=="DOUBLE") return 2;
-      if(roomType=="STUDIO") return 4;
+      if (roomType == "SINGLE") return 1;
+      if (roomType == "DOUBLE") return 2;
+      if (roomType == "STUDIO") return 4;
     },
     reserveRoomValues: function() {
-            console.log("TRYING TO SAVE DATA");
+      console.log("TRYING TO SAVE DATA");
 
       let newRoomReservation = {
         country_id: document.getElementById("country").value,
@@ -224,11 +246,11 @@ export default {
         numKids: document.getElementById("kids").value,
         numSmallKids: document.getElementById("smallkids").value,
         checkIn: document.getElementById("checkIn").value,
-        checkOut: document.getElementById("checkOut").value,
+        checkOut: document.getElementById("checkOut").value
       };
-      console.log('reserve room data', this.newRoomReservation)
+      console.log("reserve room data", this.newRoomReservation);
       this.$store.dispatch("reserveRoomData", newRoomReservation);
-  }
+    }
   }
 };
 </script>
