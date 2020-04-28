@@ -13,11 +13,11 @@
       <p class="font-weight-bold">Logga in</p>
       <div class="row d-flex mt-4">
       <input type="text" name="username" class="form-control col-4 ml-3" placeholder=" " required />
-      <label for="username" class="col-9 formlabel mt-2 ml-2">Username</label>
+      <label for="username" class="col-9 formlabel mt-2 ml-2">Email</label>
       </div>
       <div class="row d-flex mt-4">
       <input type="password" name="password" class="form-control col-4 ml-3" placeholder=" " required />
-      <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
+      <label for="password" class="col-9 formlabel mt-2 ml-2">Lösenord</label>
       </div>
       <button type="submit" class="btn btn-info border mt-4" id="submitButton">Logga in</button>
     </form>

@@ -12,6 +12,8 @@ public class RoomInformation {
     private long roomId;
     private String imgLink;
     private String hotelName;
+    private String hotelAddress;
+    private String hotelPhone;
     private String countryName;
     private String cityName;
     private String roomType;
@@ -33,6 +35,14 @@ public class RoomInformation {
 
     public String getHotelName() {
         return hotelName;
+    }
+
+    public String getHotelAddress() {
+        return hotelAddress;
+    }
+
+    public String getHotelPhone() {
+        return hotelPhone;
     }
 
     public String getCountryName() {
