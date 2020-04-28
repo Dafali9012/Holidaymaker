@@ -107,6 +107,7 @@
         type="submit"
         class="align-self-center btn btn-info border col-4 mt-3"
         id="searchButton"
+        @click="reserveRoomValues()"
       >Sök</button>
     </form>
     <div class="container bg-light">
@@ -122,7 +123,9 @@
           <div class="d-flex flex-column align-items-start text-left flex-grow-1 my-3 ml-3">
             <p style="font-size:16px;margin:0"><b>{{room.hotelName}}</b></p>
             <p style="font-size:12px;margin:0">
-              {{room.cityName}}
+              {{room.countryName+' - '+room.cityName}}
+              <br />
+              {{room.roomType}} 👤 {{returnCapacity(room.roomType)}}
               <br />
               {{room.kmToCenter}} km till centrum
               <br />
@@ -136,7 +139,7 @@
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <router-link :to="'/room/'+room.roomId">
-              <button class="btn btn-info">Boka rum</button>
+              <button class="btn btn-info">Info</button>
             </router-link>
           </div>
         </div>
@@ -152,7 +155,7 @@ export default {
       countries: []
     };
   },
-  mounted() {
+  created() {
     this.getCountries();
   },
   methods: {
@@ -170,7 +173,26 @@ export default {
     },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
-    }
+    },
+    returnCapacity(roomType) {
+      if(roomType=="SINGLE") return 1;
+      if(roomType=="DOUBLE") return 2;
+      if(roomType=="STUDIO") return 4;
+    },
+    reserveRoomValues: function() {
+            console.log("TRYING TO SAVE DATA");
+
+      let newRoomReservation = {
+        country_id: document.getElementById("country").value,
+        numAdults: document.getElementById("adults").value,
+        numKids: document.getElementById("kids").value,
+        numSmallKids: document.getElementById("smallkids").value,
+        checkIn: document.getElementById("checkIn").value,
+        checkOut: document.getElementById("checkOut").value,
+      };
+      console.log('reserve room data', this.newRoomReservation)
+      this.$store.dispatch("reserveRoomData", newRoomReservation);
+  }
   }
 };
 </script>
