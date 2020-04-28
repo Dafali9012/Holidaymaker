@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     home: {
+
       rooms: [],
       searchData: [],
       reservation: {
@@ -21,16 +22,19 @@ export default new Vuex.Store({
       }
     },
     
+
   },
   mutations: {
     changeSearchData(state, value) {
       state.home.searchData = value
     },
+
     loadRooms(state, value) {
       state.home.rooms = value
     },
     changeReservationData(state, value) {
       state.home.reservation = value
+
     }
   },
   actions: {
@@ -93,7 +97,7 @@ export default new Vuex.Store({
       }
 
       // number of guests
-      let numGuests = parseInt(params[2][0],10) + parseInt(params[2][1],10)
+      let numGuests = parseInt(params[2][0], 10) + parseInt(params[2][1], 10)
       if (numGuests > 4) {
         data = []
       } else if (numGuests > 2) {
@@ -107,6 +111,7 @@ export default new Vuex.Store({
       }
       commit('changeSearchData', data)
     },
+
     async loadRooms({commit}) {
       let response = await fetch("http://localhost:8080/roominfo")
       let result = await response.json()
@@ -114,6 +119,7 @@ export default new Vuex.Store({
     },
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
+
     }
   },
   getters: {
