@@ -21,16 +21,15 @@
     >
       <p class="font-weight-bold">Logga in</p>
       <div class="row d-flex mt-4">
-
         <input
           v-model="email"
           type="text"
-          name="username"
+          name="email"
           class="form-control col-4 ml-3"
-          placeholder = " "
+          placeholder=" "
           required
         />
-        <label for="username" class="col-9 formlabel mt-2 ml-2">Username</label>
+        <label for="email" class="col-9 formlabel mt-2 ml-2">email</label>
       </div>
       <div class="row d-flex mt-4">
         <input
@@ -38,7 +37,7 @@
           type="password"
           name="password"
           class="form-control col-4 ml-3"
-          placeholder = " "
+          placeholder=" "
           required
         />
         <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
@@ -58,16 +57,16 @@ export default {
     };
   },
   methods: {
-    async springLogin() {
+    springLogin: async function() {
       const credentials =
         "username=" +
         encodeURIComponent(this.email) +
         "&password=" +
         encodeURIComponent(this.password);
 
-      let response = await fetch("/login", {
+      let response = await fetch("/rest/login", {
         method: "POST",
-        //redirect: "manual",
+        redirect: "manual",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: credentials
       });
