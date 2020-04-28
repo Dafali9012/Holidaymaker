@@ -22,12 +22,21 @@
     <div class="row">
       <div class="col ml-2 mt-0">Du har bokat följande:</div>
       </div>
-        <div class="container border rounded py-3 text-left">
-            <div class="row">
-           <div class="col bookingContent">
-               <p>{{reservationsByCurrentUser}}</p>  
-              
-            </div>
+        <div class="container border rounded py-3 text-left allBookings">
+            <div v-for="booking in reservationsByCurrentUser" :key="booking.message">
+              <div class="row singleBooking mt-3 border-bottom">
+              <div class="col-9">
+              <p><strong>Bokningsnummer:</strong> {{booking.bookingNumber}}</p>
+              <p><strong>Antal rum:</strong> {{booking.numberOfRooms}}</p>
+              <p><strong>Check In:</strong> {{booking.checkIn}}</p>
+              <p><strong>Check Out:</strong> {{booking.checkOut}}</p>
+              <p><strong>Pris:</strong> {{booking.totalPrice}}</p>
+              </div>
+              <div class="col-3">
+              <button type="button" class="disabled btn btn-info border mr-2" id="editBooking">Ändra</button>
+              <button type="button" class="btn btn-info border" id="cancelBooking" v-on:click="deleteReservation(booking.bookingNumber)">Avboka</button>
+              </div>
+              </div>
             </div>
         </div>
     </div>
@@ -38,11 +47,12 @@ export default {
   data() {
     return {
       reservationsByCurrentUser: [],
-    };
+    }
     },
     created: function(){
-      this.getUserReservations()
-    },
+      this.getUserReservations();
+
+    },    
     methods: {
     getUserReservations: async function () {
       let url = "http://localhost:8080/reservation";
@@ -55,9 +65,20 @@ export default {
         }
       });
       console.log(this.reservations)
-      console.log(this.reservations[0].userId)
       console.log(this.reservationsByCurrentUser)
+    },      
+    deleteReservation: async function(bookingId) {
+      console.log("deleteReservation() called");
+      const reservationToDelete = bookingId;
+      const url = "http://localhost:8080/reservation/"+reservationToDelete;
+      console.log(reservationToDelete, "will be deleted")
+      if (reservationToDelete){
+      const result = await fetch(url, { method: "DELETE"});
+      window.confirm("Din bokning med bokningsnummer: " + reservationToDelete + " har avbokats.")
+      console.log(result)
+      this.$router.go()
+      }
     }
-    }
+}
 }
 </script>

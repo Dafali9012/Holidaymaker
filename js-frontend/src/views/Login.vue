@@ -21,6 +21,7 @@
     >
       <p class="font-weight-bold">Logga in</p>
       <div class="row d-flex mt-4">
+
         <input
           v-model="email"
           type="text"
@@ -56,18 +57,7 @@ export default {
       password: ""
     };
   },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    }
-  },
   methods: {
-    submit() {
-      this.$store.dispatch("login", {
-        email: this.email,
-        password: this.password
-      });
-    },
     async springLogin() {
       const credentials =
         "username=" +
@@ -83,7 +73,7 @@ export default {
       });
 
       if (response.url.includes("error")) {
-        console.log("Wrong username/password");
+        window.confirm("Inloggningen misslyckades");
       } else {
         this.$router.push("/");
       }
