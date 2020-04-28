@@ -27,7 +27,7 @@
           type="text"
           name="username"
           class="form-control col-4 ml-3"
-          placeholder
+          placeholder = " "
           required
         />
         <label for="username" class="col-9 formlabel mt-2 ml-2">Username</label>
@@ -38,7 +38,7 @@
           type="password"
           name="password"
           class="form-control col-4 ml-3"
-          placeholder
+          placeholder = " "
           required
         />
         <label for="password" class="col-9 formlabel mt-2 ml-2">Password</label>
