@@ -7,9 +7,21 @@ export default new Vuex.Store({
   state: {
     home: {
       rooms: [],
-      searchData: []
+      searchData: [],
+      reservation: {
+        country_id: "",
+        numAdults: "",
+        numKids: "",
+        numSmallKids: "",
+        checkIn: "",
+        checkOut: "",
+        numberOfNights: "",
+        board: "",
+        extraBed: "",
+        totalRoomPrice: "",
+      }
     },
-    reservedRoom: {}
+    
   },
   mutations: {
     changeSearchData(state, value) {
@@ -18,8 +30,8 @@ export default new Vuex.Store({
     loadRooms(state, value) {
       state.home.rooms = value
     },
-    changeReservedRoomsData(state, value) {
-      state.reservedRoom = value
+    changeReservationData(state, value) {
+      state.home.reservation = value
     }
   },
   actions: {
@@ -102,12 +114,12 @@ export default new Vuex.Store({
       commit('loadRooms', result)
     },
     reserveRoomData({commit}, newRoomReservation) {
-      commit('changeReservedRoomsData', newRoomReservation)
+      commit('changeReservationData', newRoomReservation)
     }
   },
   getters: {
     RESERVEDROOM: state => {
-      return state.reservedRoom;
+      return state.home.reservation;
     }
   },  
   modules: {}
