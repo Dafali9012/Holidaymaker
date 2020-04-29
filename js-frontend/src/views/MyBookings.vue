@@ -6,7 +6,8 @@
           <h2>Bachman Hendricks</h2>
         </button>
       </router-link>
-      <div>
+      <div class="align-self-center">
+          <button type="button" class="disabled btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
@@ -58,6 +59,10 @@ export default {
       let url = "http://localhost:8080/reservation";
       const result = await fetch(url);
       this.reservations = await result.json();
+      let userUrl = "http://localhost:8080/name";
+      const userResult = await fetch(userUrl);
+      let foundUser = await userResult.json();
+      console.log(foundUser)
       const currentUser = 5; //Ändra till önskat userId
       this.reservations.forEach(element => {
         if (currentUser == element.userId){         
