@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loggedInUser : {},
+    loggedInUser : { userId:0 },
     home: {
       rooms: [],
       searchData: [],
@@ -33,6 +33,9 @@ export default new Vuex.Store({
     changeReservationData(state, value) {
       state.home.reservation = value
 
+    },
+    changeLoggedUser(state, value) {
+      state.loggedInUser = value
     }
   },
   actions: {
@@ -164,6 +167,12 @@ export default new Vuex.Store({
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
     },
+    async updateLoggedUser({commit}) {
+      let response = await fetch("login/name")
+      let result = await response.json()
+      console.log(result)
+      commit('changeLoggedUser', result)
+    }
   },
   getters: {
     RESERVEDROOM: state => {
