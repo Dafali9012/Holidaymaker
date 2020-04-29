@@ -28,4 +28,8 @@ public class ReservedRoomController {
     public ReservedRoom addReservedRoom(@RequestBody ReservedRoom rr) {
         return reservedRoomRep.save(rr);
     }
+    @DeleteMapping("{id}")
+    public void deleteReservationById(@PathVariable long id) {
+        reservedRoomRep.deleteById(id);
+    }
 }
