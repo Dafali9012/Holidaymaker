@@ -58,21 +58,19 @@ module.exports = function () {
   this.Given(/^I click the Registrera button and Popup shows that the signup is done$/, async function () {
     let signupButton = await $('#submitButton')
     await signupButton.click();
-    await sleep(sleepTime);
+    await sleep(sleepTime) * 2;
   });
 
   this.When(/^I close the popup$/, async function () {
-    console.log(driver.window_handles)
-
-    driver.switch_to_window(driver.window_handles[1])
-    driver.close();
-
-    driver.switch_to_window(driver.window_handles[0])
+    await sleep(sleepTime);
+    await driver.wait(until.alertIsPresent());
+    let alert = await driver.switchTo().alert();
+    let alertText = await alert.getText();
+    await alert.accept();
     await sleep(sleepTime);
   });
 
-
-  this.Then(/^Signip is done and get back to the main page\.$/, async function () {
+  this.Then(/^Signup is done\.$/, async function () {
     let text = await $('#homeButton > h2:nth-child(1)');
     let logoText = await text.getText();
     assert.include(logoText, "Bachman Hendricks", 'You could not get the correct page.');
@@ -110,30 +108,45 @@ module.exports = function () {
     await sleep(sleepTime);
   });
 
+  this.Then(/^I am logged in\.$/, async function () {
+    let text = await $('.font-weight-bold');
+    let searchText = await text.getText();
+    assert.include(searchText, "boende:", 'You could not get the correct page.');
+    await sleep(sleepTime);
+  });
+
   this.When(/^I choose Frankrike$/, async function () {
     let countryDrop = await $('#country > option:nth-child(2)');
     await countryDrop.click();
     await sleep(sleepTime);
   });
 
-  this.Given(/^I enter check\-in date$/, async function () {
-    await sleep(sleepTime)
+  this.When(/^I enter check\-in date$/, async function () {
     let checkinDate = await $('#checkIn')
     await checkinDate.click();
-    await checkinDate.sendKeys('01052020');
+    await checkinDate.sendKeys('01');
+    await checkinDate.sendKeys('05');
+    await checkinDate.sendKeys('2020');
     await sleep(sleepTime);
+
+
+
+
+
+
+    //let checkinDate = await $('#checkIn')
+    //await sleep(sleepTime);
+
+    //await checkinDate.clear() 
+
+
   });
 
-  this.Given(/^I enter check\-out date$/, async function () {
-    await sleep(sleepTime)
-
-    find_elements_by_xpath//*[@id="checkIn"]
+  this.When(/^I enter check\-out date$/, async function () {
 
     let checkoutDate = await $('#checkOut')
     await checkoutDate.click();
-
-
-    await checkoutDate.sendKeys('05052020');
+    await checkoutDate.sendKeys('03052020');
     await sleep(sleepTime);
   });
 
@@ -160,4 +173,10 @@ module.exports = function () {
     await searchButton.click();
     await sleep(sleepTime);
   });
+
+  this.Then(/^The page shows the results\.$/, async function () {
+
+
+  });
+
 }
