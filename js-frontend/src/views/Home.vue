@@ -5,6 +5,9 @@
           <h2>Bachman Hendricks</h2>
         </button>
       <div class="align-self-center">
+                  <router-link to="/myBookings">
+          <button type="button" class="btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
+        </router-link>
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
@@ -211,8 +214,8 @@ export default {
     this.getCountries();
   },
   methods: {
-    test() {
-      console.log(this.$store.state.loggedInUser)
+    async test() {
+      console.log(this.$store.dispatch('getLoggedUser'))
     },
     getCountries: async function() {
       let url = "http://localhost:8080/country";

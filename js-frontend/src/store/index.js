@@ -33,6 +33,9 @@ export default new Vuex.Store({
     changeReservationData(state, value) {
       state.home.reservation = value
 
+    },
+    changeLoggedUser(state, value) {
+      state.loggedInUser = value
     }
   },
   actions: {
@@ -164,6 +167,13 @@ export default new Vuex.Store({
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
     },
+    async getLoggedUser(/*{commit}*/) {
+      let response = await fetch("login/name")
+      let result = await response.json()
+      console.log(result.userId)
+      return result.userId
+      //commit('changeLoggedUser', result)
+    }
   },
   getters: {
     RESERVEDROOM: state => {
