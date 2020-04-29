@@ -8,7 +8,15 @@
           <h2>Bachman Hendricks</h2>
         </button>
       </router-link>
-      <div class="align-self-center">
+      <div v-if="this.$store.state.loggedInUser.userId" class="align-self-center">
+        <router-link to="/myBookings">
+          <button type="button" class="btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
+        </router-link>
+        <a href="http://localhost:8080/logout">
+          <button type="button" class="btn btn-info border" id="logoutButton">Logga ut</button>
+        </a>
+      </div>
+      <div v-else class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">
             Registrera
@@ -255,6 +263,9 @@ export default {
     },
   },
   methods: {
+    logout() {
+      this.$store.dispatch('logout')
+    },
     getImageUrl: function(file) {
       return require("../assets/images/" + file);
     },

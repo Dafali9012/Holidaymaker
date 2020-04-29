@@ -4,9 +4,6 @@
       <router-link to="/"><button class="btn btn-info" id="homeButton"><h2>Bachman Hendricks</h2></button></router-link>
 
       <div class="align-self-center">
-                      <router-link to="/myBookings">
-          <button type="button" class="btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
-        </router-link>
         <button type="button" class="btn btn-info border disabled mr-2" id="regButton">Registrera</button>
         <router-link to="/login">
           <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>

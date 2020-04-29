@@ -8,12 +8,9 @@
       </router-link>
       <div class="align-self-center">
           <button type="button" class="disabled btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
-        <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
-        </router-link>
-        <router-link to="/login">
-          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
-        </router-link>
+        <a href="http://localhost:8080/logout">
+          <button type="button" class="btn btn-info border" id="logoutButton">Logga ut</button>
+        </a>
       </div>
     </div>
     <div class="container border rounded py-3 text-left bg-light">
@@ -55,6 +52,9 @@ export default {
 
     },    
     methods: {
+      logout() {
+      this.$store.dispatch('logout')
+    },
     getUserReservations: async function () {
       let url = "http://localhost:8080/reservation";
       const result = await fetch(url);
