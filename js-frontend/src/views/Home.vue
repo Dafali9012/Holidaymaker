@@ -9,9 +9,9 @@
         <router-link to="/myBookings">
           <button type="button" class="btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
         </router-link>
-        <router-link to="/">
+        <a href="http://localhost:8080/logout">
           <button v-on:click="logout" type="button" class="btn btn-info border" id="logoutButton">Logga ut</button>
-        </router-link>
+        </a>
       </div>
       <div v-else class="align-self-center">
         <router-link to="/register">

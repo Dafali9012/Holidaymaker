@@ -8,9 +8,9 @@
       </router-link>
       <div class="align-self-center">
           <button type="button" class="disabled btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
-        <router-link to="/">
+        <a href="http://localhost:8080/logout">
           <button type="button" class="btn btn-info border" id="logoutButton">Logga ut</button>
-        </router-link>
+        </a>
       </div>
     </div>
     <div class="container border rounded py-3 text-left bg-light">
