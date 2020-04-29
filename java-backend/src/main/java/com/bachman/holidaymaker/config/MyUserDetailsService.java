@@ -25,7 +25,7 @@ public class MyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
         if (user == null) {
-            throw new UsernameNotFoundException("User not found by name: " + email);
+            throw new UsernameNotFoundException("User not found by email: " + email);
         }
         return toUserDetails(user);
     }
@@ -46,6 +46,7 @@ public class MyUserDetailsService implements UserDetailsService {
         return null;
 
     }
+
     private UserDetails toUserDetails(User user) {
         // If you have a User entity you have to
         // use the userdetails User for this to work
@@ -54,4 +55,5 @@ public class MyUserDetailsService implements UserDetailsService {
                 .password(user.getPassword())
                 .roles("USER").build();
     }
+
 }
