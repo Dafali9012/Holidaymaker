@@ -1,13 +1,19 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-        <button v-on:click="test" class="btn btn-info" id="homeButton">
-          <h2>Bachman Hendricks</h2>
-        </button>
-      <div class="align-self-center">
-                  <router-link to="/myBookings">
+      <button v-on:click="test" class="btn btn-info" id="homeButton">
+        <h2>Bachman Hendricks</h2>
+      </button>
+
+      <div v-if="this.$store.state.loggedInUser.userId" class="align-self-center">
+        <router-link to="/myBookings">
           <button type="button" class="btn btn-info border mr-2" id="myBookingsButton">Min sida</button>
         </router-link>
+        <a href="http://localhost:8080/logout">
+          <button v-on:click="logout" type="button" class="btn btn-info border" id="logoutButton">Logga ut</button>
+        </a>
+      </div>
+      <div v-else class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
         </router-link>
@@ -15,6 +21,7 @@
           <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
         </router-link>
       </div>
+
     </div>
     <form
       @submit.prevent="performSearch()"
@@ -77,10 +84,6 @@
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
         </select>
         <select class="border rounded col-md-1" name="kids" id="kids">
           <option value="0">0</option>
@@ -89,10 +92,6 @@
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
         </select>
         <select class="border rounded col-md-1" name="smallkids" id="smallkids">
           <option value="0">0</option>
@@ -101,10 +100,6 @@
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
         </select>
       </div>
       <div class="row">
@@ -130,15 +125,15 @@
           <div class="d-flex flex-column">
             <label for="centerDistance">Max distans Centrum</label>
             <div class="d-flex align-items-center">
-              <input class="col-8" type="number" id="centerDistance" value="" />
-              <p class="">km</p>
+              <input class="col-8" type="number" id="centerDistance" value />
+              <p class>km</p>
             </div>
           </div>
           <div class="d-flex flex-column">
             <label for="beachDistance">Max distans Stranden</label>
             <div class="d-flex align-items-center">
-              <input class="col-8" type="number" id="beachDistance" value="" />
-              <p class="">km</p>
+              <input class="col-8" type="number" id="beachDistance" value />
+              <p class>km</p>
             </div>
           </div>
         </div>
@@ -215,7 +210,10 @@ export default {
   },
   methods: {
     async test() {
-      console.log(this.$store.dispatch('getLoggedUser'))
+      
+    },
+    logout() {
+      this.$store.dispatch('logout')
     },
     getCountries: async function() {
       let url = "http://localhost:8080/country";
@@ -244,8 +242,10 @@ export default {
         document.getElementById("sortPrice").checked == true
           ? "price"
           : "rating";
-      let distances = [document.getElementById("centerDistance").value, 
-                      document.getElementById("beachDistance").value]
+      let distances = [
+        document.getElementById("centerDistance").value,
+        document.getElementById("beachDistance").value
+      ];
       this.$store.dispatch("loadSearchData", [
         country,
         dateRange,
@@ -267,7 +267,7 @@ export default {
       console.log("TRYING TO SAVE DATA");
 
       let newRoomReservation = {
-        country_id: document.getElementById("country").value,
+        user: this.$store.state.loggedInUser.userId,
         numAdults: document.getElementById("adults").value,
         numKids: document.getElementById("kids").value,
         numSmallKids: document.getElementById("smallkids").value,
