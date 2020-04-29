@@ -63,9 +63,28 @@ export default {
       if(result.ok) {
         console.log("post ok\nname: "+newUser.name+" "+newUser.phonenumber)
         window.confirm("Hej "+ newUser.name + ", du har lyckats med registreringen!")
+        const credentials =
+        "username=" +
+        encodeURIComponent(this.email) +
+        "&password=" +
+        encodeURIComponent(this.password);
+
+      let response = await fetch("/rest/login", {
+        method: "POST",
+        redirect: "manual",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: credentials
+      });
+
+      if (response.url.includes("error")) {
+        window.confirm("Inloggningen misslyckades");
+      } else {
+        this.$store.dispatch('updateLoggedUser')
+        this.$router.push("/");
+      }
+    }
       
       }
     }
-  }
-};
+  };
 </script>
