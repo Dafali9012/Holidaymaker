@@ -1,12 +1,10 @@
 package com.bachman.holidaymaker.rest;
 
 import com.bachman.holidaymaker.entity.ReservedRoom;
+import com.bachman.holidaymaker.entity.User;
 import com.bachman.holidaymaker.repository.ReservedRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -14,15 +12,20 @@ import java.util.Collections;
 @RequestMapping("/reservedroom")
 public class ReservedRoomController {
     @Autowired
-    private ReservedRoomRepository reservedRoomRepository;
+    private ReservedRoomRepository reservedRoomRep;
 
     @GetMapping()
     public Iterable<ReservedRoom> getAllReservedRooms() {
-        return reservedRoomRepository.findAll();
+        return reservedRoomRep.findAll();
     }
 
     @GetMapping("{id}")
     public Iterable<ReservedRoom> reservedRoomById(@PathVariable long id){
-        return this.reservedRoomRepository.findAllById(Collections.singleton(id));
+        return this.reservedRoomRep.findAllById(Collections.singleton(id));
+    }
+
+    @PostMapping
+    public ReservedRoom addReservedRoom(@RequestBody ReservedRoom rr) {
+        return reservedRoomRep.save(rr);
     }
 }

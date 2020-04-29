@@ -71,40 +71,28 @@
         />
 
         <select class="border rounded col-md-1" name="adults" id="adults">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
         </select>
         <select class="border rounded col-md-1" name="kids" id="kids">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
         </select>
         <select class="border rounded col-md-1" name="smallkids" id="smallkids">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
         </select>
       </div>
       <div class="row">
@@ -207,7 +195,7 @@
 export default {
   data() {
     return {
-      countries: []
+      countries: [],
     };
   },
   created() {
@@ -267,7 +255,7 @@ export default {
       console.log("TRYING TO SAVE DATA");
 
       let newRoomReservation = {
-        country_id: document.getElementById("country").value,
+        user: 6,
         numAdults: document.getElementById("adults").value,
         numKids: document.getElementById("kids").value,
         numSmallKids: document.getElementById("smallkids").value,
