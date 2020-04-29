@@ -273,7 +273,8 @@ export default {
         numSmallKids: document.getElementById("smallkids").value,
         checkIn: document.getElementById("checkIn").value,
         checkOut: document.getElementById("checkOut").value,
-        extraBed: '0'
+        extraBed: '0',
+        board: 'NONE'
       };
       console.log("reserve room data", this.newRoomReservation);
       this.$store.dispatch("reserveRoomData", newRoomReservation);

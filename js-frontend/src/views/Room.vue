@@ -281,8 +281,8 @@ export default {
     },
     getTotalPrice() {
       let price = this.numNights * this.room.pricePerNight;
+      this.$store.commit("updateRoomPrice", price);
       this.totalPrice = this.addComma(price);
-      console.log("total price ", this.totalPrice);
     },
     updateBoardPrice(value) {
       if (value == "HB") {
