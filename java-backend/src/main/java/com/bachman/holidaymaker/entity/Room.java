@@ -1,6 +1,8 @@
 package com.bachman.holidaymaker.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Room {
@@ -20,6 +22,9 @@ public class Room {
 
     @Column(name = "PricePerNight")
     private String pricePerNight;
+
+    @ManyToMany(mappedBy = "bookedRooms")
+    private Set<User> users = new HashSet<>();
 
     public Room() {
     }

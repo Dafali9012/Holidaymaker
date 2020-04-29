@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -21,6 +23,16 @@ public class User {
     private String address;
     @Column(name = "PhoneNumber")
     private String phonenumber;
+
+
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "reservedRoom",
+            joinColumns = { @JoinColumn(name = "userId") },
+            inverseJoinColumns = { @JoinColumn(name = "RoomId") }
+    )
+    Set<Room> bookedRooms = new HashSet<>();
 
     public User() {
     }
@@ -58,5 +70,9 @@ public class User {
 
     public String getPhonenumber() {
         return phonenumber;
+    }
+
+    public Set<Room> getBookedRooms() {
+        return bookedRooms;
     }
 }
