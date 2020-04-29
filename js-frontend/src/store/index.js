@@ -188,6 +188,13 @@ export default new Vuex.Store({
       let response = await fetch("login/name")
       let result = await response.json()
       commit('changeLoggedUser', result)
+    },
+    async logout() {
+      /*
+      let response = await fetch("/login/logout")
+      await response
+      this.$router.push('/')
+      */
     }
   },
   
