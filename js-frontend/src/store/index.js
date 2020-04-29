@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loggedInUser : { userId:0 },
+    loggedInUser : {},
     home: {
       rooms: [],
       searchData: [],
@@ -167,11 +167,12 @@ export default new Vuex.Store({
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
     },
-    async updateLoggedUser({commit}) {
+    async getLoggedUser(/*{commit}*/) {
       let response = await fetch("login/name")
       let result = await response.json()
-      console.log(result)
-      commit('changeLoggedUser', result)
+      console.log(result.userId)
+      return result.userId
+      //commit('changeLoggedUser', result)
     }
   },
   getters: {

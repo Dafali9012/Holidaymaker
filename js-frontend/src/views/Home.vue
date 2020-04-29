@@ -212,8 +212,7 @@ export default {
   },
   methods: {
     async test() {
-      this.$store.dispatch('updateLoggedUser')
-      //console.log(this.$store.state.loggedInUser)
+      console.log(this.$store.dispatch('getLoggedUser'))
     },
     getCountries: async function() {
       let url = "http://localhost:8080/country";
