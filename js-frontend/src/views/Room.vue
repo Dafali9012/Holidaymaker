@@ -196,7 +196,7 @@
         </div>
 
         <div class="col-2 text-right">
-          <button class="btn btn-info" @click="completeReservation()">
+          <button class="btn btn-info" @click="rejectReservation()">
             Boka
           </button>
         </div>
@@ -328,7 +328,15 @@ export default {
         return num;
       });
     },
+    rejectReservation() {
+      if(this.$store.state.loggedInUser.userId) {
+        this.completeReservation()
+      } else {
+        this.$router.push('/register')
+      }
+    },
     completeReservation: async function() {
+      console.log(this.$store.state.loggedInUser.userId)
       let reservedRoom = this.$store.state.home.reservation;
       console.log("reservation submitted", reservedRoom);
 
@@ -352,6 +360,6 @@ export default {
 <style scoped>
 .image {
   width: 100%;
-  height: 80%;
+  height: 50%;
 }
 </style>

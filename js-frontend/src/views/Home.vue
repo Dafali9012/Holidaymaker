@@ -267,7 +267,7 @@ export default {
       console.log("TRYING TO SAVE DATA");
 
       let newRoomReservation = {
-        user: 6,
+        user: this.$store.state.loggedInUser.userId,
         numAdults: document.getElementById("adults").value,
         numKids: document.getElementById("kids").value,
         numSmallKids: document.getElementById("smallkids").value,
