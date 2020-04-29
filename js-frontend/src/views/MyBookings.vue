@@ -59,11 +59,9 @@ export default {
       let url = "http://localhost:8080/reservation";
       const result = await fetch(url);
       this.reservations = await result.json();
-      let userUrl = "http://localhost:8080/name";
-      const userResult = await fetch(userUrl);
-      let foundUser = await userResult.json();
-      console.log(foundUser)
-      const currentUser = 5; //Ändra till önskat userId
+      let userResponse = await fetch("login/name")
+      let userResult = await userResponse.json()
+      const currentUser = userResult.userId //Ändra till önskat userId
       this.reservations.forEach(element => {
         if (currentUser == element.userId){         
           this.reservationsByCurrentUser.push(element)
