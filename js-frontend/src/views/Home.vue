@@ -203,7 +203,7 @@ export default {
   },
   methods: {
     async test() {
-      console.log(this.$store.dispatch('getLoggedUser'))
+      console.log(this.$store.state.loggedInUser.userId)
     },
     getCountries: async function() {
       let url = "http://localhost:8080/country";

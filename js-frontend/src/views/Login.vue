@@ -77,6 +77,7 @@ export default {
       if (response.url.includes("error")) {
         window.confirm("Inloggningen misslyckades");
       } else {
+        this.$store.dispatch('updateLoggedUser')
         this.$router.push("/");
       }
     }
