@@ -1,11 +1,9 @@
 <template>
   <div class="container d-flex flex-column align-items-center py-5 rounded">
     <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
-      <router-link to="/">
-        <button class="btn btn-info" id="homeButton">
+        <button v-on:click="test" class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
         </button>
-      </router-link>
       <div class="align-self-center">
         <router-link to="/register">
           <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
@@ -213,6 +211,9 @@ export default {
     this.getCountries();
   },
   methods: {
+    test() {
+      console.log(this.$store.state.loggedInUser)
+    },
     getCountries: async function() {
       let url = "http://localhost:8080/country";
       const result = await fetch(url);

@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    loggedInUser : {},
     home: {
-
       rooms: [],
       searchData: [],
       reservation: {
@@ -21,8 +21,6 @@ export default new Vuex.Store({
         totalRoomPrice: "",
       }
     },
-    
-
   },
   mutations: {
     changeSearchData(state, value) {
@@ -158,7 +156,6 @@ export default new Vuex.Store({
 
       commit('changeSearchData', data)
     },
-
     async loadRooms({commit}) {
       let response = await fetch("http://localhost:8080/roominfo")
       let result = await response.json()
@@ -166,8 +163,7 @@ export default new Vuex.Store({
     },
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
-
-    }
+    },
   },
   getters: {
     RESERVEDROOM: state => {
