@@ -12,6 +12,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$store.dispatch('updateLoggedUser')
+  }
+}
+</script>
+
 <style>
 @import url("https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css");
 @import url("../style/style.css");

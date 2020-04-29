@@ -167,12 +167,10 @@ export default new Vuex.Store({
     reserveRoomData({commit}, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
     },
-    async getLoggedUser(/*{commit}*/) {
+    async updateLoggedUser({commit}) {
       let response = await fetch("login/name")
       let result = await response.json()
-      console.log(result.userId)
-      return result.userId
-      //commit('changeLoggedUser', result)
+      commit('changeLoggedUser', result)
     }
   },
   getters: {
