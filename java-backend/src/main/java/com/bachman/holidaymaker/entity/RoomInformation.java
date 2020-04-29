@@ -14,6 +14,10 @@ public class RoomInformation {
     private String hotelName;
     private String hotelAddress;
     private String hotelPhone;
+    private String pool;
+    private String entertainment;
+    private String bar;
+    private String sauna;
     private String countryName;
     private String cityName;
     private String roomType;
@@ -46,6 +50,22 @@ public class RoomInformation {
     }
 
     public String getHotelPhone() { return hotelPhone; }
+
+    public String getPool() {
+        return pool;
+    }
+
+    public String getEntertainment() {
+        return entertainment;
+    }
+
+    public String getBar() {
+        return bar;
+    }
+
+    public String getSauna() {
+        return sauna;
+    }
 
     public String getCountryName() {
         return countryName;

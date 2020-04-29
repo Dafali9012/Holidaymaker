@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    loggedInUser : {},
     home: {
       rooms: [],
       searchData: [],
@@ -22,12 +23,12 @@ export default new Vuex.Store({
         totalRoomPrice: '',
       }
     },
-    
   },
   mutations: {
     changeSearchData(state, value) {
       state.home.searchData = value
     },
+
     loadRooms(state, value) {
       state.home.rooms = value
     },
@@ -58,7 +59,7 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/roominfo");
       let data = await response.json();
 
-      console.log(data)
+      //console.log(data)
 
       let reservedRoomsResponse = await fetch("http://localhost:8080/reservedroom");
       let reservedRoomsData = await reservedRoomsResponse.json();
@@ -123,6 +124,53 @@ export default new Vuex.Store({
           return (item.roomType != 'SINGLE')
         })
       }
+
+      // amenities : pool - entertainment - bar - sauna
+      //console.log(params[3][0]+" "+params[3][1]+" "+params[3][2]+" "+params[3][3])
+      if(params[3][0]) {
+        data = data.filter(item => {
+          return (item.pool == 1)
+        })
+      }
+      if(params[3][1]) {
+        data = data.filter(item => {
+          return (item.entertainment == 1)
+        })
+      }
+      if(params[3][2]) {
+        data = data.filter(item => {
+          return (item.bar == 1)
+        })
+      }
+      if(params[3][3]) {
+        data = data.filter(item => {
+          return (item.sauna == 1)
+        })
+      }
+
+      // distances : center - beach
+      if(params[5][0]!="") {
+        data = data.filter(item => {
+          return item.kmToCenter <= params[5][0]
+        })
+      }
+      if(params[5][1]!="") {
+         data = data.filter(item => {
+          return item.kmToBeach <= params[5][1]
+        })
+      }
+
+      // sorting
+      if(params[4]=="price") {
+        data.sort(function(a,b) {
+          return a.pricePerNight-b.pricePerNight
+        })
+      } else if(params[4]=="rating") {
+        data.sort(function(a,b) {
+          return b.hotelRating-a.hotelRating
+        })
+      }
+
       commit('changeSearchData', data)
     },
     async loadRooms({ commit }) {
