@@ -50,6 +50,9 @@ export default new Vuex.Store({
     updateRoomPrice(state, val) {
       state.home.reservation.totalRoomPrice = val;
       console.log('total room pricee', val)
+    },
+    changeLoggedUser(state, value) {
+      state.loggedInUser = value
     }
   },
   actions: {
