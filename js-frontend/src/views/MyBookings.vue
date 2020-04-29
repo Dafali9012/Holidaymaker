@@ -24,15 +24,19 @@
             <div v-for="booking in reservationsByCurrentUser" :key="booking.message">
               <div class="row singleBooking mt-3 border-bottom">
               <div class="col-9">
-              <p><strong>Bokningsnummer:</strong> {{booking.bookingNumber}}</p>
-              <p><strong>Antal rum:</strong> {{booking.numberOfRooms}}</p>
+              <p><strong>Bokningsnummer:</strong> {{booking.bookingNr}}</p>
+              <p><strong>Rumsnummer:</strong> {{booking.room}}</p>
+              <p><strong>Antal vuxna:</strong> {{booking.numAdults}}</p>
+              <p><strong>Antal barn:</strong> {{booking.numKids}}</p>
               <p><strong>Check In:</strong> {{booking.checkIn}}</p>
               <p><strong>Check Out:</strong> {{booking.checkOut}}</p>
-              <p><strong>Pris:</strong> {{booking.totalPrice}}</p>
+              <p><strong>Tillägg:</strong> {{booking.board}}</p>
+              <p><strong>Extrasäng:</strong> {{booking.extraBed}}</p>
+              <p><strong>Pris:</strong> {{booking.totalRoomPrice}}</p>
               </div>
               <div class="col-3">
               <button type="button" class="disabled btn btn-info border mr-2" id="editBooking">Ändra</button>
-              <button type="button" class="btn btn-info border" id="cancelBooking" v-on:click="deleteReservation(booking.bookingNumber)">Avboka</button>
+              <button type="button" class="btn btn-info border" id="cancelBooking" v-on:click="deleteReservation(booking.bookingNr)">Avboka</button>
               </div>
               </div>
             </div>
@@ -56,14 +60,14 @@ export default {
       this.$store.dispatch('logout')
     },
     getUserReservations: async function () {
-      let url = "http://localhost:8080/reservation";
+      let url = "http://localhost:8080/reservedroom";
       const result = await fetch(url);
       this.reservations = await result.json();
       let userResponse = await fetch("login/name")
       let userResult = await userResponse.json()
-      const currentUser = userResult.userId //Ändra till önskat userId
+      const currentUser = userResult.userId 
       this.reservations.forEach(element => {
-        if (currentUser == element.userId){         
+        if (currentUser == element.user){         
           this.reservationsByCurrentUser.push(element)
         }
       });
@@ -73,7 +77,7 @@ export default {
     deleteReservation: async function(bookingId) {
       console.log("deleteReservation() called");
       const reservationToDelete = bookingId;
-      const url = "http://localhost:8080/reservation/"+reservationToDelete;
+      const url = "http://localhost:8080/reservedroom/"+reservationToDelete;
       console.log(reservationToDelete, "will be deleted")
       if (reservationToDelete){
       const result = await fetch(url, { method: "DELETE"});
