@@ -17,6 +17,24 @@ DROP DATABASE IF EXISTS `holidaymaker`;
 CREATE DATABASE IF NOT EXISTS `holidaymaker` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 USE `holidaymaker`;
 
+-- Dumping structure for table holidaymaker.country
+DROP TABLE IF EXISTS `country`;
+CREATE TABLE IF NOT EXISTS `country` (
+  `countryId` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  PRIMARY KEY (`countryId`),
+  UNIQUE KEY `name` (`Name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table holidaymaker.country: ~4 rows (approximately)
+/*!40000 ALTER TABLE `country` DISABLE KEYS */;
+REPLACE INTO `country` (`countryId`, `Name`) VALUES
+	(3, 'Frankrike'),
+	(4, 'Italien'),
+	(1, 'Portugal'),
+	(5, 'Spanien');
+/*!40000 ALTER TABLE `country` ENABLE KEYS */;
+
 -- Dumping structure for table holidaymaker.city
 DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
@@ -39,23 +57,27 @@ REPLACE INTO `city` (`cityId`, `Country`, `Name`) VALUES
 	(6, 5, 'Palma');
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 
--- Dumping structure for table holidaymaker.country
-DROP TABLE IF EXISTS `country`;
-CREATE TABLE IF NOT EXISTS `country` (
-  `countryId` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  PRIMARY KEY (`countryId`),
-  UNIQUE KEY `name` (`Name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+-- Dumping structure for table holidaymaker.user
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `UserId` int(11) NOT NULL AUTO_INCREMENT,
+  `Email` varchar(50) NOT NULL DEFAULT '',
+  `Password` varchar(200) DEFAULT NULL,
+  `FullName` varchar(50) NOT NULL DEFAULT '',
+  `Address` varchar(50) NOT NULL DEFAULT '',
+  `PhoneNumber` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`UserId`),
+  UNIQUE KEY `Email` (`Email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table holidaymaker.country: ~4 rows (approximately)
-/*!40000 ALTER TABLE `country` DISABLE KEYS */;
-REPLACE INTO `country` (`countryId`, `Name`) VALUES
-	(3, 'Frankrike'),
-	(4, 'Italien'),
-	(1, 'Portugal'),
-	(5, 'Spanien');
-/*!40000 ALTER TABLE `country` ENABLE KEYS */;
+-- Dumping data for table holidaymaker.user: ~0 rows (approximately)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+REPLACE INTO `user` (`UserId`, `Email`, `Password`, `FullName`, `Address`, `PhoneNumber`) VALUES
+	(5, 'd', '$2a$10$zeGnh6eS45dY9nEKHCZc9ejRUb0wpm6x0Mfzf3Mp7/LdLIXwabWwK', '', '-', ''),
+	(6, 'dan', '$2a$10$Bi6FBeZMAe/HCTJb2fDVHeojMCjBzQbySzxDX5WFrn.9otMX3qaou', '', '-', '');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+
 
 -- Dumping structure for table holidaymaker.hotel
 DROP TABLE IF EXISTS `hotel`;
@@ -114,30 +136,6 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 
--- Dumping structure for table holidaymaker.reservedroom
-DROP TABLE IF EXISTS `reservedroom`;
-CREATE TABLE IF NOT EXISTS `reservedroom` (
-  `bookingNr` int(11) NOT NULL AUTO_INCREMENT,
-  `room` int(11) NOT NULL,
-  `user` int(11) NOT NULL,
-  `numAdults` int(11) NOT NULL,
-  `numKids` int(11) NOT NULL,
-  `checkIn` date NOT NULL,
-  `checkOut` date NOT NULL,
-  `board` enum('NONE','HB','FB','AI') DEFAULT 'NONE',
-  `extraBed` tinyint(4) NOT NULL DEFAULT 0,
-  `totalRoomPrice` double(22,0) NOT NULL,
-  PRIMARY KEY (`bookingNr`),
-  KEY `FK_reservedroom_room` (`room`),
-  KEY `FK_reservedroom_user` (`user`),
-  CONSTRAINT `FK_reservedroom_room` FOREIGN KEY (`room`) REFERENCES `room` (`RoomId`),
-  CONSTRAINT `FK_reservedroom_user` FOREIGN KEY (`user`) REFERENCES `user` (`UserId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table holidaymaker.reservedroom: ~0 rows (approximately)
-/*!40000 ALTER TABLE `reservedroom` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reservedroom` ENABLE KEYS */;
-
 -- Dumping structure for table holidaymaker.room
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE IF NOT EXISTS `room` (
@@ -177,6 +175,31 @@ REPLACE INTO `room` (`RoomId`, `RoomNumber`, `Hotel`, `imgLink`, `RoomType`, `Sm
 	(20, 203, 8, 'myStory/studio.jpg', 'STUDIO', 0, 4010);
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 
+-- Dumping structure for table holidaymaker.reservedroom
+DROP TABLE IF EXISTS `reservedroom`;
+CREATE TABLE IF NOT EXISTS `reservedroom` (
+  `bookingNr` int(11) NOT NULL AUTO_INCREMENT,
+  `room` int(11) NOT NULL,
+  `user` int(11) NOT NULL,
+  `numAdults` int(11) NOT NULL,
+  `numKids` int(11) NOT NULL,
+  `checkIn` date NOT NULL,
+  `checkOut` date NOT NULL,
+  `board` enum('NONE','HB','FB','AI') DEFAULT 'NONE',
+  `extraBed` tinyint(4) NOT NULL DEFAULT 0,
+  `totalRoomPrice` double(22,0) NOT NULL,
+  PRIMARY KEY (`bookingNr`),
+  KEY `FK_reservedroom_room` (`room`),
+  KEY `FK_reservedroom_user` (`user`),
+  CONSTRAINT `FK_reservedroom_room` FOREIGN KEY (`room`) REFERENCES `room` (`RoomId`),
+  CONSTRAINT `FK_reservedroom_user` FOREIGN KEY (`user`) REFERENCES `user` (`UserId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table holidaymaker.reservedroom: ~0 rows (approximately)
+/*!40000 ALTER TABLE `reservedroom` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reservedroom` ENABLE KEYS */;
+
+
 -- Dumping structure for view holidaymaker.roominfo
 DROP VIEW IF EXISTS `roominfo`;
 -- Creating temporary table to overcome VIEW dependency errors
@@ -203,25 +226,6 @@ CREATE TABLE `roominfo` (
 	`aiPrice` DOUBLE(22,0) NOT NULL
 ) ENGINE=MyISAM;
 
--- Dumping structure for table holidaymaker.user
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `UserId` int(11) NOT NULL AUTO_INCREMENT,
-  `Email` varchar(50) NOT NULL DEFAULT '',
-  `Password` varchar(200) DEFAULT NULL,
-  `FullName` varchar(50) NOT NULL DEFAULT '',
-  `Address` varchar(50) NOT NULL DEFAULT '',
-  `PhoneNumber` varchar(50) NOT NULL DEFAULT '',
-  PRIMARY KEY (`UserId`),
-  UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table holidaymaker.user: ~0 rows (approximately)
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-REPLACE INTO `user` (`UserId`, `Email`, `Password`, `FullName`, `Address`, `PhoneNumber`) VALUES
-	(5, 'd', '$2a$10$zeGnh6eS45dY9nEKHCZc9ejRUb0wpm6x0Mfzf3Mp7/LdLIXwabWwK', '', '-', ''),
-	(6, 'dan', '$2a$10$Bi6FBeZMAe/HCTJb2fDVHeojMCjBzQbySzxDX5WFrn.9otMX3qaou', '', '-', '');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 -- Dumping structure for view holidaymaker.roominfo
 DROP VIEW IF EXISTS `roominfo`;
