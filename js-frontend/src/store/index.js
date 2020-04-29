@@ -10,15 +10,17 @@ export default new Vuex.Store({
       rooms: [],
       searchData: [],
       reservation: {
-        country_id: "",
-        numAdults: "",
-        numKids: "",
-        numSmallKids: "",
-        checkIn: "",
-        checkOut: "",
-        board: "",
-        extraBed: "",
-        totalRoomPrice: "",
+        bookingNr: '',
+        roomId: '',
+        user: 0,
+        numAdults: 0,
+        numKids: 0,
+        numSmallKids: 0,
+        checkIn: '',
+        checkOut: '',
+        board: '',
+        extraBed: 0,
+        totalRoomPrice: '',
       }
     },
   },
@@ -32,10 +34,22 @@ export default new Vuex.Store({
     },
     changeReservationData(state, value) {
       state.home.reservation = value
-
     },
-    changeLoggedUser(state, value) {
-      state.loggedInUser = value
+    updateExtraBed(state, n) {
+      state.home.reservation.extraBed = n;
+      console.log('extraBed ', n)
+    },
+    updateBoard(state, val) {
+      state.home.reservation.board = val;
+      console.log('board ', val)
+    },
+    updateRoom(state, val) {
+      state.home.reservation.roomId = val;
+      console.log('room ', val)
+    },
+    updateRoomPrice(state, val) {
+      state.home.reservation.totalRoomPrice = val;
+      console.log('total room pricee', val)
     }
   },
   actions: {
@@ -159,12 +173,12 @@ export default new Vuex.Store({
 
       commit('changeSearchData', data)
     },
-    async loadRooms({commit}) {
+    async loadRooms({ commit }) {
       let response = await fetch("http://localhost:8080/roominfo")
       let result = await response.json()
       commit('loadRooms', result)
     },
-    reserveRoomData({commit}, newRoomReservation) {
+    reserveRoomData({ commit }, newRoomReservation) {
       commit('changeReservationData', newRoomReservation)
     },
     async getLoggedUser(/*{commit}*/) {
@@ -175,10 +189,6 @@ export default new Vuex.Store({
       //commit('changeLoggedUser', result)
     }
   },
-  getters: {
-    RESERVEDROOM: state => {
-      return state.home.reservation;
-    }
-  },  
+  
   modules: {}
 })
