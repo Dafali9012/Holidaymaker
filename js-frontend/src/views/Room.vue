@@ -94,8 +94,17 @@
                   <p style="font-size:16px;margin:0">
                     <b>Antal barn:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">
-                    {{ reservation.numKids }} + {{ reservation.numSmallKids }}
+                  <p
+                    style="font-size:16px;margin:0"
+                    v-if="reservation.numKids > 0"
+                  >
+                    {{ reservation.numKids }} (3-18 år)
+                  </p>
+                  <p
+                    style="font-size:16px;margin:0"
+                    v-if="reservation.numSmallKids > 0"
+                  >
+                    {{ reservation.numSmallKids }} (0-2 år)
                   </p>
                   <br />
                 </div>
@@ -104,8 +113,18 @@
               <p style="font-size:18px;margin:0">
                 <b>Totalpris:</b>
               </p>
-              <p style="font-size:18px;margin:0">
-               {{ totalPrice }}:-
+              <p style="font-size:18px;margin:0">{{ totalPrice }}:-</p>
+              <br />
+              <p style="font-size:16px;margin:0">
+                <b>Tillägg:</b>
+              </p>
+              <p style="font-size:16px;margin:0" v-if="addition1 !== ''">
+                {{ addition1 }}: {{ addComma(boardPrice) }}:- pp/natt 
+                ({{ addComma(totalBoardPrice) }}:- av totalpriset)
+                <br />
+              </p>
+              <p style="font-size:16px;margin:0" v-if="addition2 !== ''">
+                {{ addition2 }}, {{ extraBedPrice }}:-
               </p>
               <br />
             </div>
@@ -123,8 +142,13 @@
         <div class="col-sm-12 col-6">
           <div class="form-group">
             <label for="board">Välj tillägg:</label>
-            <select class="form-control" id="optionBoard" v-model="board" v-on:change="updateTotalPrice()">
-              <option value="NONE" selected="selected">Inget</option>
+            <select
+              class="form-control"
+              id="board"
+              v-model="board"
+              @change="updateTotalPrice()"
+            >
+              <option value="NONE">Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
               <option value="AI">All Inclusive</option>
@@ -142,8 +166,8 @@
               class="form-check-input"
               id="extraBed"
               v-model="extraBed"
-              true-value=1
-              false-value=0
+              true-value="1"
+              false-value="0"
             />
             <label class="form-check-label" for="extraBed">Extra säng</label>
           </div>
@@ -164,7 +188,9 @@
         </div>
 
         <div class="col-2 text-right">
-          <button class="btn btn-info">Boka</button>
+          <button class="btn btn-info" @click="completeReservation()">
+            Boka
+          </button>
         </div>
       </div>
     </div>
@@ -174,10 +200,13 @@
 export default {
   data() {
     return {
+      addition1: "",
+      addition2: "",
       numNights: "",
       extraBedPrice: "",
       boardPrice: "",
       totalPrice: "",
+      totalBoardPrice: 0,
     };
   },
   created() {
@@ -209,7 +238,7 @@ export default {
       set(n) {
         this.$store.commit("updateExtraBed", n);
         this.updateBedPrice();
-      }
+      },
     },
     board: {
       get() {
@@ -218,8 +247,11 @@ export default {
       set(value) {
         this.$store.commit("updateBoard", value);
         this.boardPrice = this.updateBoardPrice(value);
-        console.log('board price ', this.boardPrice)
-      }
+        if (value == "NONE") {
+          this.addition1 = "";
+        }
+        console.log("board price ", this.boardPrice);
+      },
     },
   },
   methods: {
@@ -233,43 +265,75 @@ export default {
       var timeDiff = Math.abs(date2.getTime() - date1.getTime());
       return (this.numNights = Math.ceil(timeDiff / (1000 * 3600 * 24)));
     },
-    setRoomId(){
+    setRoomId() {
       this.$store.commit("updateRoom", this.room.roomId);
     },
-    getTotalPrice(){
-      this.totalPrice = this.numNights * this.room.pricePerNight;
+    getTotalPrice() {
+      let price = this.numNights * this.room.pricePerNight;
+      this.totalPrice = this.addComma(price);
+      console.log("total price ", this.totalPrice);
     },
-    updateBoardPrice(value){
-      console.log('value for board ', value)
-      if(value == "HB"){
-          return this.room.hbPrice;
-        }else if(value == "FB"){
-          return this.room.fbPrice;
-        }else if(value == "AI"){
-          return this.room.aiPrice;
-        }else return 0;
+    updateBoardPrice(value) {
+      if (value == "HB") {
+        this.addition1 = "Halvpension";
+        return this.room.hbPrice;
+      } else if (value == "FB") {
+        this.addition1 = "Helpension";
+        return this.room.fbPrice;
+      } else if (value == "AI") {
+        this.addition1 = "All Inclusive";
+        return this.room.aiPrice;
+      } else return 0;
     },
-    updateBedPrice(){
+    updateBedPrice() {
+      if (this.reservation.extraBed == 1) {
+        this.addition2 = "Extra säng";
+      } else this.addition2 = "";
       this.extraBedPrice = this.room.extraBedPrice;
-      console.log('price extra bed ', this.extraBedPrice)
+      console.log("price extra bed ", this.extraBedPrice);
     },
-    updateTotalPrice(){
-      let adultBoardPrice = (this.reservation.numAdults * this.boardPrice) * this.numNights;
-      let kidBoardPrice = (this.reservation.numKids * this.boardPrice) * this.numNights;
-      let totalBoardPrice = adultBoardPrice + kidBoardPrice;
-      console.log('price ADULTS ', adultBoardPrice)
-      console.log('price Kids ', kidBoardPrice)
-      console.log('price TOTAL ', totalBoardPrice)
+    updateTotalPrice() {
+      let numberOfPpl =
+        parseInt(this.reservation.numAdults) +
+        parseInt(this.reservation.numKids);
 
-        if(this.$store.state.home.reservation.extraBed == 0){
-          this.extraBedPrice = 0;
-        }
-        let price = this.numNights * this.room.pricePerNight;
-        this.totalPrice = price + adultBoardPrice + kidBoardPrice + this.extraBedPrice;
-        this.$store.commit("updateRoomPrice", this.totalPrice);
-       console.log('price ', this.totalPrice)   
+      this.totalBoardPrice = numberOfPpl * this.boardPrice * this.numNights;
+
+      if (this.$store.state.home.reservation.extraBed == 0) {
+        this.extraBedPrice = 0;
+      }
+
+      let price = this.numNights * this.room.pricePerNight;
+      let finalPrice = price + this.totalBoardPrice + this.extraBedPrice;
+      this.totalPrice = this.addComma(finalPrice);
+      this.$store.commit("updateRoomPrice", finalPrice);
     },
-   
+    addComma: function(n) {
+      let regex = /(\d+)(\d{3})/;
+      return String(n).replace(/^\d+/, function(num) {
+        while (regex.test(num)) {
+          num = num.replace(regex, "$1,$2");
+        }
+        return num;
+      });
+    },
+    completeReservation: async function() {
+      let reservedRoom = this.$store.state.home.reservation;
+      console.log("reservation submitted", reservedRoom);
+
+      const url = "http://localhost:8080/reservedroom";
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(reservedRoom),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (result.ok) {
+        console.log("post ok reservedRoom: " + reservedRoom.bookingNr + " ");
+        window.confirm("Grattis! du har bokat en härlig hotellvistelse!");
+      }
+    },
   },
 };
 </script>
