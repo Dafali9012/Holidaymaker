@@ -177,8 +177,10 @@ module.exports = function () {
     await sleep(sleepTime);
   });
 
-  this.Then(/^The page shows the results\.$/, async function () {
-
+  this.Then(/^I click Info button to see information$/, async function () {
+    let infoButton = await $('#div.col-6:nth-child(1) > div:nth-child(3) > a:nth-child(1) > button:nth-child(1)')
+    await infoButton.click();
+    await sleep(sleepTime);
   });
 
 }

@@ -28,7 +28,5 @@ Feature: Test Holidaymaker home page
         And I enter the number of kids
         And I enter the number of babies
         And I click the Sök button
-        Then The page shows the results.
-        And I have the searched page for hotel room
-        And I click Info button
-        And I can get hotel information.
+        Then I click Info button to see information
+        And The page shows hotel information.
