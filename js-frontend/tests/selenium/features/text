@@ -20,7 +20,7 @@ Feature: Test Holidaymaker home page
         And I click the Login button
         Then I am logged in.
 
-    Scenario: Search and book a available rooms
+    Scenario: Search for available rooms
         When I choose Frankrike
         And I enter check-in date
         And I enter check-out date
@@ -29,6 +29,3 @@ Feature: Test Holidaymaker home page
         And I enter the number of babies
         And I click the Sök button
         Then The page shows the results.
-        And I have the searched page for hotel room
-        And I click Info button
-        And I can get hotel information.
