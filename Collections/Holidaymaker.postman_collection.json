@@ -269,7 +269,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"Email\": \"newuser@something.com\",\n\t\"Password\": \"thisIsNew\",\n\t\"FullName\": \"dont care\",\n\t\"Address\": \"imaginärvägen 3\",\n\t\"PhoneNumber\": \"0242309964\"\n}",
+					"raw": "{\n\t\"email\": \"jens@jens.jens\",\n\t\"password\": \"jens\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -277,14 +277,13 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/user/",
+					"raw": "localhost:8080/user",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user",
-						""
+						"user"
 					]
 				}
 			},
@@ -503,7 +502,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/country/all",
+					"raw": "http://localhost:8080/country/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -511,7 +510,7 @@
 					"port": "8080",
 					"path": [
 						"country",
-						"all"
+						""
 					]
 				}
 			},
@@ -656,7 +655,7 @@
 							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj).to.have.all.keys('cityId','Country','Name');",
+							"        pm.expect(obj).to.have.any.keys('cityid','country','name');",
 							"    }",
 							"});"
 						],
@@ -770,7 +769,7 @@
 							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj.Country).to.equal(3);",
+							"        pm.expect(obj.countryId).to.equal(3);",
 							"    }",
 							"});"
 						],
@@ -1153,26 +1152,45 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "email",
-							"value": "usch",
+							"key": "username",
+							"value": "orkar",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "hej",
+							"value": "inte",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:8080/login",
+					"raw": "http://localhost:8081/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/name",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"login"
+						"name"
 					]
 				}
 			},

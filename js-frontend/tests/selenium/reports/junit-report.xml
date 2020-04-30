@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="select-countries;finding-countries-in-the-drop-down-menu" tests="3" failures="0" skipped="0">
-        <properties>
-            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/country.feature">
-            </property>
-        </properties>
-        <testcase name="Given that i am on the holidaymaker webpage" classname="select-countries;finding-countries-in-the-drop-down-menu" time="6.148749599">
-        </testcase>
-        <testcase name="When i click &quot;välj land&quot;" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.0071513">
-        </testcase>
-        <testcase name="Then i should get a list of countries" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.265375501">
-        </testcase>
-    </testsuite>
     <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="1" skipped="1">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="8.0309696">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="7.6851397">
         </testcase>
-        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.315830899">
+        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.2904651">
         </testcase>
-        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.0725455">
+        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.098102001">
         </testcase>
-        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.064016">
+        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.070348601">
         </testcase>
-        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.0399161">
+        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.037131299">
         </testcase>
-        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.0512566">
+        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.035438799">
         </testcase>
-        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.235838301">
+        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.2511107">
         </testcase>
-        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="20.001340299">
+        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="20.0016763">
             <failure message="function timed out after 20000 milliseconds">function timed out after 20000 milliseconds</failure>
         </testcase>
         <testcase name="Then Signup is done." classname="test-holidaymaker-home-page;sign-up">
@@ -44,41 +32,48 @@
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.595104501">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.2365354">
         </testcase>
-        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.3199828">
+        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.2757034">
         </testcase>
-        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.0838059">
+        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.045163601">
         </testcase>
-        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.042895101">
+        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.0606982">
         </testcase>
-        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.2589516">
+        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.260654001">
         </testcase>
-        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.0159287">
+        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.0162665">
         </testcase>
     </testsuite>
-    <testsuite name="test-holidaymaker-home-page;search-for-available-rooms" tests="9" failures="0" skipped="0">
+    <testsuite name="test-holidaymaker-home-page;search-and-book-a-available-rooms" tests="10" failures="1" skipped="1">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;search-for-available-rooms" time="7.046495499">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="7.591345099">
         </testcase>
-        <testcase name="When I choose Frankrike" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.2903442">
+        <testcase name="When I choose Frankrike" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.226953301">
         </testcase>
-        <testcase name="And I enter check-in date" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.3063724">
+        <testcase name="And I enter check-in date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.050724199">
         </testcase>
-        <testcase name="And I enter check-out date" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.2684167">
+        <testcase name="And I enter check-out date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.0356035">
         </testcase>
-        <testcase name="And I enter the number of adults" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.2229172">
+        <testcase name="And I enter the number of adults" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.230307099">
         </testcase>
-        <testcase name="And I enter the number of kids" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.244068701">
+        <testcase name="And I enter the number of kids" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.2457555">
         </testcase>
-        <testcase name="And I enter the number of babies" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.2481909">
+        <testcase name="And I enter the number of babies" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.246998501">
         </testcase>
-        <testcase name="And I click the Sök button" classname="test-holidaymaker-home-page;search-for-available-rooms" time="1.259326799">
+        <testcase name="And I click the Sök button" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.2358161">
         </testcase>
-        <testcase name="Then The page shows the results." classname="test-holidaymaker-home-page;search-for-available-rooms" time="0.000116901">
+        <testcase name="Then I click Info button to see information" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="0.0099502">
+            <failure message="TypeError: Cannot read property &apos;click&apos; of null">TypeError: Cannot read property &apos;click&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\search.js:182:22)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="And The page shows hotel information." classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
     </testsuite>
     <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="0" skipped="0">
@@ -86,17 +81,29 @@
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.5903022">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.65985">
         </testcase>
-        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.2591382">
+        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.320014999">
         </testcase>
-        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.0465065">
+        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.071568">
         </testcase>
-        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.0323718">
+        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.058138501">
         </testcase>
-        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.225995499">
+        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.2560546">
         </testcase>
-        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.0254001">
+        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.018375401">
+        </testcase>
+    </testsuite>
+    <testsuite name="select-countries;finding-countries-in-the-drop-down-menu" tests="3" failures="0" skipped="0">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/searchCountry.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the holidaymaker webpage" classname="select-countries;finding-countries-in-the-drop-down-menu" time="7.049465699">
+        </testcase>
+        <testcase name="When i click &quot;välj land&quot;" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.0053109">
+        </testcase>
+        <testcase name="Then i should get a list of countries" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.2407477">
         </testcase>
     </testsuite>
     <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="1" skipped="1">
@@ -104,21 +111,21 @@
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/signup.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="7.5366201">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="8.707146801">
         </testcase>
-        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.3483009">
+        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.2956692">
         </testcase>
-        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.0552087">
+        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.0639137">
         </testcase>
-        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.0331632">
+        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.0343174">
         </testcase>
-        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.0732143">
+        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.0677446">
         </testcase>
-        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.051765899">
+        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.0614012">
         </testcase>
-        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.2494058">
+        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.2287987">
         </testcase>
-        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="19.9997894">
+        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="19.9999139">
             <failure message="function timed out after 20000 milliseconds">function timed out after 20000 milliseconds</failure>
         </testcase>
         <testcase name="Then Signip is done and get back to the main page." classname="test-holidaymaker-home-page;sign-up">
