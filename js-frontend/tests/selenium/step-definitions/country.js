@@ -6,17 +6,17 @@ module.exports = function() {
 
     this.Given(/^that i am on the holidaymaker webpage$/, async function () {
         await helpers.loadPage('http://localhost:8081/');
-        await driver.wait(until.elementLocated(By.css('#app > div > div.d-flex.justify-content-between.col.border.rounded.py-3.pl-5.text-left.bg-light > a > button > h2')))
-        let text = await $('#app > div > div.d-flex.justify-content-between.col.border.rounded.py-3.pl-5.text-left.bg-light > a > button > h2');
+        await sleep(sleepTime)
+        let text = await $('#homeButton > h2:nth-child(1)');
         text = await text.getText();
-        console.log('Texten är ', text)
-        assert.include(text, "Bachman Hendricks");
+        //console.log('Texten är ', text)
+        assert.include(text, 'Bachman Hendricks');
         });
 
     this.When(/^i click "([^"]*)"$/, async function (button) {   
                 button = await $('#country')
                 button.click()
-                await driver.wait(until.elementLocated(By.css('#app > div > div.d-flex.justify-content-between.col.border.rounded.py-3.pl-5.text-left.bg-light > a > button > h2')))
+                
               });
 
     this.Then(/^i should get a list of countries$/, async function () {
