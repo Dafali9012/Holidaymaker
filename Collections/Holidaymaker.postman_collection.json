@@ -23,13 +23,13 @@
 							"pm.test(\"Response objects should all contain at least name and auction end\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj).to.have.any.keys('UserId','Email', \"Password\");",
+							"        pm.expect(obj).to.have.any.keys('userId','email', \"password\");",
 							"    }",
 							"});",
 							"pm.test(\"Response objects should all contain at least name and auction end\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj.UserId).to.be.a('number');",
+							"        pm.expect(obj.userId).to.be.a('number');",
 							"    }",
 							"});"
 						],
@@ -41,14 +41,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/user/",
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user",
-						""
+						"user"
 					]
 				}
 			},
@@ -142,12 +142,12 @@
 							"});",
 							"pm.test(\"Response is an object\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData).to.be.an('object')",
+							"    pm.expect(jsonData).to.be.an('array')",
 							"});",
 							"pm.test(\"Response object should contain at least userid, email and password\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj).to.have.any.keys('UserId','Email', \"Password\");",
+							"        pm.expect(obj).to.have.any.keys('userId','email', \"password\");",
 							"    }",
 							"});",
 							""
@@ -491,7 +491,7 @@
 							"pm.test(\"Response objects should all contain countryId and Name\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
-							"        pm.expect(obj).to.have.all.keys('countryId','Name');",
+							"        pm.expect(obj).to.have.all.keys('countryId','name');",
 							"    }",
 							"});"
 						],
@@ -503,7 +503,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/country/",
+					"raw": "http://localhost:8080/country/all",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -511,7 +511,7 @@
 					"port": "8080",
 					"path": [
 						"country",
-						""
+						"all"
 					]
 				}
 			},
@@ -582,6 +582,57 @@
 					"path": [
 						"country",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/country/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f7bafef6-87cc-46ac-abb4-63db407e33ff",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an object\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response object should contain at least countryId and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.any.keys('countryId','name');",
+							"    }",
+							"});",
+							"pm.test(\"Response countryId should have a value of 1\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.countryId).to.equal(1);",
+							"    }",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/country/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"country",
+						"1"
 					]
 				}
 			},
@@ -784,7 +835,7 @@
 							"    var jsonData = pm.response.json();",
 							"    pm.expect(jsonData).to.be.an('array')",
 							"});",
-							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"pm.test(\"Response property 'country' should be equal to 3\", function () {",
 							"    let jsonData = pm.response.json();",
 							"    for(let obj of jsonData){",
 							"        pm.expect(obj.Country).to.equal(3);",
@@ -821,26 +872,75 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/hotel",
+					"raw": "http://localhost:8080/hotel/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"hotel"
+						"hotel",
+						""
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "http://localhost:8080/hotel",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hotel/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hotel",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n\t{\n\t\t\"HotelId\": 2,\n\t\t\"City\": 3,\n\t\t\"Name\": \"Hôtel de Silhouette\",\n\t\t\"imgLink\": \"./assets/images/silhoutte/hotel.jpg\",\n\t\t\"Address\": \"30, rue Gambetta 64200\",\n\t\t\"phoneNr\": \"(+33) 05 59 24 93 82\",\n\t\t\"Rating\": 5,\n\t\t\"HalfBoardPrice\": 300,\n\t\t\"FullBoardPrice\": 1000,\n\t\t\"AllIncPrice\": 1500,\n\t\t\"Pool\": 1,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 1,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 1,\n\t\t\"KmToCenter\": 1\n\t},\n\t{\n\t\t\"HotelId\": 3,\n\t\t\"City\": 2,\n\t\t\"Name\": \"Hôtel de Suede\",\n\t\t\"imgLink\": \"./assets/images/suede/hotel.jpg\",\n\t\t\"Address\": \"18 Avenue de Suède 06000\",\n\t\t\"phoneNr\": \"+33 (0)4 93 88 73 73\",\n\t\t\"Rating\": 3,\n\t\t\"HalfBoardPrice\": 350,\n\t\t\"FullBoardPrice\": 970,\n\t\t\"AllIncPrice\": 1300,\n\t\t\"Pool\": 1,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 0,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 0.2,\n\t\t\"KmToCenter\": 2\n\t},\n\t{\n\t\t\"HotelId\": 4,\n\t\t\"City\": 5,\n\t\t\"Name\": \"Marriott\",\n\t\t\"imgLink\": \"./assets/images/marriott/hotel.jpg\",\n\t\t\"Address\": \"Plaça Rosa del Vents, 1, Final Passeig de Joan de\",\n\t\t\"phoneNr\": \"+34 932 95 28 00\",\n\t\t\"Rating\": 5,\n\t\t\"HalfBoardPrice\": 500,\n\t\t\"FullBoardPrice\": 1200,\n\t\t\"AllIncPrice\": 2300,\n\t\t\"Pool\": 0,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 1,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 0,\n\t\t\"KmToCenter\": 1\n\t},\n\t{\n\t\t\"HotelId\": 6,\n\t\t\"City\": 6,\n\t\t\"Name\": \"Castillo Hotel Son Vida\",\n\t\t\"imgLink\": \"./assets/images/castillo/hotel.jpg\",\n\t\t\"Address\": \"C/Raixa 2, Urbanizacion Son Vida, Palma de Mallor\",\n\t\t\"phoneNr\": \"+34 971 49 34 93\",\n\t\t\"Rating\": 5,\n\t\t\"HalfBoardPrice\": 550,\n\t\t\"FullBoardPrice\": 1450,\n\t\t\"AllIncPrice\": 3100,\n\t\t\"Pool\": 1,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 1,\n\t\t\"KidsClub\": 1,\n\t\t\"KmToBeach\": 0.1,\n\t\t\"KmToCenter\": 11\n\t},\n\t{\n\t\t\"HotelId\": 7,\n\t\t\"City\": 7,\n\t\t\"Name\": \"G Hotel\",\n\t\t\"imgLink\": \"./assets/images/g/hotel.jpg\",\n\t\t\"Address\": \"Via Stazione Ferroviaria, 100\",\n\t\t\"phoneNr\": \"+085.2056813\",\n\t\t\"Rating\": 4,\n\t\t\"HalfBoardPrice\": 100,\n\t\t\"FullBoardPrice\": 590,\n\t\t\"AllIncPrice\": 1100,\n\t\t\"Pool\": 0,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 0,\n\t\t\"Entertainment\": 0,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 3,\n\t\t\"KmToCenter\": 1.7\n\t},\n\t{\n\t\t\"HotelId\": 8,\n\t\t\"City\": 1,\n\t\t\"Name\": \"My Story Hotel Tejo\",\n\t\t\"imgLink\": \"./assets/images/myStory/hotel.jpg\",\n\t\t\"Address\": \"Rua dos Condes de Monsanto 2\",\n\t\t\"phoneNr\": \"+00 351 21 886 6182\",\n\t\t\"Rating\": 4,\n\t\t\"HalfBoardPrice\": 295,\n\t\t\"FullBoardPrice\": 810,\n\t\t\"AllIncPrice\": 1950,\n\t\t\"Pool\": 0,\n\t\t\"Sauna\": 1,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 1,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 10,\n\t\t\"KmToCenter\": 1\n\t}\n]"
+				}
+			]
 		},
 		{
 			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "05dc86c6-401e-469e-8ed5-9593571ebb9d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain HotelId, hotelName, City\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.all.keys('HotelId','Name','City','imgLink','Address','phoneNr','Rating','HalfBoardPrice','FullBoardPrice','AllIncPrice','Pool','Sauna','Bar','Entertainment','KidsClub','KmToBeach','KmToCenter');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel",
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel/",
 					"protocol": "https",
 					"host": [
 						"405913c5-2c19-44d2-8710-6283e4e10aad",
@@ -849,7 +949,230 @@
 						"io"
 					],
 					"path": [
-						"hotel"
+						"hotel",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/hotel/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hotel/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hotel",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/hotel/3",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hotel/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hotel",
+								"3",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n\t{\n\t\t\"HotelId\": 2,\n\t\t\"City\": 3,\n\t\t\"Name\": \"Hôtel de Silhouette\",\n\t\t\"imgLink\": \"./assets/images/silhoutte/hotel.jpg\",\n\t\t\"Address\": \"30, rue Gambetta 64200\",\n\t\t\"phoneNr\": \"(+33) 05 59 24 93 82\",\n\t\t\"Rating\": 5,\n\t\t\"HalfBoardPrice\": 300,\n\t\t\"FullBoardPrice\": 1000,\n\t\t\"AllIncPrice\": 1500,\n\t\t\"Pool\": 1,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 1,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 1,\n\t\t\"KmToCenter\": 1\n\t},\n\t{\n\t\t\"HotelId\": 3,\n\t\t\"City\": 2,\n\t\t\"Name\": \"Hôtel de Suede\",\n\t\t\"imgLink\": \"./assets/images/suede/hotel.jpg\",\n\t\t\"Address\": \"18 Avenue de Suède 06000\",\n\t\t\"phoneNr\": \"+33 (0)4 93 88 73 73\",\n\t\t\"Rating\": 3,\n\t\t\"HalfBoardPrice\": 350,\n\t\t\"FullBoardPrice\": 970,\n\t\t\"AllIncPrice\": 1300,\n\t\t\"Pool\": 1,\n\t\t\"Sauna\": 0,\n\t\t\"Bar\": 1,\n\t\t\"Entertainment\": 0,\n\t\t\"KidsClub\": 0,\n\t\t\"KmToBeach\": 0.2,\n\t\t\"KmToCenter\": 2\n\t}\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel/3/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "87c6f3da-d881-4ff9-bfd4-7a8ac94b77d7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, hotelName and City\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj).to.have.any.keys('HotelId','Name','City');",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel/3",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"hotel",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/hotel/3/3/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/hotel/3/3/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"hotel",
+						"3",
+						"3",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://localhost:8080/hotel/3/3/",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hotel/3/3/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hotel",
+								"3",
+								"3",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n{\r\n\"HotelId\": 2,\r\n\"City\": 3,\r\n\"Name\": \"Hôtel de Silhouette\",\r\n\"imgLink\": \"./assets/images/silhoutte/hotel.jpg\",\r\n\"Address\": \"30, rue Gambetta 64200\",\r\n\"phoneNr\": \"(+33) 05 59 24 93 82\",\r\n\"Rating\": 5,\r\n\"HalfBoardPrice\": 300,\r\n\"FullBoardPrice\": 1000,\r\n\"AllIncPrice\": 1500,\r\n\"Pool\": 1,\r\n\"Sauna\": 0,\r\n\"Bar\": 1,\r\n\"Entertainment\": 1,\r\n\"KidsClub\": 0,\r\n\"KmToBeach\": 1,\r\n\"KmToCenter\": 1\r\n}\r\n]"
+				}
+			]
+		},
+		{
+			"name": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel/3/3/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a7ff04f-7167-4028-99be-6b9b8951396b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an('array')",
+							"});",
+							"pm.test(\"Response objects should all contain at least cityId, country and name\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    for(let obj of jsonData){",
+							"        pm.expect(obj.City).to.equal(3);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://405913c5-2c19-44d2-8710-6283e4e10aad.mock.pstmn.io/hotel/3/3/",
+					"protocol": "https",
+					"host": [
+						"405913c5-2c19-44d2-8710-6283e4e10aad",
+						"mock",
+						"pstmn",
+						"io"
+					],
+					"path": [
+						"hotel",
+						"3",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "usch",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "hej",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
 					]
 				}
 			},
