@@ -122,12 +122,16 @@ module.exports = function () {
   });
 
   this.When(/^I enter check\-in date$/, async function () {
-    let checkinDate = await $('#checkIn')
+
+    await driver.findElement(By.id("checkIn")).sendKeys("2020-05-01")
+    await sleep(sleepTime);
+
+    /*let checkinDate = await $('#checkIn')
     await checkinDate.click();
     await checkinDate.sendKeys('01');
     await checkinDate.sendKeys('05');
     await checkinDate.sendKeys('2020');
-    await sleep(sleepTime);
+    await sleep(sleepTime);*/
 
 
 
@@ -144,10 +148,9 @@ module.exports = function () {
 
   this.When(/^I enter check\-out date$/, async function () {
 
-    let checkoutDate = await $('#checkOut')
-    await checkoutDate.click();
-    await checkoutDate.sendKeys('03052020');
+    await driver.findElement(By.id("checkOut")).sendKeys("2020-05-05")
     await sleep(sleepTime);
+
   });
 
   this.When(/^I enter the number of adults$/, async function () {
@@ -174,9 +177,10 @@ module.exports = function () {
     await sleep(sleepTime);
   });
 
-  this.Then(/^The page shows the results\.$/, async function () {
-
-
+  this.Then(/^I click Info button to see information$/, async function () {
+    let infoButton = await $('#div.col-6:nth-child(1) > div:nth-child(3) > a:nth-child(1) > button:nth-child(1)')
+    await infoButton.click();
+    await sleep(sleepTime);
   });
 
 }
