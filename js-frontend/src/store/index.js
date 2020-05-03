@@ -6,13 +6,12 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loggedInUser : {},
-    roomReservation : {},
     home: {
       rooms: [],
       searchData: [],
       reservation: {
         bookingNr: '',
-        room: '',
+        roomId: '',
         user: 0,
         numAdults: 0,
         numKids: 0,
@@ -26,9 +25,6 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    changeRoomReservation(state, value) {
-      state.roomReservation = value
-    },
     changeSearchData(state, value) {
       state.home.searchData = value
     },
@@ -189,12 +185,16 @@ export default new Vuex.Store({
       commit('changeReservationData', newRoomReservation)
     },
     async updateLoggedUser({commit}) {
-      let response = await fetch("/login/name")
+      let response = await fetch("login/name")
       let result = await response.json()
       commit('changeLoggedUser', result)
     },
-    initialRoomReservation({commit}, roomReservation) {
-      commit('changeRoomReservation', roomReservation)
+    async logout() {
+      /*
+      let response = await fetch("/login/logout")
+      await response
+      this.$router.push('/')
+      */
     }
   },
   
