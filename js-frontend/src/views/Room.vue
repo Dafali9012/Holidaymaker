@@ -300,7 +300,7 @@ export default {
     async makeReservation() {
       let roomReservation = {
         board: document.getElementById('board').value,
-        extraBed: document.getElementById('extraBed').value,
+        extraBed: document.getElementById('extraBed').checked?1:0,
         room: this.$route.params.room,
         user: this.$store.state.loggedInUser.userId,
         numAdults: this.$store.state.roomReservation.numAdults,
@@ -309,12 +309,6 @@ export default {
         checkIn: this.$store.state.roomReservation.checkIn,
         checkOut: this.$store.state.roomReservation.checkOut,
         totalRoomPrice: 0
-      }
-
-      if(document.getElementById('extraBed').checked) {
-        roomReservation.extraBed = 1
-      } else {
-        roomReservation.extraBed = 0
       }
 
       await fetch("http://localhost:8080/reservedroom", {
