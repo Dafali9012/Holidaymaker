@@ -55,7 +55,7 @@
               </p>
               <p style="font-size:18px;margin:0">
                 {{ room.kmToBeach }} km till stranden
-              </p>
+              </p>              
               <div class="d-flex">
                 <p v-for="n in room.hotelRating" :key="n">⭐</p>
               </div>
@@ -278,6 +278,7 @@ export default {
     },
     setRoomId() {
       this.$store.commit("updateRoom", this.room.roomId);
+      console.log("RoomID:" + this.room.roomId)
     },
     getTotalPrice() {
       let price = this.numNights * this.room.pricePerNight;
