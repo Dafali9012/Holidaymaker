@@ -28,13 +28,6 @@
         <div class="col-12 rounded py-3 text-left">
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <!--
-              Lägg till val för antal gäster av olika åldrar,
-              Skriv ut val av check-in/out som matades in vid
-              söktillfället.
-              Räkna ut pris efter hur många dagar man har valt
-              och skriv ut totalpriset
-              -->
               <p style="font-size:20px;margin:0">
                 <b>{{ room.hotelName }}</b>
               </p>
@@ -61,35 +54,33 @@
                   <p style="font-size:16px;margin:0">
                     <b>Check-in:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkIn }}</p>
+                  <p style="font-size:16px;margin:0">{{ this.$store.state.roomReservation.checkIn }}</p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Check-out:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkOut }}</p>
+                  <p style="font-size:16px;margin:0">{{ this.$store.state.roomReservation.checkOut }}</p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Antal vuxna:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.numAdults }}</p>
+                  <p style="font-size:16px;margin:0">{{ this.$store.state.roomReservation.numAdults }}</p>
                   <br />
                 </div>
+                
                 <div class="col-6">
-                  <p style="font-size:16px;margin:0">
-                    <b>Antal barn:</b>
-                  </p>
                   <p
                     style="font-size:16px;margin:0"
-                    v-if="reservation.numKids > 0"
-                  >{{ reservation.numKids }} (3-18 år)</p>
+                    v-if="this.$store.state.roomReservation.numKids > 0"
+                  ><b>Antal barn: </b>{{ this.$store.state.roomReservation.numKids }} (3-18 år)</p>
                   <p
                     style="font-size:16px;margin:0"
-                    v-if="reservation.numSmallKids > 0"
-                  >{{ reservation.numSmallKids }} (0-2 år)</p>
+                    v-if="this.$store.state.roomReservation.numSmallKids > 0"
+                  ><b>Antal småbarn: </b>{{ this.$store.state.roomReservation.numSmallKids }} (0-2 år)</p>
                   <br />
                 </div>
               </div>
@@ -124,8 +115,8 @@
         <div class="col-sm-12 col-6">
           <div class="form-group">
             <label for="board">Välj tillägg:</label>
-            <select class="form-control" id="board" v-model="board" @change="updateTotalPrice()">
-              <option value="NONE">Inget</option>
+            <select class="form-control" id="board" @change="updateTotalPrice()">
+              <option value="NONE" selected>Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
               <option value="AI">All Inclusive</option>

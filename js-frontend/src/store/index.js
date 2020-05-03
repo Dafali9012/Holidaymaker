@@ -11,17 +11,11 @@ export default new Vuex.Store({
       rooms: [],
       searchData: [],
       reservation: {
-        bookingNr: '',
-        room: '',
-        user: 0,
         numAdults: 0,
         numKids: 0,
         numSmallKids: 0,
         checkIn: '',
         checkOut: '',
-        board: '',
-        extraBed: 0,
-        totalRoomPrice: '',
       }
     },
   },
