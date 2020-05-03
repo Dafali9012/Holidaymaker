@@ -9,14 +9,7 @@ export default new Vuex.Store({
     roomReservation : {},
     home: {
       rooms: [],
-      searchData: [],
-      reservation: {
-        numAdults: 0,
-        numKids: 0,
-        numSmallKids: 0,
-        checkIn: '',
-        checkOut: '',
-      }
+      searchData: []
     },
   },
   mutations: {
@@ -29,25 +22,6 @@ export default new Vuex.Store({
 
     loadRooms(state, value) {
       state.home.rooms = value
-    },
-    changeReservationData(state, value) {
-      state.home.reservation = value
-    },
-    updateExtraBed(state, n) {
-      state.home.reservation.extraBed = n;
-      console.log('extraBed ', n)
-    },
-    updateBoard(state, val) {
-      state.home.reservation.board = val;
-      console.log('board ', val)
-    },
-    updateRoom(state, val) {
-      state.home.reservation.roomId = val;
-      console.log('room ', val)
-    },
-    updateRoomPrice(state, val) {
-      state.home.reservation.totalRoomPrice = val;
-      console.log('total room pricee', val)
     },
     changeLoggedUser(state, value) {
       state.loggedInUser = value
@@ -178,9 +152,6 @@ export default new Vuex.Store({
       let response = await fetch("http://localhost:8080/roominfo")
       let result = await response.json()
       commit('loadRooms', result)
-    },
-    reserveRoomData({ commit }, newRoomReservation) {
-      commit('changeReservationData', newRoomReservation)
     },
     async updateLoggedUser({commit}) {
       let response = await fetch("/login/name")

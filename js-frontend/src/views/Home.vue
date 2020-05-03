@@ -261,7 +261,7 @@ export default {
       ]);
     },
     getImageUrl: function(file) {
-      return require("../assets/images/" + file);
+      return require("@/assets/images/" + file);
     },
     returnCapacity(roomType) {
       if (roomType == "SINGLE") return 1;
