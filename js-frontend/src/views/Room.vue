@@ -1,6 +1,8 @@
 <template>
   <div class="container align-items-center py-5 rounded">
-    <div class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light">
+    <div
+      class="d-flex justify-content-between col border rounded py-3 pl-5 text-left bg-light"
+    >
       <router-link to="/">
         <button class="btn btn-info" id="homeButton">
           <h2>Bachman Hendricks</h2>
@@ -16,10 +18,14 @@
       </div>
       <div v-else class="align-self-center">
         <router-link to="/register">
-          <button type="button" class="btn btn-info border mr-2" id="regButton">Registrera</button>
+          <button type="button" class="btn btn-info border mr-2" id="regButton">
+            Registrera
+          </button>
         </router-link>
         <router-link to="/login">
-          <button type="button" class="btn btn-info border" id="loginButton">Logga in</button>
+          <button type="button" class="btn btn-info border" id="loginButton">
+            Logga in
+          </button>
         </router-link>
       </div>
     </div>
@@ -38,12 +44,18 @@
               <p style="font-size:20px;margin:0">
                 <b>{{ room.hotelName }}</b>
               </p>
-
-              <p style="font-size:18px;margin:0">{{ room.countryName + " - " + room.cityName }}</p>
-              <p style="font-size:18px;margin:0">{{ room.pricePerNight }} kr per natt</p>
-              <p style="font-size:18px;margin:0">{{ room.kmToCenter }} km till centrum</p>
-              <p style="font-size:18px;margin:0">{{ room.kmToBeach }} km till stranden</p>
-
+              <p style="font-size:18px;margin:0">
+                {{ room.countryName + " - " + room.cityName }}
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.pricePerNight }} kr per natt
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.kmToCenter }} km till centrum
+              </p>
+              <p style="font-size:18px;margin:0">
+                {{ room.kmToBeach }} km till stranden
+              </p>              
               <div class="d-flex">
                 <p v-for="n in room.hotelRating" :key="n">⭐</p>
               </div>
@@ -63,21 +75,27 @@
                   <p style="font-size:16px;margin:0">
                     <b>Check-in:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkIn }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.checkIn }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Check-out:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.checkOut }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.checkOut }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
                   <p style="font-size:16px;margin:0">
                     <b>Antal vuxna:</b>
                   </p>
-                  <p style="font-size:16px;margin:0">{{ reservation.numAdults }}</p>
+                  <p style="font-size:16px;margin:0">
+                    {{ reservation.numAdults }}
+                  </p>
                   <br />
                 </div>
                 <div class="col-6">
@@ -87,11 +105,15 @@
                   <p
                     style="font-size:16px;margin:0"
                     v-if="reservation.numKids > 0"
-                  >{{ reservation.numKids }} (3-18 år)</p>
+                  >
+                    {{ reservation.numKids }} (3-18 år)
+                  </p>
                   <p
                     style="font-size:16px;margin:0"
                     v-if="reservation.numSmallKids > 0"
-                  >{{ reservation.numSmallKids }} (0-2 år)</p>
+                  >
+                    {{ reservation.numSmallKids }} (0-2 år)
+                  </p>
                   <br />
                 </div>
               </div>
@@ -105,18 +127,20 @@
                 <b>Tillägg:</b>
               </p>
               <p style="font-size:16px;margin:0" v-if="addition1 !== ''">
-                {{ addition1 }}: {{ addComma(boardPrice) }}:- pp/natt
+                {{ addition1 }}: {{ addComma(boardPrice) }}:- pp/natt 
                 ({{ addComma(totalBoardPrice) }}:- av totalpriset)
                 <br />
               </p>
-              <p
-                style="font-size:16px;margin:0"
-                v-if="addition2 !== ''"
-              >{{ addition2 }}, {{ extraBedPrice }}:-</p>
+              <p style="font-size:16px;margin:0" v-if="addition2 !== ''">
+                {{ addition2 }}, {{ extraBedPrice }}:-
+              </p>
               <br />
             </div>
             <div class="col-sm-12 col-md-6">
-              <img :src="getImageUrl(room.imgLink)" class="image my-3 rounded" />
+              <img
+                :src="getImageUrl(room.imgLink)"
+                class="image my-3 rounded"
+              />
             </div>
           </div>
         </div>
@@ -126,7 +150,12 @@
         <div class="col-sm-12 col-6">
           <div class="form-group">
             <label for="board">Välj tillägg:</label>
-            <select class="form-control" id="board" v-model="board" @change="updateTotalPrice()">
+            <select
+              class="form-control"
+              id="board"
+              v-model="board"
+              @change="updateTotalPrice()"
+            >
               <option value="NONE">Inget</option>
               <option value="HB">Halvpension</option>
               <option value="FB">Helpension</option>
@@ -145,8 +174,8 @@
               class="form-check-input"
               id="extraBed"
               v-model="extraBed"
-              true-value=1
-              false-value=0
+              true-value="1"
+              false-value="0"
             />
             <label class="form-check-label" for="extraBed">Extra säng</label>
           </div>
@@ -160,12 +189,16 @@
               type="button"
               class="btn btn-info d-flex justify-content-end align-items-start"
               id="backButton"
-            >Tillbaka</button>
+            >
+              Tillbaka
+            </button>
           </router-link>
         </div>
 
         <div class="col-2 text-right">
-          <button class="btn btn-info" @click="loginCheck()">Boka</button>
+          <button class="btn btn-info" @click="rejectReservation()">
+            Boka
+          </button>
         </div>
       </div>
     </div>
@@ -296,47 +329,13 @@ export default {
         return num;
       });
     },
-
-    // Daniel
-
-    loginCheck() {
+    rejectReservation() {
       if(this.$store.state.loggedInUser.userId) {
-        this.makeReservation()
+        this.completeReservation()
       } else {
         this.$router.push('/register')
       }
     },
-    async makeReservation() {
-      let roomReservation = {
-        board: document.getElementById('board').value,
-        extraBed: document.getElementById('extraBed').value,
-        room: this.$route.params.room,
-        user: this.$store.state.loggedInUser.userId,
-        numAdults: this.$store.state.roomReservation.numAdults,
-        numKids: this.$store.state.roomReservation.numKids,
-        numSmallKids: this.$store.state.roomReservation.numSmallKids,
-        checkIn: this.$store.state.roomReservation.checkIn,
-        checkOut: this.$store.state.roomReservation.checkOut,
-        totalRoomPrice: 0
-      }
-
-      if(document.getElementById('extraBed').checked) {
-        roomReservation.extraBed = 1
-      } else {
-        roomReservation.extraBed = 0
-      }
-
-      await fetch("http://localhost:8080/reservedroom", {
-        method: "POST",
-        body: JSON.stringify(roomReservation),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    },
-
-    // Daniel
-
     completeReservation: async function() {
       console.log(this.$store.state.loggedInUser.userId)
       let reservedRoom = this.$store.state.home.reservation;
