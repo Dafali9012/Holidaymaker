@@ -24,9 +24,9 @@ public class ReservedRoomController {
         return this.reservedRoomRep.findAllById(Collections.singleton(id));
     }
 
-    @PostMapping
+    @PostMapping()
     public ReservedRoom addReservedRoom(@RequestBody ReservedRoom rr) {
-        return reservedRoomRep.save(rr);
+        return rr;
     }
     @DeleteMapping("{id}")
     public void deleteReservationById(@PathVariable long id) {
