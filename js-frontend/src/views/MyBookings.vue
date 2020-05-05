@@ -64,15 +64,6 @@ export default {
     logout() {
       this.$store.dispatch("logout");
     },
-
-    created: function(){
-      this.getUserReservations();
-
-    },    
-    methods: {
-      logout() {
-      this.$store.dispatch('logout')
-    },
     getUserReservations: async function () {
       let url = "http://localhost:8080/reservedroom";
       const result = await fetch(url);
@@ -102,6 +93,6 @@ export default {
 
       }
     }
-  }
-}};
+}
+};
 </script>
