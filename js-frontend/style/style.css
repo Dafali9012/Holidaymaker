@@ -1,0 +1,17 @@
+#app {
+    min-height: 100vh;
+}
+.formlabel {
+    color: grey;
+    position: absolute;
+    pointer-events: none;
+    transition: all 0.2s ease-in;
+}
+input:focus + .formlabel {
+    transform: translateY(-30px);
+    font-size: 10pt;
+}
+input:not(:placeholder-shown) + .formlabel{
+    transform: translateY(-30px);
+    font-size: 10pt;
+}
