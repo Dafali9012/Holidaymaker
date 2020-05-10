@@ -177,6 +177,10 @@
 </template>
 <script>
 export default {
+  name: "Room",
+  props: {
+    room: Object
+  },
   created() {
     this.initialTotalPrice();
   },
@@ -223,8 +227,8 @@ export default {
           "Content-Type": "application/json"
         }
       });
-      window.confirm("Din bokning har genomförts")
-      this.$router.push('/myBookings')
+      window.confirm("Din bokning har genomförts");
+      this.$router.push("/myBookings");
     },
     initialTotalPrice() {
       let reservation = this.$store.state.roomReservation;
