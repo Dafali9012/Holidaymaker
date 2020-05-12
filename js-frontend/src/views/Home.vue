@@ -61,6 +61,7 @@
         </select>
 
         <input
+          v-model="checkIn"
           type="date"
           class="border rounded col-md-2"
           name="startdate"
@@ -69,6 +70,7 @@
           required
         />
         <input
+          v-model="checkOut"
           type="date"
           class="border rounded col-md-2"
           name="enddate"
@@ -77,7 +79,14 @@
           required
         />
 
-        <select class="border rounded col-md-1" name="adults" id="adults">
+        <select v-model="numAdults" class="border rounded col-md-1" name="adults" id="adults">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <select v-model="numKids" class="border rounded col-md-1" name="kids" id="kids">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -85,15 +94,7 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <select class="border rounded col-md-1" name="kids" id="kids">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <select class="border rounded col-md-1" name="smallkids" id="smallkids">
+        <select v-model="numSmallKids" class="border rounded col-md-1" name="smallkids" id="smallkids">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -155,7 +156,6 @@
         type="submit"
         class="align-self-center btn btn-info border col-4 mt-3"
         id="searchButton"
-        @click="reserveRoomValues()"
       >Sök</button>
     </form>
     <div class="container bg-light">
@@ -189,7 +189,7 @@
           </div>
           <div class="d-flex justify-content-end align-items-center flex-grow-1">
             <router-link :to="'/room/'+room.roomId">
-              <button class="btn btn-info">Info</button>
+              <button @click="initialRoomReservation()" class="btn btn-info">Info</button>
             </router-link>
           </div>
         </div>
@@ -202,7 +202,12 @@
 export default {
   data() {
     return {
-      countries: []
+      countries: [],
+      numAdults: 1,
+      numKids: 0,
+      numSmallKids: 0,
+      checkIn: "",
+      checkOut: ""
     };
   },
   created() {
@@ -256,7 +261,7 @@ export default {
       ]);
     },
     getImageUrl: function(file) {
-      return require("../assets/images/" + file);
+      return require("@/assets/images/" + file);
     },
     returnCapacity(roomType) {
       if (roomType == "SINGLE") return 1;
@@ -276,6 +281,23 @@ export default {
       };
       console.log("reserve room data", this.newRoomReservation);
       this.$store.dispatch("reserveRoomData", newRoomReservation);
+    },
+    initialRoomReservation() {
+      this.$store.commit('changeRoomReservation', 
+      {
+        board: "",
+        extraBed: "",
+        room: 0,
+        user: 0,
+        numAdults: this.numAdults,
+        numKids: this.numKids,
+        numSmallKids: this.numSmallKids,
+        checkIn: this.checkIn,
+        checkOut: this.checkOut,
+        totalRoomPrice: 0
+      })
+
+      console.log(this.$store.state.roomReservation)
     }
   }
 };
