@@ -13,6 +13,7 @@ import store from '@/store/index.js'
       fetch.mockResponseOnce(JSON.stringify(expectedUserData))
       await store.dispatch('updateLoggedUser', credentials)
       //expectedUserData.adress = {}
+      //jens
       expect(store.state.loggedInUser).toEqual(expectedUserData)
     })
 })
