@@ -1,4 +1,4 @@
-let { $, sleep } = require('./funcs');
+/*let { $, sleep } = require('./funcs');
 
 let sleepTime = 1000;
 
@@ -144,7 +144,7 @@ module.exports = function () {
     //await checkinDate.clear() 
 
 
-  });
+  /*});
 
   this.When(/^I enter check\-out date$/, async function () {
 
@@ -184,3 +184,5 @@ module.exports = function () {
   });
 
 }
+
+*/
