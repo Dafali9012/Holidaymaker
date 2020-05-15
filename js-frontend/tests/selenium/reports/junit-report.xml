@@ -1,97 +1,182 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="1" skipped="1">
+    <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="0" skipped="9">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="7.6851397">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.2904651">
+        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.098102001">
+        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.070348601">
+        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.037131299">
+        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.035438799">
+        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.2511107">
+        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="20.0016763">
-            <failure message="function timed out after 20000 milliseconds">function timed out after 20000 milliseconds</failure>
+        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
         <testcase name="Then Signup is done." classname="test-holidaymaker-home-page;sign-up">
             <skipped message="">
             </skipped>
         </testcase>
     </testsuite>
-    <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="0" skipped="0">
+    <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="0" skipped="6">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.2365354">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.2757034">
+        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.045163601">
+        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.0606982">
+        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.260654001">
+        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.0162665">
+        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
     </testsuite>
-    <testsuite name="test-holidaymaker-home-page;search-and-book-a-available-rooms" tests="10" failures="1" skipped="1">
+    <testsuite name="test-holidaymaker-home-page;search-and-book-a-available-rooms" tests="10" failures="0" skipped="10">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/holidaymaker.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="7.591345099">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="When I choose Frankrike" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.226953301">
+        <testcase name="When I choose Frankrike" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter check-in date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.050724199">
+        <testcase name="And I enter check-in date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter check-out date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.0356035">
+        <testcase name="And I enter check-out date" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter the number of adults" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.230307099">
+        <testcase name="And I enter the number of adults" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter the number of kids" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.2457555">
+        <testcase name="And I enter the number of kids" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter the number of babies" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.246998501">
+        <testcase name="And I enter the number of babies" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I click the Sök button" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="1.2358161">
+        <testcase name="And I click the Sök button" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="Then I click Info button to see information" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms" time="0.0099502">
-            <failure message="TypeError: Cannot read property &apos;click&apos; of null">TypeError: Cannot read property &apos;click&apos; of null
-    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\search.js:182:22)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        <testcase name="Then I click Info button to see information" classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
+            <skipped message="">
+            </skipped>
         </testcase>
         <testcase name="And The page shows hotel information." classname="test-holidaymaker-home-page;search-and-book-a-available-rooms">
             <skipped message="">
             </skipped>
         </testcase>
     </testsuite>
-    <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="0" skipped="0">
+    <testsuite name="test-holidaymaker-home-page;log-in" tests="6" failures="0" skipped="6">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/login.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in" time="7.65985">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in" time="2.320014999">
+        <testcase name="When I click Login on menu" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in" time="2.071568">
+        <testcase name="And I enter User name" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in" time="2.058138501">
+        <testcase name="And I enter Password" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in" time="1.2560546">
+        <testcase name="And I click the Login button" classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in" time="1.018375401">
+        <testcase name="Then I am logged in." classname="test-holidaymaker-home-page;log-in">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="booking-and-deleting-bookings;making-a-booking" tests="7" failures="1" skipped="4">
+        <properties>
+            <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/reservations.feature">
+            </property>
+        </properties>
+        <testcase name="Given that i am on the Holidaymaker site" classname="booking-and-deleting-bookings;making-a-booking" time="6.6905314">
+        </testcase>
+        <testcase name="And that i am logged in" classname="booking-and-deleting-bookings;making-a-booking" time="1.055817101">
+        </testcase>
+        <testcase name="Given that i enter search data" classname="booking-and-deleting-bookings;making-a-booking" time="4.559819099">
+            <failure message="TypeError: Cannot read property &apos;getText&apos; of null">TypeError: Cannot read property &apos;getText&apos; of null
+    at createWorld.&lt;anonymous&gt; (C:\Users\jitma\Desktop\Holidaymaker\js-frontend\tests\selenium\step-definitions\reservations.js:41:36)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+        </testcase>
+        <testcase name="And press search" classname="booking-and-deleting-bookings;making-a-booking">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And click on a room" classname="booking-and-deleting-bookings;making-a-booking">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When i press the booking button" classname="booking-and-deleting-bookings;making-a-booking">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then i should have a booking" classname="booking-and-deleting-bookings;making-a-booking">
+            <skipped message="">
+            </skipped>
         </testcase>
     </testsuite>
     <testsuite name="select-countries;finding-countries-in-the-drop-down-menu" tests="3" failures="0" skipped="0">
@@ -99,34 +184,49 @@
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/searchCountry.feature">
             </property>
         </properties>
-        <testcase name="Given that i am on the holidaymaker webpage" classname="select-countries;finding-countries-in-the-drop-down-menu" time="7.049465699">
+        <testcase name="Given that i am on the holidaymaker webpage" classname="select-countries;finding-countries-in-the-drop-down-menu" time="6.610899401">
         </testcase>
-        <testcase name="When i click &quot;välj land&quot;" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.0053109">
+        <testcase name="When i click &quot;välj land&quot;" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.0220951">
         </testcase>
-        <testcase name="Then i should get a list of countries" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.2407477">
+        <testcase name="Then i should get a list of countries" classname="select-countries;finding-countries-in-the-drop-down-menu" time="0.2493824">
         </testcase>
     </testsuite>
-    <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="1" skipped="1">
+    <testsuite name="test-holidaymaker-home-page;sign-up" tests="9" failures="0" skipped="9">
         <properties>
             <property name="URI" value="C:/Users/jitma/Desktop/Holidaymaker/js-frontend/tests/selenium/features/signup.feature">
             </property>
         </properties>
-        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up" time="8.707146801">
+        <testcase name="Given that I&apos;m at the Holidaymaker home page" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up" time="2.2956692">
+        <testcase name="When I click Register on menu" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up" time="2.0639137">
+        <testcase name="And I enter Email" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up" time="2.0343174">
+        <testcase name="And I enter Lösenord" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up" time="2.0677446">
+        <testcase name="And I enter Namn" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up" time="2.0614012">
+        <testcase name="And I enter Telefon" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up" time="1.2287987">
+        <testcase name="And I click the Registrera button and Popup shows that the signup is done" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
-        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up" time="19.9999139">
-            <failure message="function timed out after 20000 milliseconds">function timed out after 20000 milliseconds</failure>
+        <testcase name="And I close the popup" classname="test-holidaymaker-home-page;sign-up">
+            <skipped message="">
+            </skipped>
         </testcase>
         <testcase name="Then Signip is done and get back to the main page." classname="test-holidaymaker-home-page;sign-up">
             <skipped message="">

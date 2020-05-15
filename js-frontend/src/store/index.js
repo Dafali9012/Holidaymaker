@@ -6,50 +6,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loggedInUser : {},
+    roomReservation : {},
     home: {
       rooms: [],
-      searchData: [],
-      reservation: {
-        bookingNr: '',
-        roomId: '',
-        user: 0,
-        numAdults: 0,
-        numKids: 0,
-        numSmallKids: 0,
-        checkIn: '',
-        checkOut: '',
-        board: '',
-        extraBed: 0,
-        totalRoomPrice: '',
-      }
+      searchData: []
     },
   },
   mutations: {
+    changeRoomReservation(state, value) {
+      state.roomReservation = value
+    },
     changeSearchData(state, value) {
       state.home.searchData = value
     },
 
     loadRooms(state, value) {
       state.home.rooms = value
-    },
-    changeReservationData(state, value) {
-      state.home.reservation = value
-    },
-    updateExtraBed(state, n) {
-      state.home.reservation.extraBed = n;
-      console.log('extraBed ', n)
-    },
-    updateBoard(state, val) {
-      state.home.reservation.board = val;
-      console.log('board ', val)
-    },
-    updateRoom(state, val) {
-      state.home.reservation.roomId = val;
-      console.log('room ', val)
-    },
-    updateRoomPrice(state, val) {
-      state.home.reservation.totalRoomPrice = val;
-      console.log('total room pricee', val)
     },
     changeLoggedUser(state, value) {
       state.loggedInUser = value
@@ -181,20 +153,13 @@ export default new Vuex.Store({
       let result = await response.json()
       commit('loadRooms', result)
     },
-    reserveRoomData({ commit }, newRoomReservation) {
-      commit('changeReservationData', newRoomReservation)
-    },
     async updateLoggedUser({commit}) {
-      let response = await fetch("login/name")
+      let response = await fetch("/login/name")
       let result = await response.json()
       commit('changeLoggedUser', result)
     },
-    async logout() {
-      /*
-      let response = await fetch("/login/logout")
-      await response
-      this.$router.push('/')
-      */
+    initialRoomReservation({commit}, roomReservation) {
+      commit('changeRoomReservation', roomReservation)
     }
   },
   
